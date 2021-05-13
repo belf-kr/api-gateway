@@ -11,7 +11,7 @@ RUN npm run build
 
 
 # Step 2: 가벼운 node alpine image 사용
-FROM node::14.16.1-alpine
+FROM node:14.16.1-alpine
 
 WORKDIR /app
 
