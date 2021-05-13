@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: api-gateway
-          image: ghcr.io/belf-kr/api-gateway/nextjs
+          image: ghcr.io/belf-kr/api-gateway/nestjs
           ports:
             - containerPort: 3000
 ---
