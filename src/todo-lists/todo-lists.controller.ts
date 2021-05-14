@@ -7,7 +7,7 @@ export class TodoListsController {
 
   @Get()
   public getLists() {
-    const res = this.appService.test();
+    const res = this.appService.getList();
     return res;
   }
 }
