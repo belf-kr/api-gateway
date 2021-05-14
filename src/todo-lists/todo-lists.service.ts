@@ -6,7 +6,8 @@ export class TodoListsService {
 
   async getList() {
     try {
-      const res = await this.httpService.get("http://todo-service.qa.svc.cluster.local:3000/").toPromise();
+      // const res = await this.httpService.get("http://todo-service.qa.svc.cluster.local:3000/").toPromise();
+      const res = await this.httpService.get("http://todo-service.qa:3000/").toPromise();
       return res.data;
     } catch (error) {
       return error;
