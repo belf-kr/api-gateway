@@ -14,7 +14,7 @@ export class TodoListsController {
 
   @Get("/mock-service")
   public getMockLists() {
-    const res = this.appService.getList(`todo-service`);
+    const res = this.appService.getList(`mock-service`);
     return res;
   }
 }
