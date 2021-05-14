@@ -1,11 +1,13 @@
 import { Controller, Get } from "@nestjs/common";
+import { TodoListsService } from "./todo-lists.service";
 
 @Controller("todo-lists")
 export class TodoListsController {
+  constructor(private readonly appService: TodoListsService) {}
+
   @Get()
   public getLists() {
-    return {
-      title: "투두 리스트 조회",
-    };
+    const res = this.appService.test();
+    return res;
   }
 }
