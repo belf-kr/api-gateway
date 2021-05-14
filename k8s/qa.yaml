@@ -18,6 +18,9 @@ spec:
           image: ghcr.io/belf-kr/api-gateway/nestjs
           ports:
             - containerPort: 3000
+          env:
+            - name: STAGES
+              value: "qa"
 ---
 apiVersion: v1
 kind: Service
