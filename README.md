@@ -16,6 +16,21 @@ service 단위의 api을 관리합니다.
 nest new api-gateway
 ```
 
+## issue
+
+### build 후 `dist/main` 경로에 파일 없음
+
+version을 기록하기 위해 `tsconfig.json` 에 `"resolveJsonModule": true` 활성화 하여 `package.json` 의 `version` 속성을 import 하여 사용하게 되면서 build 시 `src` 디렉터리 외부의 파일을 끌어와야 하게 되었습니다.
+
+때문에 `dist` 가 아래와 같이 생성되면서 `"start:prod": "node dist/main"` 의 경로를 수정하게 되었습니다.
+
+```
+./dist
+ ├─src
+ ├─package.json
+ └─tsconfig.build.tsbuildinfo
+```
+
 ## pipeline
 
 ### origin인 `front-server` 와 다른점
