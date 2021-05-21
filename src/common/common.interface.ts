@@ -1,6 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-interface ServerInfo {
-  status: number;
+interface ServiceInfo {
+  httpStatus: number;
   version: string;
   name: string;
+  port: number;
+  error_code?: string;
 }
