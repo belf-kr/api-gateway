@@ -4,5 +4,5 @@ interface ServiceInfo {
   version: string;
   name: string;
   port: number;
-  error_code?: string;
+  error_code?: number;
 }
