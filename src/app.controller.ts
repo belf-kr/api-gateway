@@ -1,27 +1,14 @@
-import { Controller, Get, Req, Res } from "@nestjs/common";
+import { Controller, Get, HttpStatus, Res } from "@nestjs/common";
 import { AppService } from "./app.service";
-import { Request, Response } from "express";
-import { CCommonManager } from "./common/common.manager";
-import { CServerManager } from "./common/common.server-manager";
-import { User } from "./common/common.decorator";
+import { Response } from "express";
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
-  root(@User() user): string {
-    return user;
-  }
-
   @Get("ping")
-  sendStatusOK(@Req() req: Request, @Res() res: Response): any {
-    return res.sendStatus(200);
-  }
-
-  @Get("status")
-  async getStatus(): Promise<CCommonManager> {
-    return CServerManager.getInstance();
+  sendStatusOK(@Res() res: Response): void {
+    res.sendStatus(HttpStatus.OK);
   }
 
   @Get(`/env`)
