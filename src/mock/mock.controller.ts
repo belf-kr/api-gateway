@@ -1,5 +1,5 @@
 import { Controller, Get, Param } from "@nestjs/common";
-import { IGlasses, IServiceInfo } from "../common/common.interface";
+import { IServiceInfo } from "../common/common.interface";
 import { MockService } from "./mock.service";
 
 @Controller("mock")
