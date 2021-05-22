@@ -1,5 +1,5 @@
-import { Controller, Get } from "@nestjs/common";
-import { ServiceInfo } from "../common/common.interface";
+import { Controller, Get, Param } from "@nestjs/common";
+import { IGlasses, IServiceInfo } from "../common/common.interface";
 import { MockService } from "./mock.service";
 
 @Controller("mock")
@@ -7,7 +7,17 @@ export class MockController {
   constructor(private readonly mockService: MockService) {}
 
   @Get()
-  GetServiceInfo(): ServiceInfo {
-    return this.mockService.GetServiceInfo();
+  getServiceInfo(): IServiceInfo {
+    return this.mockService.getServiceInfo();
+  }
+
+  @Get(":userId/glass")
+  getPlantingGlass(@Param() param) {
+    return this.mockService.getPlantingGlass(param.userId);
+  }
+
+  @Get(":userId/today-todos")
+  getTodayTodos(@Param() param) {
+    return this.mockService.getTodayTodos(param.userId);
   }
 }

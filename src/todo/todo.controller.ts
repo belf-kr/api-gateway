@@ -6,6 +6,6 @@ export class TodoController {
   constructor(private readonly todoService: TodoService) {}
   @Get()
   getServiceInfo() {
-    return this.todoService.GetServiceInfo();
+    return this.todoService.getServiceInfo();
   }
 }
