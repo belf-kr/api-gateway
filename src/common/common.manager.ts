@@ -2,7 +2,7 @@ import { HttpStatus } from "@nestjs/common";
 import { CCommonMessage } from "./common.message";
 import { CServiceInfo } from "./common.service-manager";
 import { SERVICE_UPDATE_TIMING } from "./common.define";
-import { ServiceInfo } from "./common.interface";
+import { IServiceInfo } from "./common.interface";
 
 export class CCommonManager {
   static INTERVER_SERVICE_UPDATE: NodeJS.Timeout;
@@ -18,7 +18,7 @@ export class CCommonManager {
    * @param serviceInfo
    * @returns server url
    */
-  static getServerUrl(serviceInfo: ServiceInfo): string {
+  static getServerUrl(serviceInfo: IServiceInfo): string {
     let url = "";
     if (process.env.STAGES == "LOCAL") {
       url = `http://localhost:${serviceInfo.port}`;

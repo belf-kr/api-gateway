@@ -1,5 +1,5 @@
 import { HttpService } from "@nestjs/common";
-import { ServiceInfo } from "./common.interface";
+import { IServiceInfo } from "./common.interface";
 import { CCommonManager } from "./common.manager";
 
 /**
@@ -15,12 +15,12 @@ export class CServiceInfo {
   /**
    * MCOK 서비스에 대한 정보입니다.
    */
-  public static MOCK_SERVICE: ServiceInfo;
+  public static MOCK_SERVICE: IServiceInfo;
 
   /**
    * TODO 서비스에 대한 정보입니다.
    */
-  public static TODO_SERVICE: ServiceInfo;
+  public static TODO_SERVICE: IServiceInfo;
 
   private constructor() {
     this.httpService = new HttpService();
@@ -68,7 +68,7 @@ export class CServiceInfo {
     }
   }
 
-  private async updateServiceInfo(service: ServiceInfo) {
+  private async updateServiceInfo(service: IServiceInfo) {
     try {
       const url = CCommonManager.getServerUrl(service);
       let res = await this.httpService.get(`${url}/ping`).toPromise();
