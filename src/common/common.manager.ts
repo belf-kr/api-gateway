@@ -1,6 +1,6 @@
 import { HttpStatus } from "@nestjs/common";
 import { CCommonMessage } from "./common.message";
-import { CServiceInfo } from "./common.server-manager";
+import { CServiceInfo } from "./common.service-manager";
 import { SERVICE_UPDATE_TIMING } from "./common.define";
 import { ServiceInfo } from "./common.interface";
 
