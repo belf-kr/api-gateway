@@ -2,7 +2,7 @@
  * 공통 인터페이스
  */
 
-export interface ServiceInfo {
+export interface IServiceInfo {
   httpStatus: number;
   version: string;
   name: string;
@@ -11,6 +11,22 @@ export interface ServiceInfo {
   error_code?: number;
 }
 
-export interface IServiceEndpoing {
-  GetServiceInfo(): ServiceInfo;
+export interface IGlass {
+  date: number;
+  count: number;
+}
+
+export interface IGlasses {
+  glass_list: IGlass[];
+}
+
+export interface ITodo {
+  reminder_id: string;
+  reminder_title: string;
+  course_title: string;
+  color: string;
+}
+
+export interface ITodos {
+  todo_list: ITodo[];
 }
