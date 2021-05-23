@@ -1,11 +1,11 @@
 import { HttpService, Injectable } from "@nestjs/common";
 import { IServiceInfo, IGlasses, ITodos } from "src/common/common.interface";
 import { CCommonManager } from "src/common/common.manager";
-import { IServiceEndpoing } from "src/common/common.service-interface";
+import { IServiceEndpoint } from "src/common/common.service-interface";
 import { CServiceInfo } from "src/common/common.service-manager";
 
 @Injectable()
-export class MockService implements IServiceEndpoing {
+export class MockService implements IServiceEndpoint {
   httpService: HttpService;
   constructor() {
     this.httpService = new HttpService();
