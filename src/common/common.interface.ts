@@ -7,7 +7,6 @@ export interface IServiceInfo {
   version: string;
   name: string;
   port: number;
-  url?: string;
   error_code?: number;
 }
 
