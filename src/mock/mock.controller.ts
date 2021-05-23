@@ -1,9 +1,10 @@
 import { Controller, Get, Param } from "@nestjs/common";
+import { IServiceEndpoint } from "src/common/common.endpoint.interface";
 import { IServiceInfo } from "../common/common.interface";
 import { MockService } from "./mock.service";
 
 @Controller("mock")
-export class MockController {
+export class MockController implements IServiceEndpoint {
   constructor(private readonly mockService: MockService) {}
 
   @Get()
@@ -12,12 +13,12 @@ export class MockController {
   }
 
   @Get(":userId/glass")
-  getPlantingGlass(@Param() param) {
-    return this.mockService.getPlantingGlass(param.userId);
+  getPlantingGlass(@Param("userId") userId: string) {
+    return this.mockService.getPlantingGlass(userId);
   }
 
   @Get(":userId/today-todos")
-  getTodayTodos(@Param() param) {
-    return this.mockService.getTodayTodos(param.userId);
+  getTodayTodos(@Param("userId") userId: string) {
+    return this.mockService.getTodayTodos(userId);
   }
 }
