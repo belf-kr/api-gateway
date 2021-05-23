@@ -1,7 +1,7 @@
 import { HttpService, Injectable } from "@nestjs/common";
 import { IServiceInfo, IGlasses, ITodos } from "src/common/common.interface";
 import { CCommonManager } from "src/common/common.manager";
-import { IServiceEndpoint } from "src/common/common.service-interface";
+import { IServiceEndpoint } from "src/common/common.endpoint.interface";
 import { CServiceInfo } from "src/common/common.service-manager";
 
 @Injectable()

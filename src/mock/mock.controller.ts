@@ -1,5 +1,5 @@
 import { Controller, Get, Param } from "@nestjs/common";
-import { IServiceEndpoint } from "src/common/common.service-interface";
+import { IServiceEndpoint } from "src/common/common.endpoint.interface";
 import { IServiceInfo } from "../common/common.interface";
 import { MockService } from "./mock.service";
 
