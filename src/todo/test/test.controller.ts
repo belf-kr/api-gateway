@@ -11,13 +11,13 @@ export class TestController {
     return "todo/test";
   }
 
-  @Get("/version")
+  @Get("version")
   getVersion() {
     const res = this.appService.getVersion();
     return res;
   }
 
-  @Get("/env")
+  @Get("env")
   getEnv() {
     const res = this.appService.getEnv();
     return res;
