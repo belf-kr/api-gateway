@@ -5,6 +5,8 @@ import { CCommonManager } from "./common/common.manager";
 import { HttpExceptionFilter } from "./filters/http-exception.filter";
 import { APP_PORT } from "./common/common.define";
 
+import { version } from "../package.json";
+
 async function bootstrap() {
   if (await CCommonManager.initNestJS()) {
     const app = await NestFactory.create(AppModule);
@@ -12,4 +14,7 @@ async function bootstrap() {
     await app.listen(APP_PORT);
   }
 }
+
+console.log(`version: ${version}`);
+
 bootstrap();
