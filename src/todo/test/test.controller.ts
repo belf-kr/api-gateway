@@ -6,13 +6,18 @@ import { TestService } from "./test.service";
 export class TestController {
   constructor(private readonly appService: TestService) {}
 
-  @Get("version")
+  @Get()
+  getHello() {
+    return "todo/test";
+  }
+
+  @Get("/version")
   getVersion() {
     const res = this.appService.getVersion();
     return res;
   }
 
-  @Get("env")
+  @Get("/env")
   getEnv() {
     const res = this.appService.getEnv();
     return res;

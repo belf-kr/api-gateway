@@ -8,6 +8,7 @@ export class TodoController {
 
   @Get()
   getServiceInfo() {
+    return "todo";
     return this.todoService.getServiceInfo();
   }
 }
