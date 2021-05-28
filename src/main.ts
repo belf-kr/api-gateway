@@ -7,6 +7,8 @@ import { APP_PORT } from "./common/common.define";
 
 import { version } from "../package.json";
 
+console.log(`version: ${version}`);
+
 async function bootstrap() {
   // if (await CCommonManager.initNestJS()) {
   //   const app = await NestFactory.create(AppModule);
@@ -14,9 +16,6 @@ async function bootstrap() {
   //   await app.listen(APP_PORT);
   // }
   const app = await NestFactory.create(AppModule);
-  await app.listen(APP_PORT);
+  await app.listen(3000);
 }
-
-console.log(`version: ${version}`);
-
 bootstrap();
