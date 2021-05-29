@@ -5,9 +5,9 @@ import { AppService } from "./app.service";
 
 import { OauthMiddleware } from "./middleware/oauth.middleware";
 
-import { MockModule } from "./mock/mock.module";
+import { MockModule } from "../temp/mock/mock.module";
 
-import { TodoModule } from "./todo/todo.module";
+import { TodoModule } from "../temp/todo/todo.module";
 
 @Module({
   imports: [MockModule, TodoModule],
