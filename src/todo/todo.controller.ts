@@ -13,6 +13,12 @@ export class TodoController {
     return result;
   }
 
+  // TODO: 추후, 삭제해야함
+  @Get("test")
+  getTest(): string {
+    return "test 완료";
+  }
+
   @Get("ping")
   getPing(@Res() res: Response): void {
     res.sendStatus(HttpStatus.OK);
