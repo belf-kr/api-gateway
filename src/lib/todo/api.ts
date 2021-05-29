@@ -12,11 +12,9 @@ export class ApiClient {
 
   async getServiceName() {
     try {
-      // TODO: 추후, 주석을 풀어야 합니다.
-      // const endPoint = `${this.url}/`;
-      // const res = await this.httpService.get(endPoint).toPromise();
-      // return res.data;
-      return "하드 코딩 된 서비스 이름";
+      const endPoint = `${this.url}/`;
+      const res = await this.httpService.get(endPoint).toPromise();
+      return res.data;
     } catch (error) {
       throw error;
     }
