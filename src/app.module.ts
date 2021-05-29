@@ -8,6 +8,7 @@ import { OauthMiddleware } from "./middleware/oauth.middleware";
 import { MockModule } from "../temp/mock/mock.module";
 
 import { TodoModule } from "../temp/todo/todo.module";
+import { TodoModule } from './todo/todo.module';
 
 @Module({
   imports: [MockModule, TodoModule],
