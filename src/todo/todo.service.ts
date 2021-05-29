@@ -13,9 +13,7 @@ export class TodoService {
   async getServiceName() {
     try {
       const res = await this.todoApiClient.getServiceName();
-      // TODO: 추후, 주석을 풀어야 합니다.
-      // return res.data;
-      return res;
+      return res.data;
     } catch (error) {
       return error;
     }
