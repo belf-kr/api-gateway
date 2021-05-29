@@ -10,21 +10,40 @@ export class ApiClient {
     this.url = `http://${svcName}.${stages}.svc.cluster.local:3000`;
   }
 
-  async getVersion() {
+  async getServiceName() {
     try {
-      const res = await this.httpService.get(`${this.url}/version`).toPromise();
+      const endPoint = `${this.url}/`;
+      const res = await this.httpService.get(endPoint).toPromise();
       return res.data;
     } catch (error) {
-      return error;
+      throw error;
     }
   }
-
-  async getEnv() {
+  async getPing() {
     try {
-      const res = await this.httpService.get(`${this.url}/env`).toPromise();
+      const endPoint = `${this.url}/ping`;
+      const res = await this.httpService.get(endPoint).toPromise();
       return res.data;
     } catch (error) {
-      return error;
+      throw error;
+    }
+  }
+  async getVersion() {
+    try {
+      const endPoint = `${this.url}/version`;
+      const res = await this.httpService.get(endPoint).toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async getEnv() {
+    try {
+      const endPoint = `${this.url}/env`;
+      const res = await this.httpService.get(endPoint).toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
     }
   }
 }
