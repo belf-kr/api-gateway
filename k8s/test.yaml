@@ -16,6 +16,7 @@ spec:
       containers:
         - name: api-gateway
           image: ghcr.io/belf-kr/api-gateway/nestjs
+          imagePullPolicy: "Always"
           ports:
             - containerPort: 3000
 ---
