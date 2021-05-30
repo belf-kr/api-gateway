@@ -1,4 +1,5 @@
-import { Controller, Get } from "@nestjs/common";
+import { Controller, Get, HttpStatus, Res } from "@nestjs/common";
+import { Response } from "express";
 
 import { TodoService } from "./todo.service";
 
@@ -48,21 +49,21 @@ export class TodoController {
   }
 
   @Get("today-todos")
-  async getTodayTodos() {
+  async getTodayTodos(@Res() res: Response) {
     try {
       const result = await this.appService.getTodayTodos();
       return result;
     } catch (error) {
-      return error;
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
     }
   }
   @Get("glass")
-  async getGlass() {
+  async getGlass(@Res() res: Response) {
     try {
       const result = await this.appService.getGlass();
       return result;
     } catch (error) {
-      return error;
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
     }
   }
 }
