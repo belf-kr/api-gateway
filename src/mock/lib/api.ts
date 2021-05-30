@@ -2,7 +2,7 @@ import { HttpService, Injectable } from "@nestjs/common";
 
 @Injectable()
 export class MockApiClient {
-  private httpService: HttpService;
+  private readonly httpService: HttpService;
 
   constructor(httpService: HttpService) {
     this.httpService = httpService;
