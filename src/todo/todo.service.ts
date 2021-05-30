@@ -1,43 +1,43 @@
-import { HttpService, Injectable } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 
-import * as todo from "../lib/todo";
+import { TodoApiClient } from "./lib/api";
 
 @Injectable()
 export class TodoService {
-  private todoApiClient: todo.ApiClient;
+  private todoApiClient: TodoApiClient;
 
-  constructor(private httpService: HttpService) {
-    this.todoApiClient = new todo.ApiClient(httpService);
+  constructor(todoApiClient: TodoApiClient) {
+    this.todoApiClient = todoApiClient;
   }
 
   async getServiceName() {
     try {
-      const res = await this.todoApiClient.getServiceName();
-      return res.data;
+      const result = await this.todoApiClient.getServiceName();
+      return result;
     } catch (error) {
       return error;
     }
   }
   async getPing() {
     try {
-      const res = await this.todoApiClient.getPing();
-      return res.data;
+      const result = await this.todoApiClient.getPing();
+      return result;
     } catch (error) {
       return error;
     }
   }
   async getVersion() {
     try {
-      const res = await this.todoApiClient.getVersion();
-      return res.data;
+      const result = await this.todoApiClient.getVersion();
+      return result;
     } catch (error) {
       return error;
     }
   }
   async getEnv() {
     try {
-      const res = await this.todoApiClient.getEnv();
-      return res.data;
+      const result = await this.todoApiClient.getEnv();
+      return result;
     } catch (error) {
       return error;
     }

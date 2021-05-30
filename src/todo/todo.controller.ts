@@ -5,7 +5,11 @@ import { TodoService } from "./todo.service";
 
 @Controller("todo")
 export class TodoController {
-  constructor(private readonly appService: TodoService) {}
+  private readonly appService;
+
+  constructor(appService: TodoService) {
+    this.appService = appService;
+  }
 
   @Get()
   async getServiceName(): Promise<string> {
