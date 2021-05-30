@@ -2,7 +2,7 @@
 import { config } from "dotenv";
 import { resolve } from "path";
 config({
-  path: resolve(process.cwd(), process.env.NODE_ENV === "production" ? ".env" : ".env.dev"),
+  path: resolve(process.cwd(), process.env.STAGES === "local" ? ".env" : ".env.dev"),
 });
 
 /**
@@ -14,18 +14,14 @@ config({
  */
 export function K8sServiceDNS(svc: string, port: number): string {
   const ns = process.env.STAGES;
-  const nodeEnv = process.env.NODE_ENV;
 
-  if (!nodeEnv) {
-    throw new Error(`NODE_ENV 환경 변수 값이 지정되지 않았습니다.`);
-  }
-  if (nodeEnv !== "development" && !ns) {
+  if (!ns) {
     throw new Error(`STAGES 환경 변수 값이 지정되지 않았습니다.`);
   }
 
   let url = undefined;
-  switch (nodeEnv) {
-    case "development":
+  switch (ns) {
+    case "local":
       // TODO: 해당 주소가 사용되고 있는 주소인지 확인하는 방어코드 필요
       url = `http://localhost:${port}`;
       break;
