@@ -3,9 +3,18 @@ import { HttpModule, Module } from "@nestjs/common";
 import { TodoController } from "./todo.controller";
 import { TodoService } from "./todo.service";
 
+import { TodoApiClient } from "./lib/api";
+
+// FIXME: (parkgang) DI 받을 수 있도록 수정되어야 함
+import { K8sServiceDNS } from "../common/lib/service";
+
 @Module({
-  imports: [HttpModule],
+  imports: [
+    HttpModule.register({
+      baseURL: K8sServiceDNS("todo-service", 3000),
+    }),
+  ],
   controllers: [TodoController],
-  providers: [TodoService],
+  providers: [TodoService, TodoApiClient],
 })
 export class TodoModule {}
