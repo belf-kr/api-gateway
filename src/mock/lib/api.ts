@@ -40,4 +40,21 @@ export class MockApiClient {
       throw error;
     }
   }
+
+  async getTodayTodos() {
+    try {
+      const res = await this.httpService.get(`/todo-service/today-todos`).toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async getGlass() {
+    try {
+      const res = await this.httpService.get(`/todo-service/glass`).toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

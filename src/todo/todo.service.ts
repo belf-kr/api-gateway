@@ -2,11 +2,15 @@ import { Injectable } from "@nestjs/common";
 
 import { TodoApiClient } from "./lib/api";
 
+import { MockApiClient } from "../mock/lib/api";
+
 @Injectable()
 export class TodoService {
+  private mockApiClient: MockApiClient;
   private todoApiClient: TodoApiClient;
 
-  constructor(todoApiClient: TodoApiClient) {
+  constructor(mockApiClient: MockApiClient, todoApiClient: TodoApiClient) {
+    this.mockApiClient = mockApiClient;
     this.todoApiClient = todoApiClient;
   }
 
@@ -37,6 +41,23 @@ export class TodoService {
   async getEnv() {
     try {
       const result = await this.todoApiClient.getEnv();
+      return result;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async getTodayTodos() {
+    try {
+      const result = await this.mockApiClient.getTodayTodos();
+      return result;
+    } catch (error) {
+      return error;
+    }
+  }
+  async getGlass() {
+    try {
+      const result = await this.mockApiClient.getGlass();
       return result;
     } catch (error) {
       return error;

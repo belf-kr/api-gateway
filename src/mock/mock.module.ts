@@ -16,5 +16,6 @@ import { K8sServiceDNS } from "../common/lib/service";
   ],
   controllers: [MockController],
   providers: [MockService, MockApiClient],
+  exports: [MockApiClient],
 })
 export class MockModule {}
