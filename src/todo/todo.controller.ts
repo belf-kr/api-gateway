@@ -52,7 +52,7 @@ export class TodoController {
   async getTodayTodos(@Res() res: Response) {
     try {
       const result = await this.appService.getTodayTodos();
-      return result;
+      res.status(HttpStatus.OK).send(result);
     } catch (error) {
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
     }
@@ -61,7 +61,7 @@ export class TodoController {
   async getGlass(@Res() res: Response) {
     try {
       const result = await this.appService.getGlass();
-      return result;
+      res.status(HttpStatus.OK).send(result);
     } catch (error) {
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
     }
