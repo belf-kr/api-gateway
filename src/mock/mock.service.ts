@@ -4,7 +4,7 @@ import { MockApiClient } from "./lib/api";
 
 @Injectable()
 export class MockService {
-  private mockApiClient: MockApiClient;
+  private readonly mockApiClient: MockApiClient;
 
   constructor(mockApiClient: MockApiClient) {
     this.mockApiClient = mockApiClient;
