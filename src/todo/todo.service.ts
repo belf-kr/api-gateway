@@ -6,8 +6,8 @@ import { MockApiClient } from "../mock/lib/api";
 
 @Injectable()
 export class TodoService {
-  private mockApiClient: MockApiClient;
-  private todoApiClient: TodoApiClient;
+  private readonly mockApiClient: MockApiClient;
+  private readonly todoApiClient: TodoApiClient;
 
   constructor(mockApiClient: MockApiClient, todoApiClient: TodoApiClient) {
     this.mockApiClient = mockApiClient;
