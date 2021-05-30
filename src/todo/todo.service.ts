@@ -19,7 +19,7 @@ export class TodoService {
       const result = await this.todoApiClient.getServiceName();
       return result;
     } catch (error) {
-      return error;
+      throw error;
     }
   }
   async getPing() {
@@ -27,7 +27,7 @@ export class TodoService {
       const result = await this.todoApiClient.getPing();
       return result;
     } catch (error) {
-      return error;
+      throw error;
     }
   }
   async getVersion() {
@@ -35,7 +35,7 @@ export class TodoService {
       const result = await this.todoApiClient.getVersion();
       return result;
     } catch (error) {
-      return error;
+      throw error;
     }
   }
   async getEnv() {
@@ -43,7 +43,7 @@ export class TodoService {
       const result = await this.todoApiClient.getEnv();
       return result;
     } catch (error) {
-      return error;
+      throw error;
     }
   }
 
@@ -52,7 +52,7 @@ export class TodoService {
       const result = await this.mockApiClient.getTodayTodos();
       return result;
     } catch (error) {
-      return error;
+      throw error;
     }
   }
   async getGlass() {
@@ -60,7 +60,7 @@ export class TodoService {
       const result = await this.mockApiClient.getGlass();
       return result;
     } catch (error) {
-      return error;
+      throw error;
     }
   }
 }
