@@ -1,5 +1,7 @@
-import { HttpService, Injectable, NestMiddleware } from "@nestjs/common";
+import { HttpException, HttpService, Injectable, NestMiddleware } from "@nestjs/common";
 import { NextFunction } from "express";
+
+import { getErrorHttpStatusCode, getErrorMessage } from "../common/lib/error";
 
 @Injectable()
 export class OauthMiddleware implements NestMiddleware {
@@ -20,8 +22,19 @@ export class OauthMiddleware implements NestMiddleware {
 
   async use(req: Request, res: Response, next: NextFunction) {
     console.log(`OauthMiddleware`);
-    const result = await this.tokenValid();
-    console.log(result);
+    try {
+      const result = await this.tokenValid();
+      console.log(result);
+    } catch (error) {
+      // FIXME: 에러 처리가 확실하지 않음: (node:22117) UnhandledPromiseRejectionWarning: RangeError: Maximum call stack size exceeded
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+      const errorRes = {
+        point: "OauthMiddleware",
+        message,
+      };
+      throw new HttpException(errorRes, httpStatusCode);
+    }
     next();
   }
 }
