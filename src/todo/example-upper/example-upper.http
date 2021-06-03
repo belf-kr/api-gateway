@@ -1,5 +1,5 @@
 @Host = http://localhost:3000
-@Router = example-upper
+@Router = todo/example-upper
 
 ### example-upper 1개 이상 조회
 GET {{Host}}/{{Router}}

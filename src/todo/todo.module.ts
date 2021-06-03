@@ -22,5 +22,6 @@ import { K8sServiceDNS } from "../common/lib/service";
   ],
   controllers: [TodoController],
   providers: [TodoService, TodoApiClient],
+  exports: [TodoApiClient],
 })
 export class TodoModule {}
