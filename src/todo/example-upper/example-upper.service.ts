@@ -20,9 +20,9 @@ export class ExampleUpperService {
       throw error;
     }
   }
-  async getExampleUpper() {
+  async getExampleUpper(body: ExampleUpper[]) {
     try {
-      const result = await this.todoApiClient.getExampleUpper();
+      const result = await this.todoApiClient.getExampleUpper(body);
       return result;
     } catch (error) {
       throw error;

@@ -53,9 +53,9 @@ export class TodoApiClient {
       throw error;
     }
   }
-  async getExampleUpper() {
+  async getExampleUpper(body: ExampleUpper[]) {
     try {
-      const res = await this.httpService.get("/example-upper").toPromise();
+      const res = await this.httpService.get("/example-upper", { data: body }).toPromise();
       return res.data;
     } catch (error) {
       throw error;

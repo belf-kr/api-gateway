@@ -27,9 +27,9 @@ export class ExampleUpperController {
   }
 
   @Get()
-  async getExampleUpper() {
+  async getExampleUpper(@Body() exampleUppers: ExampleUpper[]): Promise<HttpStatus> {
     try {
-      const result = await this.appService.getExampleUpper();
+      const result = await this.appService.getExampleUpper(exampleUppers);
       return result;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
