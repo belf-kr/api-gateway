@@ -1,6 +1,6 @@
 import { HttpService, Injectable } from "@nestjs/common";
 
-import { ExampleUpper } from "../example-upper/example-upper.type";
+import { ExampleUpper, PutExampleUpper } from "../example-upper/example-upper.type";
 
 @Injectable()
 export class TodoApiClient {
@@ -56,6 +56,14 @@ export class TodoApiClient {
   async getExampleUpper(body: ExampleUpper[]) {
     try {
       const res = await this.httpService.get("/example-upper", { data: body }).toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async putExampleUpper(body: PutExampleUpper) {
+    try {
+      const res = await this.httpService.put("/example-upper", body).toPromise();
       return res.data;
     } catch (error) {
       throw error;

@@ -7,3 +7,8 @@ export type ExampleUpper = {
   defaultDouble: number;
   nullableInt: number;
 };
+
+export type PutExampleUpper = {
+  exampleUpperSearchFilters: ExampleUpper[];
+  exampleUpperChangeResult: ExampleUpper;
+};
