@@ -15,6 +15,7 @@ service 단위의 api을 관리합니다.
 # 실행 방법
 
 1. `/.env.dev` 생성 후 필요한 환경변수 값을 입력합니다.
+1. 연결하는 service가 listen 상태이어야 합니다.
 
 # History
 
