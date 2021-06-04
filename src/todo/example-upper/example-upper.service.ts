@@ -2,6 +2,8 @@ import { Injectable } from "@nestjs/common";
 
 import { TodoApiClient } from "../lib/api";
 
+import { ExampleUpper } from "./example-upper.type";
+
 @Injectable()
 export class ExampleUpperService {
   private readonly todoApiClient: TodoApiClient;
@@ -10,6 +12,14 @@ export class ExampleUpperService {
     this.todoApiClient = todoApiClient;
   }
 
+  async postExampleUpper(body: ExampleUpper[]) {
+    try {
+      const result = await this.todoApiClient.postExampleUpper(body);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
   async getExampleUpper() {
     try {
       const result = await this.todoApiClient.getExampleUpper();

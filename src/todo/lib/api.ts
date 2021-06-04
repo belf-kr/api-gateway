@@ -1,5 +1,7 @@
 import { HttpService, Injectable } from "@nestjs/common";
 
+import { ExampleUpper } from "../example-upper/example-upper.type";
+
 @Injectable()
 export class TodoApiClient {
   private readonly httpService: HttpService;
@@ -43,6 +45,14 @@ export class TodoApiClient {
   }
 
   // MySQL Replication CRUD Test Endpoint Group
+  async postExampleUpper(body: ExampleUpper[]) {
+    try {
+      const res = await this.httpService.post("/example-upper", body).toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
   async getExampleUpper() {
     try {
       const res = await this.httpService.get("/example-upper").toPromise();
