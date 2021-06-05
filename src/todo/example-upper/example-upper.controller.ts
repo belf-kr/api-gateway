@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpException, HttpStatus, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpException, HttpStatus, Post, Put } from "@nestjs/common";
 
 import { ExampleUpperService } from "./example-upper.service";
 
@@ -40,6 +40,17 @@ export class ExampleUpperController {
   async putExampleUpper(@Body() body: PutExampleUpper): Promise<HttpStatus> {
     try {
       const result = await this.appService.putExampleUpper(body);
+      return result;
+    } catch (error) {
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+      throw new HttpException(message, httpStatusCode);
+    }
+  }
+  @Delete()
+  async deleteExampleUpper(@Body() body: ExampleUpper[]): Promise<HttpStatus> {
+    try {
+      const result = await this.appService.deleteExampleUpper(body);
       return result;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);

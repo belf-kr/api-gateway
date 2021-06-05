@@ -69,4 +69,12 @@ export class TodoApiClient {
       throw error;
     }
   }
+  async deleteExampleUpper(body: ExampleUpper[]) {
+    try {
+      const res = await this.httpService.delete("/example-upper", { data: body }).toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

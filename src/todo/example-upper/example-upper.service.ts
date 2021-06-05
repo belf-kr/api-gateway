@@ -36,4 +36,12 @@ export class ExampleUpperService {
       throw error;
     }
   }
+  async deleteExampleUpper(body: ExampleUpper[]) {
+    try {
+      const result = await this.todoApiClient.deleteExampleUpper(body);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
