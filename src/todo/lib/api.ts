@@ -1,6 +1,7 @@
 import { HttpService, Injectable } from "@nestjs/common";
 
 import { ExampleUpper, PutExampleUpper } from "../example-upper/example-upper.type";
+import { ExampleLower, PutExampleLower } from "../example-lower/example-lower.type";
 
 @Injectable()
 export class TodoApiClient {
@@ -44,7 +45,8 @@ export class TodoApiClient {
     }
   }
 
-  // MySQL Replication CRUD Test Endpoint Group
+  /// MySQL Replication CRUD Test Endpoint Group
+  // example-upper
   async postExampleUpper(body: ExampleUpper[]) {
     try {
       const res = await this.httpService.post("/example-upper", body).toPromise();
@@ -72,6 +74,39 @@ export class TodoApiClient {
   async deleteExampleUpper(body: ExampleUpper[]) {
     try {
       const res = await this.httpService.delete("/example-upper", { data: body }).toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+  // example-lower
+  async postExampleLower(body: ExampleLower[]) {
+    try {
+      const res = await this.httpService.post("/example-lower", body).toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async getExampleLower(body: ExampleLower[]) {
+    try {
+      const res = await this.httpService.get("/example-lower", { data: body }).toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async putExampleLower(body: PutExampleLower) {
+    try {
+      const res = await this.httpService.put("/example-lower", body).toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async deleteExampleLower(body: ExampleLower[]) {
+    try {
+      const res = await this.httpService.delete("/example-lower", { data: body }).toPromise();
       return res.data;
     } catch (error) {
       throw error;
