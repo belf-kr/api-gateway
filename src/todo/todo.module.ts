@@ -8,6 +8,7 @@ import { TodoApiClient } from "./lib/api";
 import { MockModule } from "../mock/mock.module";
 
 import { ExampleUpperModule } from "./example-upper/example-upper.module";
+import { ExampleLowerModule } from "./example-lower/example-lower.module";
 
 // FIXME: (parkgang) DI 받을 수 있도록 수정되어야 함
 import { K8sServiceDNS } from "../common/lib/service";
@@ -19,6 +20,7 @@ import { K8sServiceDNS } from "../common/lib/service";
     }),
     MockModule,
     ExampleUpperModule,
+    ExampleLowerModule,
   ],
   controllers: [TodoController],
   providers: [TodoService, TodoApiClient],
