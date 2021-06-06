@@ -16,11 +16,20 @@ spec:
       containers:
         - name: api-gateway
           image: ghcr.io/belf-kr/api-gateway/nestjs
+          imagePullPolicy: "Always"
           ports:
             - containerPort: 3000
+          resources:
+            limits:
+              cpu: 100m
+              memory: 100Mi
           env:
+            # 배포 stages
             - name: STAGES
-              value: "qa"
+              valueFrom:
+                configMapKeyRef:
+                  name: qa-config
+                  key: STAGES
 ---
 apiVersion: v1
 kind: Service

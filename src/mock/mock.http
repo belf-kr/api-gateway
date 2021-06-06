@@ -1,0 +1,5 @@
+@Host = http://localhost:3000
+@Router = mock
+
+###
+GET {{Host}}/{{Router}}/

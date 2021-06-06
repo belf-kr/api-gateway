@@ -2,26 +2,28 @@
 
 service 단위의 api을 관리합니다.
 
+1. service의 경우 IP가 Open되어 있지 않아 외부에서 접속이 불가능합니다.
+1. 외부 접속을 위해서는 api-gateway에 의해 호출되어야 합니다.
+1. 이를 위해 service 단위의 api를 모아주고 관리합니다.
+1. 인증부분도 내부적으로 처리됩니다✌️
+
 # Stack
 
 1. node:v14.16.1
+1. vscode
+1. nest.js
+1. docker
 
-# History
+# 빠른 시작
 
-## 프로젝트 생성 방법
+1. 환경에 맞게 환경 변수를 수정합니다.
+1. 연결하려는 service를 local에 활성화 하고 해당 port에 맞게 service `module` 를 수정합니다.
+   > 사용하는 service가 listen 상태이어야 합니다.
+1. `npm i && npm run start:dev` 를 이용해 nestjs를 시작합니다.
 
-공식도구인 `@nestjs/cli` 를 사용했습니다.
+# 환경 변수
 
-```shell
-nest new api-gateway
-```
-
-## pipeline
-
-### origin인 `front-server` 와 다른점
-
-환경에 맞게 service에 연결해야 되기 때문에 환경변수가 추가되어 있습니다.
-
-1. `k8s` 디렉터리의 실제 pod를 배치하는 `.yaml` 시리즈에 `STAGES` 환경변수 추가
-   1. 내부적으로 해당 환경 변수를 조립하여 svc으로 사용하기 때문에 의존성 파악 후 변경해야 합니다.
-      > `{서비스 이름}.{process.env.STAGES}.svc.cluster.local`
+| Variable | dev | qa/prod | Default | Example                 | Usage                                                                     |
+| -------- | :-: | :-----: | :-----: | ----------------------- | ------------------------------------------------------------------------- |
+| NODE_ENV | ✅  |   ✅    |   🤷‍♂️    | development, production | `NodeJS 실행 환경` 을 설정하는 값 nestjs가 실행전에 값이 있어야 합니다.   |
+| STAGES   | 🚫  |   ✅    |   🤷‍♂️    | qa, prod                | `k8s에서` 실행 환경에 맞는 svc를 연결 및 디버깅을 위해 사용되는 값입니다. |
