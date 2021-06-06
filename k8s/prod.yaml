@@ -24,8 +24,12 @@ spec:
               cpu: 100m
               memory: 100Mi
           env:
+            # 배포 stages
             - name: STAGES
-              value: "prod"
+              valueFrom:
+                configMapKeyRef:
+                  name: prod-config
+                  key: STAGES
 ---
 apiVersion: v1
 kind: Service
