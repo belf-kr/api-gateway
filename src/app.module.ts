@@ -1,11 +1,14 @@
 import { Module } from "@nestjs/common";
+
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 
-import { TodoListsModule } from "./todo-lists/todo-lists.module";
+import { TodoModule } from "./todo/todo.module";
+import { MockModule } from "./mock/mock.module";
+import { MiddlewareModule } from "./middleware/middleware.module";
 
 @Module({
-  imports: [TodoListsModule],
+  imports: [TodoModule, MockModule, MiddlewareModule],
   controllers: [AppController],
   providers: [AppService],
 })
