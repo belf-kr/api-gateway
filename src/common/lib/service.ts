@@ -2,7 +2,7 @@
 import { config } from "dotenv";
 import { resolve } from "path";
 config({
-  path: resolve(process.cwd(), process.env.STAGES === "local" ? ".env" : ".env.dev"),
+  path: resolve(process.cwd(), process.env.NODE_ENV === "development" ? ".env.dev" : null),
 });
 
 /**
@@ -13,19 +13,23 @@ config({
  * @returns k8s service 에 연결할 수 있는 url
  */
 export function K8sServiceDNS(svc: string, port: number): string {
+  const nodeEnv = process.env.NODE_ENV;
   const ns = process.env.STAGES;
 
-  if (!ns) {
-    throw new Error(`STAGES 환경 변수 값이 지정되지 않았습니다.`);
+  if (!nodeEnv) {
+    throw new Error(`NODE_ENV 환경 변수 값이 지정되지 않았습니다.`);
   }
 
   let url = undefined;
-  switch (ns) {
-    case "local":
+  switch (nodeEnv) {
+    case "development":
       // TODO: 해당 주소가 사용되고 있는 주소인지 확인하는 방어코드 필요
       url = `http://localhost:${port}`;
       break;
     default:
+      if (!ns) {
+        throw new Error(`STAGES 환경 변수 값이 지정되지 않았습니다.`);
+      }
       url = `http://${svc}.${ns}.svc.cluster.local:${port}`;
       break;
   }
