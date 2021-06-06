@@ -25,5 +25,5 @@ service 단위의 api을 관리합니다.
 
 | Variable | dev | qa/prod | Default | Example                 | Usage                                                                     |
 | -------- | :-: | :-----: | :-----: | ----------------------- | ------------------------------------------------------------------------- |
-| STAGES   |  ✖  |    ✔    |   🤷‍♂️    | qa, prod                | `k8s에서` 실행 환경에 맞는 svc를 연결 및 디버깅을 위해 사용되는 값입니다. |
-| NODE_ENV |  ✔  |    ✔    |   🤷‍♂️    | development, production | `NodeJS 실행 환경` 을 설정하는 값 nestjs가 실행전에 값이 있어야 합니다.   |
+| STAGES   | 🚫  |   ✅    |   🤷‍♂️    | qa, prod                | `k8s에서` 실행 환경에 맞는 svc를 연결 및 디버깅을 위해 사용되는 값입니다. |
+| NODE_ENV | ✅  |   ✅    |   🤷‍♂️    | development, production | `NodeJS 실행 환경` 을 설정하는 값 nestjs가 실행전에 값이 있어야 합니다.   |
