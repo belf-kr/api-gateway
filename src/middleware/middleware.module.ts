@@ -1,15 +1,29 @@
 import { HttpModule, Module, NestModule, RequestMethod, MiddlewareConsumer } from "@nestjs/common";
+import { ConfigModule, ConfigService } from "@nestjs/config";
+
+import * as Joi from "joi";
 
 import { OauthMiddleware } from "./oauth.middleware";
 
-// FIXME: (parkgang) DI 받을 수 있도록 수정되어야 함
 import { K8sServiceDNS } from "../common/lib/service";
 
 @Module({
   imports: [
-    HttpModule.register({
-      // 외부로 노출되어 있는 IP 이지만 일관성 및 네트워크 트랜잭션 최적화를 위해 내부방으로 접근합니다.
-      baseURL: K8sServiceDNS("oauth-server", 3000),
+    ConfigModule.forRoot({
+      isGlobal: false,
+      // prod 환경의 환경변수는 모두 k8s가 컨트롤
+      ignoreEnvFile: process.env.NODE_ENV === "production",
+      envFilePath: process.env.NODE_ENV === "development" ? ".env.dev" : "",
+      validationSchema: Joi.object({
+        OAUTH_SERVER_PORT: Joi.number().default(3000),
+      }),
+    }),
+    HttpModule.registerAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+        baseURL: K8sServiceDNS("oauth-service", configService.get("OAUTH_SERVER_PORT")),
+      }),
+      inject: [ConfigService],
     }),
   ],
   providers: [OauthMiddleware],
