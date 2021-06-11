@@ -1,22 +1,26 @@
 import { HttpModule, Module } from "@nestjs/common";
+import { ConfigModule, ConfigService } from "@nestjs/config";
 
 import { TodoController } from "./todo.controller";
 import { TodoService } from "./todo.service";
 
 import { TodoApiClient } from "./lib/api";
 
-import { MockModule } from "../mock/mock.module";
-
 import { ExampleUpperModule } from "./example-upper/example-upper.module";
 import { ExampleLowerModule } from "./example-lower/example-lower.module";
 
-// FIXME: (parkgang) DI 받을 수 있도록 수정되어야 함
+import { MockModule } from "../mock/mock.module";
+
 import { K8sServiceDNS } from "../common/lib/service";
 
 @Module({
   imports: [
-    HttpModule.register({
-      baseURL: K8sServiceDNS("todo-service", 3000),
+    HttpModule.registerAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+        baseURL: K8sServiceDNS("todo-service", configService.get("SERVER_PORT_TODO")),
+      }),
+      inject: [ConfigService],
     }),
     MockModule,
     ExampleUpperModule,

@@ -26,7 +26,7 @@ export class OauthMiddleware implements NestMiddleware {
       const result = await this.tokenValid();
       console.log(result);
     } catch (error) {
-      // FIXME: 에러 처리가 확실하지 않음: (node:22117) UnhandledPromiseRejectionWarning: RangeError: Maximum call stack size exceeded
+      // FIXME: (ruddms936@naver.com) 에러 처리가 확실하지 않음: (node:22117) UnhandledPromiseRejectionWarning: RangeError: Maximum call stack size exceeded
       const httpStatusCode = getErrorHttpStatusCode(error);
       const message = getErrorMessage(error);
       const errorRes = {

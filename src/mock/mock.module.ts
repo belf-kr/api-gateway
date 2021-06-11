@@ -1,17 +1,21 @@
 import { HttpModule, Module } from "@nestjs/common";
+import { ConfigModule, ConfigService } from "@nestjs/config";
 
 import { MockController } from "./mock.controller";
 import { MockService } from "./mock.service";
 
 import { MockApiClient } from "./lib/api";
 
-// FIXME: (parkgang) DI 받을 수 있도록 수정되어야 함
-import { K8sServiceDNS } from "../common/lib/service";
+import { K8sServiceDNS } from "src/common/lib/service";
 
 @Module({
   imports: [
-    HttpModule.register({
-      baseURL: K8sServiceDNS("mock-service", 3000),
+    HttpModule.registerAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+        baseURL: K8sServiceDNS("mock-service", configService.get("SERVER_PORT_MOCK")),
+      }),
+      inject: [ConfigService],
     }),
   ],
   controllers: [MockController],

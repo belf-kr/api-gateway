@@ -1,10 +1,3 @@
-// FIXME: (parkgang) nestjs spec에 맞게 글로벌 모듈로 동작할 수 있도록 수정해야합니다. 최종적으로 "dotenv" lib를 사용하지 않도록 코딩되어야 합니다.
-import { config } from "dotenv";
-import { resolve } from "path";
-config({
-  path: resolve(process.cwd(), process.env.NODE_ENV === "development" ? ".env.dev" : ""),
-});
-
 /**
  * k8s Service Dns에 맞는 Url를 생성해주는 함수입니다.
  * (기본 스키마: "http://todo-service.qa.svc.cluster.local:3000/")
