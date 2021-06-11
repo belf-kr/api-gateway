@@ -66,4 +66,14 @@ export class TodoController {
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
     }
   }
+
+  @Get("get-all-colors")
+  async getAllColors(@Res() res: Response) {
+    try {
+      const result = await this.appService.getAllColors();
+      res.status(HttpStatus.OK).send(result);
+    } catch (error) {
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+    }
+  }
 }
