@@ -63,4 +63,13 @@ export class TodoService {
       throw error;
     }
   }
+
+  async getAllColors() {
+    try {
+      const result = await this.todoApiClient.getAllColors();
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

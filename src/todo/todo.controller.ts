@@ -20,6 +20,7 @@ export class TodoController {
       return error;
     }
   }
+
   @Get("ping")
   async getPing() {
     try {
@@ -29,6 +30,7 @@ export class TodoController {
       return error;
     }
   }
+
   @Get("version")
   async getVersion(): Promise<string> {
     try {
@@ -38,6 +40,7 @@ export class TodoController {
       return error;
     }
   }
+
   @Get("env")
   async getEnv(): Promise<NodeJS.ProcessEnv> {
     try {
@@ -57,10 +60,21 @@ export class TodoController {
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
     }
   }
+
   @Get("glass")
   async getGlass(@Res() res: Response) {
     try {
       const result = await this.appService.getGlass();
+      res.status(HttpStatus.OK).send(result);
+    } catch (error) {
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+    }
+  }
+
+  @Get("get-all-colors")
+  async getAllColors(@Res() res: Response) {
+    try {
+      const result = await this.appService.getAllColors();
       res.status(HttpStatus.OK).send(result);
     } catch (error) {
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
