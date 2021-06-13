@@ -92,4 +92,14 @@ export class TodoController {
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
     }
   }
+
+  @Get("get-all-courses")
+  async getAllCourses(@Res() res: Response) {
+    try {
+      const result = await this.appService.getAllCourses();
+      res.status(HttpStatus.OK).send(result);
+    } catch (error) {
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+    }
+  }
 }
