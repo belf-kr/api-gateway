@@ -2,6 +2,7 @@ import { HttpService, Injectable } from "@nestjs/common";
 
 import { ExampleUpper, PutExampleUpper } from "../example-upper/example-upper.type";
 import { ExampleLower, PutExampleLower } from "../example-lower/example-lower.type";
+import { CourseType } from "src/common/type/course.type";
 
 @Injectable()
 export class TodoApiClient {
@@ -107,6 +108,27 @@ export class TodoApiClient {
   async deleteExampleLower(body: ExampleLower[]) {
     try {
       const res = await this.httpService.delete("/example-lower", { data: body }).toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // API
+  // Color
+  async getAllColors() {
+    try {
+      const res = await this.httpService.get("/color/get-all-colors").toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // Course
+  async createCourse(coursesInput: CourseType) {
+    try {
+      const res = await this.httpService.post("/course/create-course", coursesInput).toPromise();
       return res.data;
     } catch (error) {
       throw error;

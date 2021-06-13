@@ -1,7 +1,7 @@
 export type ExampleLower = {
   id: number;
   name: string;
-  exampleUpperID: number;
+  exampleUpperId: number;
 };
 
 export type PutExampleLower = {
