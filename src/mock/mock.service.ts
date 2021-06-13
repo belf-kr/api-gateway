@@ -42,4 +42,28 @@ export class MockService {
       throw error;
     }
   }
+  async getGlass() {
+    try {
+      const result = await this.mockApiClient.getGlass();
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async getAllColors() {
+    try {
+      const result = await this.mockApiClient.getAllColors();
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async getTodayTodos() {
+    try {
+      const result = await this.mockApiClient.getTodayTodos();
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

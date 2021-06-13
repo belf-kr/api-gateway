@@ -1,10 +1,11 @@
-import { Controller, Get } from "@nestjs/common";
+import { Controller, Get, HttpStatus, Res } from "@nestjs/common";
+import { Response } from "express";
 
 import { MockService } from "./mock.service";
 
 @Controller("mock")
 export class MockController {
-  private readonly appService;
+  private readonly appService: MockService;
 
   constructor(appService: MockService) {
     this.appService = appService;
@@ -47,6 +48,34 @@ export class MockController {
       return result;
     } catch (error) {
       return error;
+    }
+  }
+  @Get("today-todos")
+  async getTodayTodos(@Res() res: Response) {
+    try {
+      const result = await this.appService.getTodayTodos();
+      res.status(HttpStatus.OK).send(result);
+    } catch (error) {
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+    }
+  }
+  @Get("glass")
+  async getGlass(@Res() res: Response) {
+    try {
+      const result = await this.appService.getGlass();
+      res.status(HttpStatus.OK).send(result);
+    } catch (error) {
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+    }
+  }
+
+  @Get("get-all-colors")
+  async getAllColors(@Res() res: Response) {
+    try {
+      const result = await this.appService.getAllColors();
+      res.status(HttpStatus.OK).send(result);
+    } catch (error) {
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
     }
   }
 }
