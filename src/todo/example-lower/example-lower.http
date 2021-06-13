@@ -7,15 +7,15 @@ Content-Type: application/json
 
 # 여러 json 객체를 입력하는 경우 OR 형태로 검색이 된다.
 # 검색을 원하는 값과 컬럼명이 한 치의 오차도 없이 정확해야 한다.
-# 아래의 예시는 (name === "test name" AND exampleUpperiD === 1) OR (exampleUpperiD === 1)
+# 아래의 예시는 (name === "test name" AND exampleUpperId === 1) OR (exampleUpperId === 1)
 
 [
     {
         "name": "test name",
-        "exampleUpperiD": 1
+        "exampleUpperId": 1
     },
     {
-        "exampleUpperiD": 1
+        "exampleUpperId": 1
     }
 ]
 
@@ -29,11 +29,11 @@ Content-Type: application/json
 [
     {
         "name": "This is name 1 from http",
-        "exampleUpperiD": 1
+        "exampleUpperId": 1
     },
     {
         "name": "This is name 2 from http",
-        "exampleUpperiD": 2
+        "exampleUpperId": 2
     }
 ]
 
