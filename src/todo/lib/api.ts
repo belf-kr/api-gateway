@@ -147,7 +147,7 @@ export class TodoApiClient {
 
   async deleteCourses(coursesInput: CourseType[]) {
     try {
-      const res = await this.httpService.post("/course/delete-courses", coursesInput).toPromise();
+      const res = await this.httpService.post("/course/delete-courses", { data: coursesInput }).toPromise();
       return res.data;
     } catch (error) {
       throw error;
