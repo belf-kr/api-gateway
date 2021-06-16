@@ -35,14 +35,9 @@ GET {{Host}}/{{Router}}/get-all-courses
 Content-Type: application/json
 
 ### course 삭제
-POST {{Host}}/{{Router}}/delete-courses
+DELETE {{Host}}/{{Router}}/delete-courses
 Content-Type: application/json
 
-[
-    {
-        "id": 53
-    },
-    {
-        "id": 54
-    }
-]
+{
+    "id": 187
+}

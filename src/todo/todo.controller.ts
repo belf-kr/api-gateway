@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpStatus, Post, Res } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpStatus, Post, Res } from "@nestjs/common";
 import { Response } from "express";
 
 import { TodoService } from "./todo.service";
@@ -103,7 +103,7 @@ export class TodoController {
     }
   }
 
-  @Post("delete-courses")
+  @Delete("delete-courses")
   async deleteCourses(@Res() res: Response, @Body() coursesInput: CourseType[]) {
     try {
       const result = await this.appService.deleteCourses(coursesInput);
