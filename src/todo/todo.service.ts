@@ -92,4 +92,13 @@ export class TodoService {
       throw error;
     }
   }
+
+  async deleteCourses(coursesInput: CourseType[]) {
+    try {
+      const result = await this.todoApiClient.deleteCourses(coursesInput);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

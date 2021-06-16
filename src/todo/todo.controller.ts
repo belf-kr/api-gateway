@@ -102,4 +102,14 @@ export class TodoController {
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
     }
   }
+
+  @Post("delete-courses")
+  async deleteCourses(@Res() res: Response, @Body() coursesInput: CourseType[]) {
+    try {
+      const result = await this.appService.deleteCourses(coursesInput);
+      res.status(HttpStatus.OK).send(result);
+    } catch (error) {
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+    }
+  }
 }
