@@ -103,9 +103,19 @@ export class TodoService {
     }
   }
 
+  // WorkTodo
   async createWorkTodo(workTodoInput: WorkTodoType) {
     try {
       const result = await this.todoApiClient.createWorkTodo(workTodoInput);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getAllWorkTodos() {
+    try {
+      const result = await this.todoApiClient.getAllWorkTodos();
       return result;
     } catch (error) {
       throw error;

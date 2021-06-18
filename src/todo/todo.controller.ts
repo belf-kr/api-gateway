@@ -114,10 +114,21 @@ export class TodoController {
     }
   }
 
+  // WorkTodo
   @Post("create-work-todo")
   async createWorkTodo(@Res() res: Response, @Body() workTodoInput: WorkTodoType) {
     try {
       const result = await this.appService.createWorkTodo(workTodoInput);
+      res.status(HttpStatus.OK).send(result);
+    } catch (error) {
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+    }
+  }
+
+  @Get("get-all-work-todos")
+  async getAllWorkTodos(@Res() res: Response) {
+    try {
+      const result = await this.appService.getAllWorkTodos();
       res.status(HttpStatus.OK).send(result);
     } catch (error) {
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);

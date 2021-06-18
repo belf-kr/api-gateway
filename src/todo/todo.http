@@ -53,3 +53,7 @@ Content-Type: application/json
     "explanation": "나만의 할 일 설명",
     "passedDay": 5
 }
+
+### work_todo 전체 리스트 가져오기
+GET {{Host}}/{{Router}}/get-all-work-todos
+Content-Type: application/json
