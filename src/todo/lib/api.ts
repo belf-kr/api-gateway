@@ -173,4 +173,13 @@ export class TodoApiClient {
       throw error;
     }
   }
+
+  async deleteWorkTodo(workTodoInput: WorkTodoType) {
+    try {
+      const res = await this.httpService.delete("/work-todo/delete-work-todo", { data: workTodoInput }).toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

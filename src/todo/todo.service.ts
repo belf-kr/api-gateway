@@ -121,4 +121,13 @@ export class TodoService {
       throw error;
     }
   }
+
+  async deleteWorkTodo(workTodoInput: WorkTodoType) {
+    try {
+      const result = await this.todoApiClient.deleteWorkTodo(workTodoInput);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

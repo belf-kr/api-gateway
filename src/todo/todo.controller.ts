@@ -134,4 +134,14 @@ export class TodoController {
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
     }
   }
+
+  @Delete("delete-work-todo")
+  async deleteWorkTodo(@Res() res: Response, @Body() workTodoInput: WorkTodoType) {
+    try {
+      const result = await this.appService.deleteWorkTodo(workTodoInput);
+      res.status(HttpStatus.OK).send(result);
+    } catch (error) {
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+    }
+  }
 }
