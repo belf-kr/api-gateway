@@ -5,6 +5,7 @@ import { TodoApiClient } from "./lib/api";
 import { MockApiClient } from "../mock/lib/api";
 
 import { CourseType } from "src/common/type/course.type";
+import { WorkTodoType } from "src/common/type/work-todo.type";
 
 @Injectable()
 export class TodoService {
@@ -96,6 +97,15 @@ export class TodoService {
   async deleteCourses(coursesInput: CourseType[]) {
     try {
       const result = await this.todoApiClient.deleteCourses(coursesInput);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async createWorkTodo(workTodoInput: WorkTodoType) {
+    try {
+      const result = await this.todoApiClient.createWorkTodo(workTodoInput);
       return result;
     } catch (error) {
       throw error;
