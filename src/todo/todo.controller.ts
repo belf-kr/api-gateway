@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpStatus, Post, Res } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Res } from "@nestjs/common";
 import { Response } from "express";
 
 import { TodoService } from "./todo.service";
@@ -104,10 +104,10 @@ export class TodoController {
     }
   }
 
-  @Delete("delete-courses")
-  async deleteCourses(@Res() res: Response, @Body() coursesInput: CourseType[]) {
+  @Delete("courses/:id")
+  async deleteCourse(@Res() res: Response, @Param() params) {
     try {
-      const result = await this.appService.deleteCourses(coursesInput);
+      const result = await this.appService.deleteCourse(params.id);
       res.status(HttpStatus.OK).send(result);
     } catch (error) {
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
@@ -135,10 +135,10 @@ export class TodoController {
     }
   }
 
-  @Delete("delete-work-todo")
-  async deleteWorkTodo(@Res() res: Response, @Body() workTodoInput: WorkTodoType) {
+  @Delete("work-todos/:id")
+  async deleteWorkTodo(@Res() res: Response, @Param() params: any) {
     try {
-      const result = await this.appService.deleteWorkTodo(workTodoInput);
+      const result = await this.appService.deleteWorkTodo(params.id);
       res.status(HttpStatus.OK).send(result);
     } catch (error) {
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);

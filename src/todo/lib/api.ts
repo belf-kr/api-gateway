@@ -146,9 +146,9 @@ export class TodoApiClient {
     }
   }
 
-  async deleteCourses(coursesInput: CourseType[]) {
+  async deleteCourse(id: number) {
     try {
-      const res = await this.httpService.delete("/course/delete-courses", { data: coursesInput }).toPromise();
+      const res = await this.httpService.delete("/courses/" + id).toPromise();
       return res.data;
     } catch (error) {
       throw error;
@@ -174,9 +174,9 @@ export class TodoApiClient {
     }
   }
 
-  async deleteWorkTodo(workTodoInput: WorkTodoType) {
+  async deleteWorkTodo(id: number) {
     try {
-      const res = await this.httpService.delete("/work-todo/delete-work-todo", { data: workTodoInput }).toPromise();
+      const res = await this.httpService.delete("/work-todos/" + id).toPromise();
       return res.data;
     } catch (error) {
       throw error;

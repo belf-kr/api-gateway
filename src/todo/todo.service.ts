@@ -94,9 +94,9 @@ export class TodoService {
     }
   }
 
-  async deleteCourses(coursesInput: CourseType[]) {
+  async deleteCourse(id: number) {
     try {
-      const result = await this.todoApiClient.deleteCourses(coursesInput);
+      const result = await this.todoApiClient.deleteCourse(id);
       return result;
     } catch (error) {
       throw error;
@@ -122,9 +122,9 @@ export class TodoService {
     }
   }
 
-  async deleteWorkTodo(workTodoInput: WorkTodoType) {
+  async deleteWorkTodo(id: number) {
     try {
-      const result = await this.todoApiClient.deleteWorkTodo(workTodoInput);
+      const result = await this.todoApiClient.deleteWorkTodo(id);
       return result;
     } catch (error) {
       throw error;
