@@ -74,7 +74,7 @@ export class TodoController {
     }
   }
 
-  @Get("get-all-colors")
+  @Get("colors")
   async getAllColors(@Res() res: Response) {
     try {
       const result = await this.appService.getAllColors();
@@ -94,7 +94,7 @@ export class TodoController {
     }
   }
 
-  @Get("get-all-courses")
+  @Get("courses")
   async getAllCourses(@Res() res: Response) {
     try {
       const result = await this.appService.getAllCourses();
@@ -125,7 +125,7 @@ export class TodoController {
     }
   }
 
-  @Get("get-all-work-todos")
+  @Get("work-todos")
   async getAllWorkTodos(@Res() res: Response) {
     try {
       const result = await this.appService.getAllWorkTodos();

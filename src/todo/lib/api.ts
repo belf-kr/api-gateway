@@ -120,7 +120,7 @@ export class TodoApiClient {
   // Color
   async getAllColors() {
     try {
-      const res = await this.httpService.get("/color/get-all-colors").toPromise();
+      const res = await this.httpService.get("/colors").toPromise();
       return res.data;
     } catch (error) {
       throw error;
@@ -139,7 +139,7 @@ export class TodoApiClient {
 
   async getAllCourses() {
     try {
-      const res = await this.httpService.get("/course/get-all-courses").toPromise();
+      const res = await this.httpService.get("/courses").toPromise();
       return res.data;
     } catch (error) {
       throw error;
@@ -167,7 +167,7 @@ export class TodoApiClient {
 
   async getAllWorkTodos() {
     try {
-      const res = await this.httpService.get("/work-todo/get-all-work-todos").toPromise();
+      const res = await this.httpService.get("/work-todos").toPromise();
       return res.data;
     } catch (error) {
       throw error;
