@@ -84,7 +84,7 @@ export class TodoController {
     }
   }
 
-  @Post("create-course")
+  @Post("courses")
   async createCourse(@Res() res: Response, @Body() coursesInput: CourseType) {
     try {
       const result = await this.appService.createCourse(coursesInput);
@@ -115,7 +115,7 @@ export class TodoController {
   }
 
   // WorkTodo
-  @Post("create-work-todo")
+  @Post("work-todos")
   async createWorkTodo(@Res() res: Response, @Body() workTodoInput: WorkTodoType) {
     try {
       const result = await this.appService.createWorkTodo(workTodoInput);

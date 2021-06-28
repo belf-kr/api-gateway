@@ -17,12 +17,12 @@ GET {{Host}}/{{Router}}/courses
 Content-Type: application/json
 
 ### course 생성
-POST {{Host}}/{{Router}}/create-course
+POST {{Host}}/{{Router}}/courses
 Content-Type: application/json
 
 {
     "color": "#FF8484",
-    "title": "영어공부하기3",
+    "title": "영어공부하기1",
     "explanation": "토익 ...",
     "tags": [
         {
@@ -43,14 +43,14 @@ Content-Type: application/json
 }
 
 ### work_todo 추가
-POST {{Host}}/{{Router}}/create-work-todo
+POST {{Host}}/{{Router}}/work-todos
 Content-Type: application/json
 
 {
-    "courseId": 65,
+    "courseId": 1,
     "recurringCycleDate": 1,
-    "title": "나만의 할 일3",
-    "explanation": "나만의 할 일 설명3",
+    "title": "나만의 할 일1",
+    "explanation": "나만의 할 일 설명1",
     "passedDay": 5
 }
 

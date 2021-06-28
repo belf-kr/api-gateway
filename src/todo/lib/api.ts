@@ -130,7 +130,7 @@ export class TodoApiClient {
   // Course
   async createCourse(coursesInput: CourseType) {
     try {
-      const res = await this.httpService.post("/course/create-course", coursesInput).toPromise();
+      const res = await this.httpService.post("/courses", coursesInput).toPromise();
       return res.data;
     } catch (error) {
       throw error;
@@ -158,7 +158,7 @@ export class TodoApiClient {
   // WorkTodo
   async createWorkTodo(workTodoInput: WorkTodoType) {
     try {
-      const res = await this.httpService.post("/work-todo/create-work-todo", workTodoInput).toPromise();
+      const res = await this.httpService.post("/work-todos", workTodoInput).toPromise();
       return res.data;
     } catch (error) {
       throw error;
