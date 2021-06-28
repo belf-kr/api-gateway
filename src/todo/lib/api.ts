@@ -2,7 +2,9 @@ import { HttpService, Injectable } from "@nestjs/common";
 
 import { ExampleUpper, PutExampleUpper } from "../example-upper/example-upper.type";
 import { ExampleLower, PutExampleLower } from "../example-lower/example-lower.type";
+
 import { CourseType } from "src/common/type/course.type";
+import { WorkTodoType } from "src/common/type/work-todo.type";
 
 @Injectable()
 export class TodoApiClient {
@@ -129,6 +131,52 @@ export class TodoApiClient {
   async createCourse(coursesInput: CourseType) {
     try {
       const res = await this.httpService.post("/course/create-course", coursesInput).toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getAllCourses() {
+    try {
+      const res = await this.httpService.get("/course/get-all-courses").toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async deleteCourses(coursesInput: CourseType[]) {
+    try {
+      const res = await this.httpService.delete("/course/delete-courses", { data: coursesInput }).toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // WorkTodo
+  async createWorkTodo(workTodoInput: WorkTodoType) {
+    try {
+      const res = await this.httpService.post("/work-todo/create-work-todo", workTodoInput).toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getAllWorkTodos() {
+    try {
+      const res = await this.httpService.get("/work-todo/get-all-work-todos").toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async deleteWorkTodo(workTodoInput: WorkTodoType) {
+    try {
+      const res = await this.httpService.delete("/work-todo/delete-work-todo", { data: workTodoInput }).toPromise();
       return res.data;
     } catch (error) {
       throw error;
