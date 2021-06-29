@@ -121,7 +121,8 @@ export class TodoController {
       const result = await this.appService.createWorkTodo(workTodoInput);
       res.status(HttpStatus.OK).send(result);
     } catch (error) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      if (error.response.status && error.response.data) res.status(error.response.status).send(error.response.data);
+      else res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
     }
   }
 
