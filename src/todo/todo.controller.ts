@@ -80,7 +80,8 @@ export class TodoController {
       const result = await this.appService.getAllColors();
       res.status(result.status).send(result.data);
     } catch (error) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      if (error.response.status && error.response.data) res.status(error.response.status).send(error.response.data);
+      else res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
     }
   }
 
