@@ -78,7 +78,7 @@ export class TodoController {
   async getAllColors(@Res() res: Response) {
     try {
       const result = await this.appService.getAllColors();
-      res.status(HttpStatus.OK).send(result);
+      res.status(result.status).send(result.data);
     } catch (error) {
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
     }

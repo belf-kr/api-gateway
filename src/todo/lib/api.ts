@@ -120,8 +120,7 @@ export class TodoApiClient {
   // Color
   async getAllColors() {
     try {
-      const res = await this.httpService.get("/colors").toPromise();
-      return res.data;
+      return await this.httpService.get("/colors").toPromise();
     } catch (error) {
       throw error;
     }
