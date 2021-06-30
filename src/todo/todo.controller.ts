@@ -91,7 +91,8 @@ export class TodoController {
       const result = await this.appService.createCourse(coursesInput);
       res.status(HttpStatus.OK).send(result);
     } catch (error) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      if (error.response.status && error.response.data) res.status(error.response.status).send(error.response.data);
+      else res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
     }
   }
 
@@ -101,7 +102,8 @@ export class TodoController {
       const result = await this.appService.getAllCourses();
       res.status(HttpStatus.OK).send(result);
     } catch (error) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      if (error.response.status && error.response.data) res.status(error.response.status).send(error.response.data);
+      else res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
     }
   }
 
@@ -111,7 +113,8 @@ export class TodoController {
       const result = await this.appService.deleteCourse(params.id);
       res.status(HttpStatus.OK).send(result);
     } catch (error) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      if (error.response.status && error.response.data) res.status(error.response.status).send(error.response.data);
+      else res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
     }
   }
 
@@ -133,7 +136,8 @@ export class TodoController {
       const result = await this.appService.getAllWorkTodos();
       res.status(HttpStatus.OK).send(result);
     } catch (error) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      if (error.response.status && error.response.data) res.status(error.response.status).send(error.response.data);
+      else res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
     }
   }
 
@@ -143,7 +147,8 @@ export class TodoController {
       const result = await this.appService.deleteWorkTodo(params.id);
       res.status(HttpStatus.OK).send(result);
     } catch (error) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      if (error.response.status && error.response.data) res.status(error.response.status).send(error.response.data);
+      else res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
     }
   }
 }
