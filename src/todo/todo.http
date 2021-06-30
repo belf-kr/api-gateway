@@ -22,7 +22,7 @@ Content-Type: application/json
 
 {
     "color": "#FF8484",
-    "title": "영어공부하기2",
+    "title": "영어공부하기1",
     "explanation": "토익 ...",
     "tags": [
         {
@@ -35,7 +35,7 @@ Content-Type: application/json
 }
 
 ### course 삭제
-DELETE {{Host}}/{{Router}}/courses/2
+DELETE {{Host}}/{{Router}}/courses/1
 Content-Type: application/json
 
 ### work_todo 추가
@@ -45,8 +45,8 @@ Content-Type: application/json
 {
     "courseId": 1,
     "recurringCycleDate": 1,
-    "title": "나만의 할 일2",
-    "explanation": "나만의 할 일 설명2",
+    "title": "나만의 할 일",
+    "explanation": "나만의 할 일 설명1",
     "passedDay": 5
 }
 
@@ -55,5 +55,5 @@ GET {{Host}}/{{Router}}/work-todos
 Content-Type: application/json
 
 ### work_todo 삭제
-DELETE {{Host}}/{{Router}}/work-todos/2
+DELETE {{Host}}/{{Router}}/work-todos/1
 Content-Type: application/json

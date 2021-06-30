@@ -129,8 +129,7 @@ export class TodoApiClient {
   // Course
   async createCourse(coursesInput: CourseType) {
     try {
-      const res = await this.httpService.post("/courses", coursesInput).toPromise();
-      return res.data;
+      return await this.httpService.post("/courses", coursesInput).toPromise();
     } catch (error) {
       throw error;
     }
@@ -138,8 +137,7 @@ export class TodoApiClient {
 
   async getAllCourses() {
     try {
-      const res = await this.httpService.get("/courses").toPromise();
-      return res.data;
+      return await this.httpService.get("/courses").toPromise();
     } catch (error) {
       throw error;
     }
@@ -147,8 +145,7 @@ export class TodoApiClient {
 
   async deleteCourse(id: number) {
     try {
-      const res = await this.httpService.delete("/courses/" + id).toPromise();
-      return res.data;
+      return await this.httpService.delete("/courses/" + id).toPromise();
     } catch (error) {
       throw error;
     }
@@ -157,8 +154,7 @@ export class TodoApiClient {
   // WorkTodo
   async createWorkTodo(workTodoInput: WorkTodoType) {
     try {
-      const res = await this.httpService.post("/work-todos", workTodoInput).toPromise();
-      return res.data;
+      return await this.httpService.post("/work-todos", workTodoInput).toPromise();
     } catch (error) {
       throw error;
     }
@@ -166,8 +162,7 @@ export class TodoApiClient {
 
   async getAllWorkTodos() {
     try {
-      const res = await this.httpService.get("/work-todos").toPromise();
-      return res.data;
+      return await this.httpService.get("/work-todos").toPromise();
     } catch (error) {
       throw error;
     }
@@ -175,8 +170,7 @@ export class TodoApiClient {
 
   async deleteWorkTodo(id: number) {
     try {
-      const res = await this.httpService.delete("/work-todos/" + id).toPromise();
-      return res.data;
+      return await this.httpService.delete("/work-todos/" + id).toPromise();
     } catch (error) {
       throw error;
     }

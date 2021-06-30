@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Res } from "@nestjs/common";
 import { Response } from "express";
+import * as axios from "axios";
 
 import { TodoService } from "./todo.service";
 
@@ -74,10 +75,12 @@ export class TodoController {
     }
   }
 
+  // API
+
   @Get("colors")
   async getAllColors(@Res() res: Response) {
     try {
-      const result = await this.appService.getAllColors();
+      const result: axios.AxiosResponse = await this.appService.getAllColors();
       res.status(result.status).send(result.data);
     } catch (error) {
       if (error.response.status && error.response.data) res.status(error.response.status).send(error.response.data);
@@ -88,8 +91,8 @@ export class TodoController {
   @Post("courses")
   async createCourse(@Res() res: Response, @Body() coursesInput: CourseType) {
     try {
-      const result = await this.appService.createCourse(coursesInput);
-      res.status(HttpStatus.OK).send(result);
+      const result: axios.AxiosResponse = await this.appService.createCourse(coursesInput);
+      res.status(result.status).send(result.data);
     } catch (error) {
       if (error.response.status && error.response.data) res.status(error.response.status).send(error.response.data);
       else res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
@@ -99,8 +102,8 @@ export class TodoController {
   @Get("courses")
   async getAllCourses(@Res() res: Response) {
     try {
-      const result = await this.appService.getAllCourses();
-      res.status(HttpStatus.OK).send(result);
+      const result: axios.AxiosResponse = await this.appService.getAllCourses();
+      res.status(result.status).send(result.data);
     } catch (error) {
       if (error.response.status && error.response.data) res.status(error.response.status).send(error.response.data);
       else res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
@@ -110,8 +113,8 @@ export class TodoController {
   @Delete("courses/:id")
   async deleteCourse(@Res() res: Response, @Param() params) {
     try {
-      const result = await this.appService.deleteCourse(params.id);
-      res.status(HttpStatus.OK).send(result);
+      const result: axios.AxiosResponse = await this.appService.deleteCourse(params.id);
+      res.status(result.status).send(result.data);
     } catch (error) {
       if (error.response.status && error.response.data) res.status(error.response.status).send(error.response.data);
       else res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
@@ -122,8 +125,8 @@ export class TodoController {
   @Post("work-todos")
   async createWorkTodo(@Res() res: Response, @Body() workTodoInput: WorkTodoType) {
     try {
-      const result = await this.appService.createWorkTodo(workTodoInput);
-      res.status(HttpStatus.OK).send(result);
+      const result: axios.AxiosResponse = await this.appService.createWorkTodo(workTodoInput);
+      res.status(result.status).send(result.data);
     } catch (error) {
       if (error.response.status && error.response.data) res.status(error.response.status).send(error.response.data);
       else res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
@@ -133,8 +136,8 @@ export class TodoController {
   @Get("work-todos")
   async getAllWorkTodos(@Res() res: Response) {
     try {
-      const result = await this.appService.getAllWorkTodos();
-      res.status(HttpStatus.OK).send(result);
+      const result: axios.AxiosResponse = await this.appService.getAllWorkTodos();
+      res.status(result.status).send(result.data);
     } catch (error) {
       if (error.response.status && error.response.data) res.status(error.response.status).send(error.response.data);
       else res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
@@ -144,8 +147,8 @@ export class TodoController {
   @Delete("work-todos/:id")
   async deleteWorkTodo(@Res() res: Response, @Param() params: any) {
     try {
-      const result = await this.appService.deleteWorkTodo(params.id);
-      res.status(HttpStatus.OK).send(result);
+      const result: axios.AxiosResponse = await this.appService.deleteWorkTodo(params.id);
+      res.status(result.status).send(result.data);
     } catch (error) {
       if (error.response.status && error.response.data) res.status(error.response.status).send(error.response.data);
       else res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
