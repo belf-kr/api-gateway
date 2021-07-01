@@ -85,8 +85,11 @@ export class TodoController {
       const result: axios.AxiosResponse = await this.appService.getAllColors();
       res.status(result.status).send(result.data);
     } catch (error) {
-      if (error.response.status && error.response.data) res.status(error.response.status).send(error.response.data);
-      else res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      if (error.response.status && error.response.data) {
+        res.status(error.response.status).send(error.response.data);
+      } else {
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      }
     }
   }
 
@@ -96,8 +99,11 @@ export class TodoController {
       const result: axios.AxiosResponse = await this.appService.createCourse(coursesInput);
       res.status(result.status).send(result.data);
     } catch (error) {
-      if (error.response.status && error.response.data) res.status(error.response.status).send(error.response.data);
-      else res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      if (error.response.status && error.response.data) {
+        res.status(error.response.status).send(error.response.data);
+      } else {
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      }
     }
   }
 
@@ -107,8 +113,11 @@ export class TodoController {
       const result: axios.AxiosResponse = await this.appService.getAllCourses();
       res.status(result.status).send(result.data);
     } catch (error) {
-      if (error.response.status && error.response.data) res.status(error.response.status).send(error.response.data);
-      else res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      if (error.response.status && error.response.data) {
+        res.status(error.response.status).send(error.response.data);
+      } else {
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      }
     }
   }
 
@@ -118,8 +127,11 @@ export class TodoController {
       const result: axios.AxiosResponse = await this.appService.deleteCourse(params.id);
       res.status(result.status).send(result.data);
     } catch (error) {
-      if (error.response.status && error.response.data) res.status(error.response.status).send(error.response.data);
-      else res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      if (error.response.status && error.response.data) {
+        res.status(error.response.status).send(error.response.data);
+      } else {
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      }
     }
   }
 
@@ -130,8 +142,11 @@ export class TodoController {
       const result: axios.AxiosResponse = await this.appService.createWorkTodo(workTodoInput);
       res.status(result.status).send(result.data);
     } catch (error) {
-      if (error.response.status && error.response.data) res.status(error.response.status).send(error.response.data);
-      else res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      if (error.response.status && error.response.data) {
+        res.status(error.response.status).send(error.response.data);
+      } else {
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      }
     }
   }
 
@@ -141,8 +156,11 @@ export class TodoController {
       const result: axios.AxiosResponse = await this.appService.getAllWorkTodos();
       res.status(result.status).send(result.data);
     } catch (error) {
-      if (error.response.status && error.response.data) res.status(error.response.status).send(error.response.data);
-      else res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      if (error.response.status && error.response.data) {
+        res.status(error.response.status).send(error.response.data);
+      } else {
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      }
     }
   }
 
@@ -152,8 +170,11 @@ export class TodoController {
       const result: axios.AxiosResponse = await this.appService.deleteWorkTodo(params.id);
       res.status(result.status).send(result.data);
     } catch (error) {
-      if (error.response.status && error.response.data) res.status(error.response.status).send(error.response.data);
-      else res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      if (error.response.status && error.response.data) {
+        res.status(error.response.status).send(error.response.data);
+      } else {
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      }
     }
   }
 }
