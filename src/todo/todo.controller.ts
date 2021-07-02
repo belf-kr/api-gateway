@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Res, UseInterceptors } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Res } from "@nestjs/common";
 import { Response } from "express";
 import * as axios from "axios";
 
@@ -6,10 +6,8 @@ import { TodoService } from "./todo.service";
 
 import { CourseType } from "src/common/type/course.type";
 import { WorkTodoType } from "src/common/type/work-todo.type";
-import { TrailingSlashInterceptor } from "src/common/interceptor/trailing-slash.interceptor";
 
 @Controller("todo")
-@UseInterceptors(TrailingSlashInterceptor)
 export class TodoController {
   private readonly appService;
 
