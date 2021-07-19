@@ -3,9 +3,10 @@ import * as axios from "axios";
 
 import { TodoService } from "./todo.service";
 
+import { getErrorHttpStatusCode, getErrorMessage } from "src/common/lib/error";
 import { CourseType } from "src/common/type/course.type";
 import { WorkTodoType } from "src/common/type/work-todo.type";
-import { getErrorHttpStatusCode, getErrorMessage } from "src/common/lib/error";
+import { WorkDoneType } from "src/common/type/work-done.type";
 
 @Controller("todo")
 export class TodoController {
@@ -167,6 +168,20 @@ export class TodoController {
   async deleteWorkTodo(@Param() params: any) {
     try {
       const result: axios.AxiosResponse = await this.appService.deleteWorkTodo(params.id);
+      return result.data;
+    } catch (error) {
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
+    }
+  }
+
+  // WorkDone
+  @Post("work-dones")
+  async createWorkDone(@Body() workDoneInput: WorkDoneType) {
+    try {
+      const result: axios.AxiosResponse = await this.appService.createWorkDone(workDoneInput);
       return result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);

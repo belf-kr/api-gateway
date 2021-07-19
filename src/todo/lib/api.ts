@@ -5,6 +5,7 @@ import { ExampleLower, PutExampleLower } from "../example-lower/example-lower.ty
 
 import { CourseType } from "src/common/type/course.type";
 import { WorkTodoType } from "src/common/type/work-todo.type";
+import { WorkDoneType } from "src/common/type/work-done.type";
 
 @Injectable()
 export class TodoApiClient {
@@ -171,6 +172,15 @@ export class TodoApiClient {
   async deleteWorkTodo(id: number) {
     try {
       return await this.httpService.delete("/work-todos/" + id).toPromise();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // WorkDone
+  async createWorkDone(workDoneInput: WorkDoneType) {
+    try {
+      return await this.httpService.post("/work-dones", workDoneInput).toPromise();
     } catch (error) {
       throw error;
     }

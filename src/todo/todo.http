@@ -45,7 +45,7 @@ Content-Type: application/json
 {
     "courseId": 1,
     "recurringCycleDate": 1,
-    "title": "나만의 할 일",
+    "title": "나만의 할 일1",
     "explanation": "나만의 할 일 설명1",
     "passedDay": 5
 }
@@ -57,3 +57,12 @@ Content-Type: application/json
 ### work_todo 삭제
 DELETE {{Host}}/{{Router}}/work-todos/1
 Content-Type: application/json
+
+### work_done 추가
+POST {{Host}}/{{Router}}/work-dones
+Content-Type: application/json
+{
+    "workTodoId": 1,
+    "title": "한 일의 제목1",
+    "content": "json 컨텐츠 1"
+}
