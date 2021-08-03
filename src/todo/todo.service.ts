@@ -141,4 +141,12 @@ export class TodoService {
       throw error;
     }
   }
+  async getWorkDone(id: number) {
+    try {
+      const result = await this.todoApiClient.getWorkDone(id);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

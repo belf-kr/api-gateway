@@ -190,4 +190,17 @@ export class TodoController {
       throw new HttpException(message, httpStatusCode);
     }
   }
+
+  @Get("work-dones/:id")
+  async getWorkDone(@Param() params: any) {
+    try {
+      const result: axios.AxiosResponse = await this.appService.getWorkDone(params.id);
+      return result.data;
+    } catch (error) {
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
+    }
+  }
 }

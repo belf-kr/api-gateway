@@ -185,4 +185,12 @@ export class TodoApiClient {
       throw error;
     }
   }
+
+  async getWorkDone(id: number) {
+    try {
+      return await this.httpService.get("/work-dones/" + id).toPromise();
+    } catch (error) {
+      throw error;
+    }
+  }
 }
