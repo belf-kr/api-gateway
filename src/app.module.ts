@@ -5,11 +5,15 @@ import * as Joi from "joi";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 
-import { TodoModule } from "./todo/todo.module";
-import { MockModule } from "./mock/mock.module";
-import { MiddlewareModule } from "./middleware/middleware.module";
-
 import AppConfig from "./config/app.config";
+
+import { StorageModule } from "./storage/storage.module";
+
+import { TodoModule } from "./todo/todo.module";
+
+import { MockModule } from "./mock/mock.module";
+
+import { MiddlewareModule } from "./middleware/middleware.module";
 
 @Module({
   imports: [
@@ -24,11 +28,13 @@ import AppConfig from "./config/app.config";
         SERVER_PORT_TODO: Joi.number().default(3000),
         SERVER_PORT_MOCK: Joi.number().default(3000),
         SERVER_PORT_OAUTH: Joi.number().default(3000),
+        SERVER_PORT_STORAGE: Joi.number().default(3000),
       }),
     }),
     TodoModule,
     MockModule,
     MiddlewareModule,
+    StorageModule,
   ],
   controllers: [AppController],
   providers: [AppService],

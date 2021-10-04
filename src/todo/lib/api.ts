@@ -1,4 +1,5 @@
 import { HttpService, Injectable } from "@nestjs/common";
+import { AxiosResponse } from "axios";
 
 import { ExampleUpper, PutExampleUpper } from "../example-upper/example-upper.type";
 import { ExampleLower, PutExampleLower } from "../example-lower/example-lower.type";
@@ -119,7 +120,7 @@ export class TodoApiClient {
 
   // API
   // Color
-  async getAllColors() {
+  async getAllColors(): Promise<AxiosResponse<any>> {
     try {
       return await this.httpService.get("/colors").toPromise();
     } catch (error) {
@@ -128,7 +129,7 @@ export class TodoApiClient {
   }
 
   // Course
-  async createCourse(coursesInput: CourseType) {
+  async createCourse(coursesInput: CourseType): Promise<AxiosResponse<any>> {
     try {
       return await this.httpService.post("/courses", coursesInput).toPromise();
     } catch (error) {
@@ -136,7 +137,7 @@ export class TodoApiClient {
     }
   }
 
-  async getAllCourses() {
+  async getAllCourses(): Promise<AxiosResponse<any>> {
     try {
       return await this.httpService.get("/courses").toPromise();
     } catch (error) {
@@ -144,7 +145,7 @@ export class TodoApiClient {
     }
   }
 
-  async deleteCourse(id: number) {
+  async deleteCourse(id: number): Promise<AxiosResponse<any>> {
     try {
       return await this.httpService.delete("/courses/" + id).toPromise();
     } catch (error) {
@@ -153,7 +154,7 @@ export class TodoApiClient {
   }
 
   // WorkTodo
-  async createWorkTodo(workTodoInput: WorkTodoType) {
+  async createWorkTodo(workTodoInput: WorkTodoType): Promise<AxiosResponse<any>> {
     try {
       return await this.httpService.post("/work-todos", workTodoInput).toPromise();
     } catch (error) {
@@ -161,7 +162,7 @@ export class TodoApiClient {
     }
   }
 
-  async getAllWorkTodos() {
+  async getAllWorkTodos(): Promise<AxiosResponse<any>> {
     try {
       return await this.httpService.get("/work-todos").toPromise();
     } catch (error) {
@@ -169,7 +170,7 @@ export class TodoApiClient {
     }
   }
 
-  async deleteWorkTodo(id: number) {
+  async deleteWorkTodo(id: number): Promise<AxiosResponse<any>> {
     try {
       return await this.httpService.delete("/work-todos/" + id).toPromise();
     } catch (error) {
@@ -178,7 +179,7 @@ export class TodoApiClient {
   }
 
   // WorkDone
-  async createWorkDone(workDoneInput: WorkDoneType) {
+  async createWorkDone(workDoneInput: WorkDoneType): Promise<AxiosResponse<any>> {
     try {
       return await this.httpService.post("/work-dones", workDoneInput).toPromise();
     } catch (error) {
@@ -186,7 +187,7 @@ export class TodoApiClient {
     }
   }
 
-  async getWorkDone(id: number) {
+  async getWorkDone(id: number): Promise<AxiosResponse<any>> {
     try {
       return await this.httpService.get("/work-dones/" + id).toPromise();
     } catch (error) {
