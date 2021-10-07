@@ -4,3 +4,5 @@
 @FileId = c00c8482-d1e4-443f-ae9a-7c51abab937d
 
 GET {{Host}}/{{Router}}/file/base64/{{FileId}}
+
+POST {{Host}}/{{Router}}/upload
