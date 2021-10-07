@@ -42,9 +42,9 @@ export class StorageApiClient {
     return baseURL + "/api/v1/download/" + id;
   }
 
-  async download(id): Promise<AxiosResponse<any>> {
+  async download(id: string): Promise<AxiosResponse<any>> {
     try {
-      const res = await this.httpService.get("/api/v1/download/" + id).toPromise();
+      const res = await this.httpService.get("/api/v1/download/base64/" + id).toPromise();
       return res;
     } catch (error) {
       throw error;

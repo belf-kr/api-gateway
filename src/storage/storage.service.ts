@@ -1,4 +1,6 @@
 import { Injectable } from "@nestjs/common";
+import { AxiosResponse } from "axios";
+
 import { StorageApiClient } from "./lib/api";
 
 @Injectable()
@@ -31,10 +33,20 @@ export class StorageService {
     return this.storageApiClient.getFileURL(id);
   }
 
-  async download(id) {
+  // Return file metadata and file data in json
+  async getFileAndFileInformationAsJson(res: AxiosResponse<any>) {
+    const fileByJson = new Object();
+    Object.assign(fileByJson, res["data"]);
+
+    return fileByJson;
+  }
+
+  async download(id: string) {
     try {
-      const res = await this.storageApiClient.download(id);
-      return res;
+      const storageServiceRes = await this.storageApiClient.download(id);
+      const fileByJson = await this.getFileAndFileInformationAsJson(storageServiceRes);
+
+      return fileByJson;
     } catch (error) {
       throw error;
     }

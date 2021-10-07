@@ -1,6 +1,7 @@
-import { ParseUUIDPipe, Controller, Get, Post, UploadedFile, UseInterceptors, Param, Response } from "@nestjs/common";
-import { StorageService } from "./storage.service";
+import { ParseUUIDPipe, Controller, Get, Post, UploadedFile, UseInterceptors, Param } from "@nestjs/common";
 import { FileInterceptor } from "@nestjs/platform-express";
+
+import { StorageService } from "./storage.service";
 
 @Controller("storage")
 export class StorageController {
@@ -31,12 +32,12 @@ export class StorageController {
     }
   }
 
-  @Get("file/:id")
-  async getFile(@Param("id", ParseUUIDPipe) id, @Response() res): Promise<any> {
+  @Get("file/base64/:id")
+  async getFileByBase64(@Param("id", ParseUUIDPipe) id: string): Promise<any> {
     try {
-      const result = await this.appService.download(id);
+      const serviceResult = await this.appService.download(id);
 
-      return res.set(result.headers).body(result.data);
+      return serviceResult;
     } catch (error) {
       return error;
     }
