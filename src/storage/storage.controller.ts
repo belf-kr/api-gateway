@@ -42,4 +42,15 @@ export class StorageController {
       return error;
     }
   }
+
+  @Get("info/:id")
+  async getFileInfomation(@Param("id", ParseUUIDPipe) id: string): Promise<any> {
+    try {
+      const serviceResult = await this.appService.getFileInfomation(id);
+
+      return serviceResult;
+    } catch (error) {
+      return error;
+    }
+  }
 }

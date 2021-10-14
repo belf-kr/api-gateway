@@ -50,4 +50,13 @@ export class StorageApiClient {
       throw error;
     }
   }
+
+  async getFileInfomation(id: string): Promise<AxiosResponse<any>> {
+    try {
+      const res = await this.httpService.get("/api/v1/info/" + id).toPromise();
+      return res;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

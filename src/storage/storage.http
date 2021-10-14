@@ -3,6 +3,11 @@
 @Router = storage
 @FileId = c00c8482-d1e4-443f-ae9a-7c51abab937d
 
+### Base64 형식으로 파일 가져오기
 GET {{Host}}/{{Router}}/file/base64/{{FileId}}
 
+### File upload
 POST {{Host}}/{{Router}}/upload
+
+### File 정보 가져오기
+GET {{Host}}/{{Router}}/info/{{FileId}}

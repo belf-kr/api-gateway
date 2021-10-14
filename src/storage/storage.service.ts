@@ -51,4 +51,14 @@ export class StorageService {
       throw error;
     }
   }
+
+  async getFileInfomation(id: string) {
+    try {
+      const storageServiceRes = await this.storageApiClient.getFileInfomation(id);
+
+      return storageServiceRes["data"];
+    } catch (error) {
+      throw error;
+    }
+  }
 }
