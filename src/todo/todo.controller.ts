@@ -1,10 +1,12 @@
-import { Body, Controller, Delete, Get, HttpStatus, Post, Res } from "@nestjs/common";
-import { Response } from "express";
+import { Body, Controller, Delete, Get, HttpException, Param, Post } from "@nestjs/common";
+import * as axios from "axios";
 
 import { TodoService } from "./todo.service";
 
+import { getErrorHttpStatusCode, getErrorMessage } from "src/common/lib/error";
 import { CourseType } from "src/common/type/course.type";
 import { WorkTodoType } from "src/common/type/work-todo.type";
+import { WorkDoneType } from "src/common/type/work-done.type";
 
 @Controller("todo")
 export class TodoController {
@@ -55,93 +57,150 @@ export class TodoController {
   }
 
   @Get("today-todos")
-  async getTodayTodos(@Res() res: Response) {
+  async getTodayTodos() {
     try {
-      const result = await this.appService.getTodayTodos();
-      res.status(HttpStatus.OK).send(result);
+      const result: axios.AxiosResponse = await this.appService.getTodayTodos();
+      return result.data;
     } catch (error) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
     }
   }
 
   @Get("glass")
-  async getGlass(@Res() res: Response) {
+  async getGlass() {
     try {
-      const result = await this.appService.getGlass();
-      res.status(HttpStatus.OK).send(result);
+      const result: axios.AxiosResponse = await this.appService.getGlass();
+      return result.data;
     } catch (error) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
     }
   }
 
-  @Get("get-all-colors")
-  async getAllColors(@Res() res: Response) {
+  // API
+
+  @Get("colors")
+  async getAllColors() {
     try {
-      const result = await this.appService.getAllColors();
-      res.status(HttpStatus.OK).send(result);
+      const result: axios.AxiosResponse = await this.appService.getAllColors();
+
+      return result.data;
     } catch (error) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
     }
   }
 
-  @Post("create-course")
-  async createCourse(@Res() res: Response, @Body() coursesInput: CourseType) {
+  @Post("courses")
+  async createCourse(@Body() coursesInput: CourseType) {
     try {
-      const result = await this.appService.createCourse(coursesInput);
-      res.status(HttpStatus.OK).send(result);
+      const result: axios.AxiosResponse = await this.appService.createCourse(coursesInput);
+      return result.data;
     } catch (error) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
     }
   }
 
-  @Get("get-all-courses")
-  async getAllCourses(@Res() res: Response) {
+  @Get("courses")
+  async getAllCourses() {
     try {
-      const result = await this.appService.getAllCourses();
-      res.status(HttpStatus.OK).send(result);
+      const result: axios.AxiosResponse = await this.appService.getAllCourses();
+      return result.data;
     } catch (error) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
     }
   }
 
-  @Delete("delete-courses")
-  async deleteCourses(@Res() res: Response, @Body() coursesInput: CourseType[]) {
+  @Delete("courses/:id")
+  async deleteCourse(@Param() params) {
     try {
-      const result = await this.appService.deleteCourses(coursesInput);
-      res.status(HttpStatus.OK).send(result);
+      const result: axios.AxiosResponse = await this.appService.deleteCourse(params.id);
+      return result.data;
     } catch (error) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
     }
   }
 
   // WorkTodo
-  @Post("create-work-todo")
-  async createWorkTodo(@Res() res: Response, @Body() workTodoInput: WorkTodoType) {
+  @Post("work-todos")
+  async createWorkTodo(@Body() workTodoInput: WorkTodoType) {
     try {
-      const result = await this.appService.createWorkTodo(workTodoInput);
-      res.status(HttpStatus.OK).send(result);
+      const result: axios.AxiosResponse = await this.appService.createWorkTodo(workTodoInput);
+      return result.data;
     } catch (error) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
     }
   }
 
-  @Get("get-all-work-todos")
-  async getAllWorkTodos(@Res() res: Response) {
+  @Get("work-todos")
+  async getAllWorkTodos() {
     try {
-      const result = await this.appService.getAllWorkTodos();
-      res.status(HttpStatus.OK).send(result);
+      const result: axios.AxiosResponse = await this.appService.getAllWorkTodos();
+      return result.data;
     } catch (error) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
     }
   }
 
-  @Delete("delete-work-todo")
-  async deleteWorkTodo(@Res() res: Response, @Body() workTodoInput: WorkTodoType) {
+  @Delete("work-todos/:id")
+  async deleteWorkTodo(@Param() params: any) {
     try {
-      const result = await this.appService.deleteWorkTodo(workTodoInput);
-      res.status(HttpStatus.OK).send(result);
+      const result: axios.AxiosResponse = await this.appService.deleteWorkTodo(params.id);
+      return result.data;
     } catch (error) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
+    }
+  }
+
+  // WorkDone
+  @Post("work-dones")
+  async createWorkDone(@Body() workDoneInput: WorkDoneType) {
+    try {
+      const result: axios.AxiosResponse = await this.appService.createWorkDone(workDoneInput);
+      return result.data;
+    } catch (error) {
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
+    }
+  }
+
+  @Get("work-dones/:id")
+  async getWorkDone(@Param() params: any) {
+    try {
+      const result: axios.AxiosResponse = await this.appService.getWorkDone(params.id);
+      return result.data;
+    } catch (error) {
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
     }
   }
 }
