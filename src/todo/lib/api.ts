@@ -1,10 +1,12 @@
 import { HttpService, Injectable } from "@nestjs/common";
+import { AxiosResponse } from "axios";
 
 import { ExampleUpper, PutExampleUpper } from "../example-upper/example-upper.type";
 import { ExampleLower, PutExampleLower } from "../example-lower/example-lower.type";
 
 import { CourseType } from "src/common/type/course.type";
 import { WorkTodoType } from "src/common/type/work-todo.type";
+import { WorkDoneType } from "src/common/type/work-done.type";
 
 @Injectable()
 export class TodoApiClient {
@@ -118,66 +120,76 @@ export class TodoApiClient {
 
   // API
   // Color
-  async getAllColors() {
+  async getAllColors(): Promise<AxiosResponse<any>> {
     try {
-      const res = await this.httpService.get("/color/get-all-colors").toPromise();
-      return res.data;
+      return await this.httpService.get("/colors").toPromise();
     } catch (error) {
       throw error;
     }
   }
 
   // Course
-  async createCourse(coursesInput: CourseType) {
+  async createCourse(coursesInput: CourseType): Promise<AxiosResponse<any>> {
     try {
-      const res = await this.httpService.post("/course/create-course", coursesInput).toPromise();
-      return res.data;
+      return await this.httpService.post("/courses", coursesInput).toPromise();
     } catch (error) {
       throw error;
     }
   }
 
-  async getAllCourses() {
+  async getAllCourses(): Promise<AxiosResponse<any>> {
     try {
-      const res = await this.httpService.get("/course/get-all-courses").toPromise();
-      return res.data;
+      return await this.httpService.get("/courses").toPromise();
     } catch (error) {
       throw error;
     }
   }
 
-  async deleteCourses(coursesInput: CourseType[]) {
+  async deleteCourse(id: number): Promise<AxiosResponse<any>> {
     try {
-      const res = await this.httpService.delete("/course/delete-courses", { data: coursesInput }).toPromise();
-      return res.data;
+      return await this.httpService.delete("/courses/" + id).toPromise();
     } catch (error) {
       throw error;
     }
   }
 
   // WorkTodo
-  async createWorkTodo(workTodoInput: WorkTodoType) {
+  async createWorkTodo(workTodoInput: WorkTodoType): Promise<AxiosResponse<any>> {
     try {
-      const res = await this.httpService.post("/work-todo/create-work-todo", workTodoInput).toPromise();
-      return res.data;
+      return await this.httpService.post("/work-todos", workTodoInput).toPromise();
     } catch (error) {
       throw error;
     }
   }
 
-  async getAllWorkTodos() {
+  async getAllWorkTodos(): Promise<AxiosResponse<any>> {
     try {
-      const res = await this.httpService.get("/work-todo/get-all-work-todos").toPromise();
-      return res.data;
+      return await this.httpService.get("/work-todos").toPromise();
     } catch (error) {
       throw error;
     }
   }
 
-  async deleteWorkTodo(workTodoInput: WorkTodoType) {
+  async deleteWorkTodo(id: number): Promise<AxiosResponse<any>> {
     try {
-      const res = await this.httpService.delete("/work-todo/delete-work-todo", { data: workTodoInput }).toPromise();
-      return res.data;
+      return await this.httpService.delete("/work-todos/" + id).toPromise();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // WorkDone
+  async createWorkDone(workDoneInput: WorkDoneType): Promise<AxiosResponse<any>> {
+    try {
+      return await this.httpService.post("/work-dones", workDoneInput).toPromise();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getWorkDone(id: number): Promise<AxiosResponse<any>> {
+    try {
+      return await this.httpService.get("/work-dones/" + id).toPromise();
     } catch (error) {
       throw error;
     }
