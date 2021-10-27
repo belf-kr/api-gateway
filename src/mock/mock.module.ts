@@ -13,7 +13,7 @@ import { K8sServiceDNS } from "src/common/lib/service";
     HttpModule.registerAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
-        baseURL: K8sServiceDNS("mock-service", configService.get("SERVER_PORT_MOCK")),
+        baseURL: K8sServiceDNS("mock-service", configService.get("API_SERVICE_MOCK_SERVER_PORT")),
       }),
       inject: [ConfigService],
     }),

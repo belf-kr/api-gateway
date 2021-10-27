@@ -46,12 +46,12 @@ client, service 간의 HTTP 요청 및 응답을 중계합니다.
 
 ### 환경 변수 표
 
-| Variable            | dev | qa/prod | Default value | Example                 | Explanation                                                                        |
-| ------------------- | :-: | :-----: | :-----------: | ----------------------- | ---------------------------------------------------------------------------------- |
-| NODE_ENV            | ✅  |   ✅    |               | development, production | `NodeJS 실행 환경` 을 설정하는 값으로, 미리 선언한 npm 스크립트로 값이 설정됩니다. |
-| STAGES              | 🚫  |   ✅    |               | qa, prod                | `k8s에서` 실행 환경에 맞는 svc를 연결 및 디버깅을 위해 사용되는 값입니다.          |
-| SERVER_PORT         | ✅  |   ✅    |     3000      | 3000                    | API 서비스의 `HTTP Listen port` 값입니다.                                          |
-| SERVER_PORT_OAUTH   | ✅  |   ✅    |     3000      | 3000, 3001              | API 서비스 구동을 위한 OAuth 인증 서비스의 `HTTP Listen port` 값입니다.            |
-| SERVER_PORT_MOCK    | ✅  |   ✅    |     3000      | 3000, 3002              | API 서비스의 구동을 위한 Mock 서비스의 `HTTP Listen port` 값입니다.                |
-| SERVER_PORT_TODO    | ✅  |   ✅    |    3000‍️     | 3000, 3003              | API 서비스 구동을 위한 Todo 서비스의 `HTTP Listen port` 값입니다.                  |
-| SERVER_PORT_STORAGE | ✅  |   ✅    |    3000‍️     | 3000, 3004              | API 서비스 구동을 위한 File 서비스의 `HTTP Listen port` 값입니다.                  |
+| Variable                        | dev | qa/prod | Default value | Example                 | Explanation                                                                        |
+| ------------------------------- | :-: | :-----: | :-----------: | ----------------------- | ---------------------------------------------------------------------------------- |
+| NODE_ENV                        | ✅  |   ✅    |               | development, production | `NodeJS 실행 환경` 을 설정하는 값으로, 미리 선언한 npm 스크립트로 값이 설정됩니다. |
+| STAGES                          | 🚫  |   ✅    |               | qa, prod                | `k8s에서` 실행 환경에 맞는 svc를 연결 및 디버깅을 위해 사용되는 값입니다.          |
+| API_SERVICE_SERVER_PORT         | ✅  |   ✅    |     3000      | 3000                    | API 서비스의 `HTTP Listen port` 값입니다.                                          |
+| API_SERVICE_OAUTH_SERVER_PORT   | ✅  |   ✅    |     3000      | 3000, 3001              | API 서비스 구동을 위한 OAuth 인증 서비스의 `HTTP Listen port` 값입니다.            |
+| API_SERVICE_MOCK_SERVER_PORT    | ✅  |   ✅    |     3000      | 3000, 3002              | API 서비스의 구동을 위한 Mock 서비스의 `HTTP Listen port` 값입니다.                |
+| API_SERVICE_TODO_SERVER_PORT    | ✅  |   ✅    |    3000‍️     | 3000, 3003              | API 서비스 구동을 위한 Todo 서비스의 `HTTP Listen port` 값입니다.                  |
+| API_SERVICE_STORAGE_SERVER_PORT | ✅  |   ✅    |    3000‍️     | 3000, 3004              | API 서비스 구동을 위한 File 서비스의 `HTTP Listen port` 값입니다.                  |

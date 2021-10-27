@@ -10,7 +10,7 @@ import { K8sServiceDNS } from "../common/lib/service";
     HttpModule.registerAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
-        baseURL: K8sServiceDNS("oauth-server", configService.get("SERVER_PORT_OAUTH")),
+        baseURL: K8sServiceDNS("oauth-server", configService.get("API_SERVICE_OAUTH_SERVER_PORT")),
       }),
       inject: [ConfigService],
     }),

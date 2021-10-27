@@ -18,7 +18,7 @@ import { K8sServiceDNS } from "../common/lib/service";
     HttpModule.registerAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
-        baseURL: K8sServiceDNS("todo-service", configService.get("SERVER_PORT_TODO")),
+        baseURL: K8sServiceDNS("todo-service", configService.get("API_SERVICE_TODO_SERVER_PORT")),
       }),
       inject: [ConfigService],
     }),

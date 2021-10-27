@@ -10,7 +10,7 @@ import { StorageApiClient } from "./lib/api";
     HttpModule.registerAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
-        baseURL: K8sServiceDNS("storage-service", configService.get("SERVER_PORT_STORAGE")),
+        baseURL: K8sServiceDNS("storage-service", configService.get("API_SERVICE_STORAGE_SERVER_PORT")),
       }),
       inject: [ConfigService],
     }),
