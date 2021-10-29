@@ -162,9 +162,9 @@ export class TodoApiClient {
     }
   }
 
-  async getAllWorkTodos(): Promise<AxiosResponse<any>> {
+  async getAllWorkTodos(courseId: number): Promise<AxiosResponse<any>> {
     try {
-      return await this.httpService.get("/work-todos").toPromise();
+      return await this.httpService.get("/work-todos" + "?courseId=" + courseId).toPromise();
     } catch (error) {
       throw error;
     }

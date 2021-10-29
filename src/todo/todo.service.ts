@@ -114,9 +114,9 @@ export class TodoService {
     }
   }
 
-  async getAllWorkTodos() {
+  async getAllWorkTodos(courseId?: number) {
     try {
-      const result = await this.todoApiClient.getAllWorkTodos();
+      const result = await this.todoApiClient.getAllWorkTodos(courseId);
       return result;
     } catch (error) {
       throw error;
