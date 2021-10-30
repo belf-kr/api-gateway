@@ -152,9 +152,9 @@ export class TodoController {
   }
 
   @Get("work-todos")
-  async getAllWorkTodos(@Query("courseId") courseId?: number) {
+  async getWorkTodosByConditions(@Query("courseId") courseId?: number) {
     try {
-      const result: axios.AxiosResponse = await this.appService.getAllWorkTodos(courseId);
+      const result: axios.AxiosResponse = await this.appService.getWorkTodosByConditions(courseId);
       return result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
