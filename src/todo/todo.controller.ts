@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpException, Param, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpException, Param, Post, Query } from "@nestjs/common";
 import * as axios from "axios";
 
 import { TodoService } from "./todo.service";
@@ -152,9 +152,9 @@ export class TodoController {
   }
 
   @Get("work-todos")
-  async getAllWorkTodos() {
+  async getWorkTodosByConditions(@Query("courseId") courseId?: number) {
     try {
-      const result: axios.AxiosResponse = await this.appService.getAllWorkTodos();
+      const result: axios.AxiosResponse = await this.appService.getWorkTodosByConditions(courseId);
       return result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
