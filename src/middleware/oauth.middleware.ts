@@ -12,12 +12,16 @@ export class OauthMiddleware implements NestMiddleware {
   }
 
   async tokenValid() {
+    let serviceResult: any;
+
     try {
       const res = await this.httpService.get("/token/valid").toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 
   async use(req: Request, res: Response, next: NextFunction) {

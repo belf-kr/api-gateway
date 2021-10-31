@@ -12,42 +12,60 @@ export class StorageApiClient {
 
   // 기본 디버깅 Endpoint Group
   async getServiceName() {
+    let serviceResult: string;
+
     try {
       const res = await this.httpService.get("/api/v1/default/").toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 
   async getPing() {
+    let serviceResult: any;
+
     try {
       const res = await this.httpService.get("/api/v1/default/ping").toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 
   async getVersion() {
+    let serviceResult: any;
+
     try {
       const res = await this.httpService.get("/api/v1/default/version").toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 
   async getEnv() {
+    let serviceResult: any;
+
     try {
       const res = await this.httpService.get("/api/v1/default/env").toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 
-  async uploadFile(file): Promise<any> {
+  async uploadFile(file: any): Promise<any> {
+    let serviceResult: any;
+
     try {
       const form = new FormData();
       form.append("file", file.buffer, { filename: file.originalname });
@@ -59,32 +77,40 @@ export class StorageApiClient {
           },
         })
         .toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 
-  getFileURL(id): string {
+  getFileURL(id: string): string {
     const baseURL = this.httpService.axiosRef.defaults.baseURL;
     return baseURL + "/api/v1/download/" + id;
   }
 
   async download(id: string): Promise<AxiosResponse<any>> {
+    let serviceResult: any;
+
     try {
-      const res = await this.httpService.get("/api/v1/download/base64/" + id).toPromise();
-      return res;
+      serviceResult = await this.httpService.get("/api/v1/download/base64/" + id).toPromise();
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 
   async getFileInfomation(id: string): Promise<AxiosResponse<any>> {
+    let serviceResult: any;
+
     try {
-      const res = await this.httpService.get("/api/v1/info/" + id).toPromise();
-      return res;
+      serviceResult = await this.httpService.get("/api/v1/info/" + id).toPromise();
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 }

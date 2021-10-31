@@ -16,11 +16,9 @@ GET {{Host}}/{{Router}}/version
 
 ### color 정보 전체 조회
 GET {{Host}}/{{Router}}/colors
-Content-Type: application/json
 
 ### course 정보 전체 조회
 GET {{Host}}/{{Router}}/courses
-Content-Type: application/json
 
 ### course 생성
 POST {{Host}}/{{Router}}/courses
@@ -42,7 +40,6 @@ Content-Type: application/json
 
 ### course 삭제
 DELETE {{Host}}/{{Router}}/courses/1
-Content-Type: application/json
 
 ### work_todo 추가
 POST {{Host}}/{{Router}}/work-todos
@@ -57,11 +54,13 @@ Content-Type: application/json
 }
 
 ### work_todo 전체 리스트 가져오기
+GET {{Host}}/{{Router}}/work-todos
+
+### work_todo 리스트 가져오기
 GET {{Host}}/{{Router}}/work-todos?courseId=1
 
 ### work_todo 삭제
 DELETE {{Host}}/{{Router}}/work-todos/1
-Content-Type: application/json
 
 ### work_done 추가
 POST {{Host}}/{{Router}}/work-dones
