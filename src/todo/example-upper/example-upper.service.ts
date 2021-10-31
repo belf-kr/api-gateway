@@ -1,8 +1,8 @@
 import { Injectable } from "@nestjs/common";
 
-import { TodoApiClient } from "../lib/api";
-
 import { ExampleUpper, PutExampleUpper } from "./example-upper.type";
+
+import { TodoApiClient } from "../lib/api";
 
 @Injectable()
 export class ExampleUpperService {
@@ -13,35 +13,50 @@ export class ExampleUpperService {
   }
 
   async postExampleUpper(body: ExampleUpper[]) {
+    let apiClientResult: any;
+
     try {
-      const result = await this.todoApiClient.postExampleUpper(body);
-      return result;
+      apiClientResult = await this.todoApiClient.postExampleUpper(body);
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
+
   async getExampleUpper(body: ExampleUpper[]) {
+    let apiClientResult: any;
+
     try {
-      const result = await this.todoApiClient.getExampleUpper(body);
-      return result;
+      apiClientResult = await this.todoApiClient.getExampleUpper(body);
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
+
   async putExampleUpper(body: PutExampleUpper) {
+    let apiClientResult: any;
+
     try {
-      const result = await this.todoApiClient.putExampleUpper(body);
-      return result;
+      apiClientResult = await this.todoApiClient.putExampleUpper(body);
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
+
   async deleteExampleUpper(body: ExampleUpper[]) {
+    let apiClientResult: any;
+
     try {
-      const result = await this.todoApiClient.deleteExampleUpper(body);
-      return result;
+      apiClientResult = await this.todoApiClient.deleteExampleUpper(body);
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 }

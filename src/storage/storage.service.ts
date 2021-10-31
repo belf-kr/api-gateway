@@ -12,51 +12,66 @@ export class StorageService {
   }
 
   async getServiceName() {
+    let apiClientResult: string;
+
     try {
-      const result = await this.storageApiClient.getServiceName();
-      return result;
+      apiClientResult = await this.storageApiClient.getServiceName();
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 
   async getPing() {
+    let apiClientResult: any;
+
     try {
-      const result = await this.storageApiClient.getPing();
-      return result;
+      apiClientResult = await this.storageApiClient.getPing();
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 
   async getVersion() {
+    let apiClientResult: any;
+
     try {
-      const result = await this.storageApiClient.getVersion();
-      return result;
+      apiClientResult = await this.storageApiClient.getVersion();
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 
   async getEnv() {
+    let apiClientResult: any;
+
     try {
-      const result = await this.storageApiClient.getEnv();
-      return result;
+      apiClientResult = await this.storageApiClient.getEnv();
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 
-  async uploadFile(file): Promise<string> {
+  async uploadFile(file: any): Promise<string> {
+    let apiClientResult: string;
+
     try {
-      const res = await this.storageApiClient.uploadFile(file);
-      return res;
+      apiClientResult = await this.storageApiClient.uploadFile(file);
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 
-  getFileURL(id) {
+  getFileURL(id: string) {
     return this.storageApiClient.getFileURL(id);
   }
 
@@ -69,23 +84,28 @@ export class StorageService {
   }
 
   async download(id: string) {
+    let fileByJson;
+
     try {
       const storageServiceRes = await this.storageApiClient.download(id);
-      const fileByJson = await this.getFileAndFileInformationAsJson(storageServiceRes);
-
-      return fileByJson;
+      fileByJson = await this.getFileAndFileInformationAsJson(storageServiceRes);
     } catch (error) {
       throw error;
     }
+
+    return fileByJson;
   }
 
   async getFileInfomation(id: string) {
+    let apiClientResult: any;
+
     try {
       const storageServiceRes = await this.storageApiClient.getFileInfomation(id);
-
-      return storageServiceRes["data"];
+      apiClientResult = storageServiceRes["data"];
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 }

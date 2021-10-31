@@ -2,13 +2,13 @@ import { Body, Controller, Delete, Get, HttpException, HttpStatus, Post, Put } f
 
 import { ExampleUpperService } from "./example-upper.service";
 
-import { getErrorMessage, getErrorHttpStatusCode } from "../../common/lib/error";
-
 import { ExampleUpper, PutExampleUpper } from "./example-upper.type";
+
+import { getErrorMessage, getErrorHttpStatusCode } from "../../common/lib/error";
 
 @Controller("todo/example-upper")
 export class ExampleUpperController {
-  private readonly appService;
+  private readonly appService: ExampleUpperService;
 
   constructor(appService: ExampleUpperService) {
     this.appService = appService;
@@ -16,46 +16,65 @@ export class ExampleUpperController {
 
   @Post()
   async postExampleUpper(@Body() body: ExampleUpper[]): Promise<HttpStatus> {
+    let serviceResult: any;
+
     try {
-      const result = await this.appService.postExampleUpper(body);
-      return result;
+      serviceResult = await this.appService.postExampleUpper(body);
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
       const message = getErrorMessage(error);
+
       throw new HttpException(message, httpStatusCode);
     }
+
+    return serviceResult;
   }
+
   @Get()
   async getExampleUpper(@Body() body: ExampleUpper[]): Promise<HttpStatus> {
+    let serviceResult: any;
+
     try {
-      const result = await this.appService.getExampleUpper(body);
-      return result;
+      serviceResult = await this.appService.getExampleUpper(body);
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
       const message = getErrorMessage(error);
+
       throw new HttpException(message, httpStatusCode);
     }
+
+    return serviceResult;
   }
+
   @Put()
   async putExampleUpper(@Body() body: PutExampleUpper): Promise<HttpStatus> {
+    let serviceResult: any;
+
     try {
-      const result = await this.appService.putExampleUpper(body);
-      return result;
+      serviceResult = await this.appService.putExampleUpper(body);
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
       const message = getErrorMessage(error);
+
       throw new HttpException(message, httpStatusCode);
     }
+
+    return serviceResult;
   }
+
   @Delete()
   async deleteExampleUpper(@Body() body: ExampleUpper[]): Promise<HttpStatus> {
+    let serviceResult: any;
+
     try {
-      const result = await this.appService.deleteExampleUpper(body);
-      return result;
+      serviceResult = await this.appService.deleteExampleUpper(body);
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
       const message = getErrorMessage(error);
+
       throw new HttpException(message, httpStatusCode);
     }
+
+    return serviceResult;
   }
 }

@@ -13,35 +13,50 @@ export class ExampleLowerService {
   }
 
   async postExampleLower(body: ExampleLower[]) {
+    let apiClientResult: any;
+
     try {
-      const result = await this.todoApiClient.postExampleLower(body);
-      return result;
+      apiClientResult = await this.todoApiClient.postExampleLower(body);
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
+
   async getExampleLower(body: ExampleLower[]) {
+    let apiClientResult: any;
+
     try {
-      const result = await this.todoApiClient.getExampleLower(body);
-      return result;
+      apiClientResult = await this.todoApiClient.getExampleLower(body);
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
+
   async putExampleLower(body: PutExampleLower) {
+    let apiClientResult: any;
+
     try {
-      const result = await this.todoApiClient.putExampleLower(body);
-      return result;
+      apiClientResult = await this.todoApiClient.putExampleLower(body);
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
+
   async deleteExampleLower(body: ExampleLower[]) {
+    let apiClientResult: any;
+
     try {
-      const result = await this.todoApiClient.deleteExampleLower(body);
-      return result;
+      apiClientResult = await this.todoApiClient.deleteExampleLower(body);
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 }
