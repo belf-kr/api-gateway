@@ -1,9 +1,6 @@
 import { HttpService, Injectable } from "@nestjs/common";
 import { AxiosResponse } from "axios";
 
-import { ExampleUpper, PutExampleUpper } from "../example-upper/example-upper.type";
-import { ExampleLower, PutExampleLower } from "../example-lower/example-lower.type";
-
 import { CourseType } from "src/common/type/course.type";
 import { WorkTodoType } from "src/common/type/work-todo.type";
 import { WorkDoneType } from "src/common/type/work-done.type";
@@ -61,113 +58,6 @@ export class TodoApiClient {
 
     try {
       const res = await this.httpService.get("/env").toPromise();
-      serviceResult = res.data;
-    } catch (error) {
-      throw error;
-    }
-
-    return serviceResult;
-  }
-
-  /// MySQL Replication CRUD Test Endpoint Group
-  // example-upper
-  async postExampleUpper(body: ExampleUpper[]) {
-    let serviceResult: any;
-
-    try {
-      const res = await this.httpService.post("/example-upper", body).toPromise();
-      serviceResult = res.data;
-    } catch (error) {
-      throw error;
-    }
-
-    return serviceResult;
-  }
-
-  async getExampleUpper(body: ExampleUpper[]) {
-    let serviceResult: any;
-
-    try {
-      const res = await this.httpService.get("/example-upper", { data: body }).toPromise();
-      serviceResult = res.data;
-    } catch (error) {
-      throw error;
-    }
-
-    return serviceResult;
-  }
-
-  async putExampleUpper(body: PutExampleUpper) {
-    let serviceResult: any;
-
-    try {
-      const res = await this.httpService.put("/example-upper", body).toPromise();
-      serviceResult = res.data;
-    } catch (error) {
-      throw error;
-    }
-
-    return serviceResult;
-  }
-
-  async deleteExampleUpper(body: ExampleUpper[]) {
-    let serviceResult: any;
-
-    try {
-      const res = await this.httpService.delete("/example-upper", { data: body }).toPromise();
-      serviceResult = res.data;
-    } catch (error) {
-      throw error;
-    }
-
-    return serviceResult;
-  }
-
-  // example-lower
-  async postExampleLower(body: ExampleLower[]) {
-    let serviceResult: any;
-
-    try {
-      const res = await this.httpService.post("/example-lower", body).toPromise();
-      serviceResult = res.data;
-    } catch (error) {
-      throw error;
-    }
-
-    return serviceResult;
-  }
-
-  async getExampleLower(body: ExampleLower[]) {
-    let serviceResult: any;
-
-    try {
-      const res = await this.httpService.get("/example-lower", { data: body }).toPromise();
-      serviceResult = res.data;
-    } catch (error) {
-      throw error;
-    }
-
-    return serviceResult;
-  }
-
-  async putExampleLower(body: PutExampleLower) {
-    let serviceResult: any;
-
-    try {
-      const res = await this.httpService.put("/example-lower", body).toPromise();
-      serviceResult = res.data;
-    } catch (error) {
-      throw error;
-    }
-
-    return serviceResult;
-  }
-
-  async deleteExampleLower(body: ExampleLower[]) {
-    let serviceResult: any;
-
-    try {
-      const res = await this.httpService.delete("/example-lower", { data: body }).toPromise();
       serviceResult = res.data;
     } catch (error) {
       throw error;
