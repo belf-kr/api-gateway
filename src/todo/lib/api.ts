@@ -25,6 +25,7 @@ export class TodoApiClient {
       throw error;
     }
   }
+
   async getPing() {
     try {
       const res = await this.httpService.get("/ping").toPromise();
@@ -33,6 +34,7 @@ export class TodoApiClient {
       throw error;
     }
   }
+
   async getVersion() {
     try {
       const res = await this.httpService.get("/version").toPromise();
@@ -41,6 +43,7 @@ export class TodoApiClient {
       throw error;
     }
   }
+
   async getEnv() {
     try {
       const res = await this.httpService.get("/env").toPromise();

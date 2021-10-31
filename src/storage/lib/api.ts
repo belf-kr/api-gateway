@@ -10,9 +10,37 @@ export class StorageApiClient {
     this.httpService = httpService;
   }
 
+  // 기본 디버깅 Endpoint Group
+  async getServiceName() {
+    try {
+      const res = await this.httpService.get("/api/v1/default/").toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async getPing() {
     try {
       const res = await this.httpService.get("/api/v1/default/ping").toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getVersion() {
+    try {
+      const res = await this.httpService.get("/api/v1/default/version").toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getEnv() {
+    try {
+      const res = await this.httpService.get("/api/v1/default/env").toPromise();
       return res.data;
     } catch (error) {
       throw error;

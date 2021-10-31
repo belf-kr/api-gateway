@@ -3,8 +3,17 @@
 @Router = storage
 @FileId = c00c8482-d1e4-443f-ae9a-7c51abab937d
 
-### Service 동작 여부 알아보기
+### Get service name
+GET {{Host}}/{{Router}}
+
+### Get ping
 GET {{Host}}/{{Router}}/ping
+
+### Get env
+GET {{Host}}/{{Router}}/env
+
+### Get version
+GET {{Host}}/{{Router}}/version
 
 ### Base64 형식으로 파일 가져오기
 GET {{Host}}/{{Router}}/file/base64/{{FileId}}
