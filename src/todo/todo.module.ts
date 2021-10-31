@@ -6,9 +6,6 @@ import { TodoService } from "./todo.service";
 
 import { TodoApiClient } from "./lib/api";
 
-import { ExampleUpperModule } from "./example-upper/example-upper.module";
-import { ExampleLowerModule } from "./example-lower/example-lower.module";
-
 import { MockModule } from "../mock/mock.module";
 
 import { K8sServiceDNS } from "../common/lib/service";
@@ -23,8 +20,6 @@ import { K8sServiceDNS } from "../common/lib/service";
       inject: [ConfigService],
     }),
     MockModule,
-    ExampleUpperModule,
-    ExampleLowerModule,
   ],
   controllers: [TodoController],
   providers: [TodoService, TodoApiClient],
