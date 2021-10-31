@@ -1,7 +1,8 @@
-import { Controller, Get, HttpStatus, Res } from "@nestjs/common";
-import { Response } from "express";
+import { Controller, Get, HttpException } from "@nestjs/common";
 
 import { MockService } from "./mock.service";
+
+import { getErrorHttpStatusCode, getErrorMessage } from "src/common/lib/error";
 
 @Controller("mock")
 export class MockController {
@@ -17,7 +18,10 @@ export class MockController {
       const result = await this.appService.getServiceName();
       return result;
     } catch (error) {
-      return error;
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
     }
   }
 
@@ -27,7 +31,10 @@ export class MockController {
       const result = await this.appService.getPing();
       return result;
     } catch (error) {
-      return error;
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
     }
   }
 
@@ -37,7 +44,10 @@ export class MockController {
       const result = await this.appService.getVersion();
       return result;
     } catch (error) {
-      return error;
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
     }
   }
 
@@ -47,35 +57,36 @@ export class MockController {
       const result = await this.appService.getEnv();
       return result;
     } catch (error) {
-      return error;
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
     }
   }
   @Get("today-todos")
-  async getTodayTodos(@Res() res: Response) {
+  async getTodayTodos() {
     try {
       const result = await this.appService.getTodayTodos();
-      res.status(HttpStatus.OK).send(result);
+
+      return result;
     } catch (error) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
     }
   }
   @Get("glass")
-  async getGlass(@Res() res: Response) {
+  async getGlass() {
     try {
       const result = await this.appService.getGlass();
-      res.status(HttpStatus.OK).send(result);
-    } catch (error) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
-    }
-  }
 
-  @Get("get-all-colors")
-  async getAllColors(@Res() res: Response) {
-    try {
-      const result = await this.appService.getAllColors();
-      res.status(HttpStatus.OK).send(result);
+      return result;
     } catch (error) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
     }
   }
 }

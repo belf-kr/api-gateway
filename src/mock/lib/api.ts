@@ -57,13 +57,4 @@ export class MockApiClient {
       throw error;
     }
   }
-
-  async getAllColors() {
-    try {
-      const res = await this.httpService.get(`/todo-service/get-all-colors`).toPromise();
-      return res.data;
-    } catch (error) {
-      throw error;
-    }
-  }
 }

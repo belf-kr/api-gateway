@@ -22,7 +22,10 @@ export class TodoController {
       const result = await this.appService.getServiceName();
       return result;
     } catch (error) {
-      return error;
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
     }
   }
 
@@ -32,7 +35,10 @@ export class TodoController {
       const result = await this.appService.getPing();
       return result;
     } catch (error) {
-      return error;
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
     }
   }
 
@@ -42,7 +48,10 @@ export class TodoController {
       const result = await this.appService.getVersion();
       return result;
     } catch (error) {
-      return error;
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
     }
   }
 
@@ -51,29 +60,6 @@ export class TodoController {
     try {
       const result = await this.appService.getEnv();
       return result;
-    } catch (error) {
-      return error;
-    }
-  }
-
-  @Get("today-todos")
-  async getTodayTodos() {
-    try {
-      const result: axios.AxiosResponse = await this.appService.getTodayTodos();
-      return result.data;
-    } catch (error) {
-      const httpStatusCode = getErrorHttpStatusCode(error);
-      const message = getErrorMessage(error);
-
-      throw new HttpException(message, httpStatusCode);
-    }
-  }
-
-  @Get("glass")
-  async getGlass() {
-    try {
-      const result: axios.AxiosResponse = await this.appService.getGlass();
-      return result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
       const message = getErrorMessage(error);
