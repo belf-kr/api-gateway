@@ -1,0 +1,14 @@
+@Host = http://localhost:3000
+# @Host = https://api-gateway.qa.belf.xyz
+
+### Get service name
+GET {{Host}}/
+
+### Get ping
+GET {{Host}}/ping
+
+### Get env
+GET {{Host}}/env
+
+### Get version
+GET {{Host}}/version
