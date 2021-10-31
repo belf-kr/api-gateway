@@ -18,6 +18,7 @@ export class MockService {
       throw error;
     }
   }
+
   async getPing() {
     try {
       const result = await this.mockApiClient.getPing();
@@ -26,6 +27,7 @@ export class MockService {
       throw error;
     }
   }
+
   async getVersion() {
     try {
       const result = await this.mockApiClient.getVersion();
@@ -34,6 +36,7 @@ export class MockService {
       throw error;
     }
   }
+
   async getEnv() {
     try {
       const result = await this.mockApiClient.getEnv();
@@ -42,6 +45,7 @@ export class MockService {
       throw error;
     }
   }
+
   async getGlass() {
     try {
       const result = await this.mockApiClient.getGlass();
@@ -50,14 +54,7 @@ export class MockService {
       throw error;
     }
   }
-  async getAllColors() {
-    try {
-      const result = await this.mockApiClient.getAllColors();
-      return result;
-    } catch (error) {
-      throw error;
-    }
-  }
+
   async getTodayTodos() {
     try {
       const result = await this.mockApiClient.getTodayTodos();

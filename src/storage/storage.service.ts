@@ -11,9 +11,36 @@ export class StorageService {
     this.storageApiClient = storageApiClient;
   }
 
+  async getServiceName() {
+    try {
+      const result = await this.storageApiClient.getServiceName();
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async getPing() {
     try {
       const result = await this.storageApiClient.getPing();
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getVersion() {
+    try {
+      const result = await this.storageApiClient.getVersion();
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getEnv() {
+    try {
+      const result = await this.storageApiClient.getEnv();
       return result;
     } catch (error) {
       throw error;

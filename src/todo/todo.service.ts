@@ -26,6 +26,7 @@ export class TodoService {
       throw error;
     }
   }
+
   async getPing() {
     try {
       const result = await this.todoApiClient.getPing();
@@ -34,6 +35,7 @@ export class TodoService {
       throw error;
     }
   }
+
   async getVersion() {
     try {
       const result = await this.todoApiClient.getVersion();
@@ -42,6 +44,7 @@ export class TodoService {
       throw error;
     }
   }
+
   async getEnv() {
     try {
       const result = await this.todoApiClient.getEnv();
@@ -59,6 +62,7 @@ export class TodoService {
       throw error;
     }
   }
+
   async getGlass() {
     try {
       const result = await this.mockApiClient.getGlass();
@@ -141,6 +145,7 @@ export class TodoService {
       throw error;
     }
   }
+
   async getWorkDone(id: number) {
     try {
       const result = await this.todoApiClient.getWorkDone(id);
