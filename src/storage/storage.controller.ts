@@ -1,4 +1,4 @@
-import { ParseUUIDPipe, Controller, Get, Post, UploadedFile, UseInterceptors, Param, HttpException } from "@nestjs/common";
+import { Controller, Get, Post, UploadedFile, UseInterceptors, Param, HttpException } from "@nestjs/common";
 import { FileInterceptor } from "@nestjs/platform-express";
 
 import { StorageService } from "./storage.service";
@@ -95,7 +95,7 @@ export class StorageController {
   }
 
   @Get("file/base64/:id")
-  async getFileByBase64(@Param("id", ParseUUIDPipe) id: string): Promise<any> {
+  async getFileByBase64(@Param("id") id: string): Promise<any> {
     let serviceResult: any;
 
     try {
@@ -111,7 +111,7 @@ export class StorageController {
   }
 
   @Get("info/:id")
-  async getFileInfomation(@Param("id", ParseUUIDPipe) id: string): Promise<any> {
+  async getFileInfomation(@Param("id") id: string): Promise<any> {
     let serviceResult: any;
 
     try {
