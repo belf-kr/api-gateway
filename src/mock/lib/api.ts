@@ -9,52 +9,81 @@ export class MockApiClient {
   }
 
   async getServiceName() {
+    let serviceResult: any;
+
     try {
       const res = await this.httpService.get("/").toPromise();
-      return res.data;
+
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
+
   async getPing() {
+    let serviceResult: any;
+
     try {
       const res = await this.httpService.get("/ping").toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
+
   async getVersion() {
+    let serviceResult: any;
+
     try {
       const res = await this.httpService.get("/version").toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
+
   async getEnv() {
+    let serviceResult: any;
+
     try {
       const res = await this.httpService.get("/env").toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 
   async getTodayTodos() {
+    let serviceResult: any;
+
     try {
       const res = await this.httpService.get(`/todo-service/today-todos`).toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
+
   async getGlass() {
+    let serviceResult: any;
+
     try {
       const res = await this.httpService.get(`/todo-service/glass`).toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 }

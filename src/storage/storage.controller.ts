@@ -15,95 +15,114 @@ export class StorageController {
 
   @Get()
   async getServiceName(): Promise<string> {
+    let serviceResult: string;
+
     try {
-      const result = await this.appService.getServiceName();
-      return result;
+      serviceResult = await this.appService.getServiceName();
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
       const message = getErrorMessage(error);
 
       throw new HttpException(message, httpStatusCode);
     }
+
+    return serviceResult;
   }
 
   @Get("ping")
   async getPing(): Promise<string> {
+    let serviceResult: string;
+
     try {
-      const result = await this.appService.getPing();
-      return result;
+      serviceResult = await this.appService.getPing();
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
       const message = getErrorMessage(error);
 
       throw new HttpException(message, httpStatusCode);
     }
+
+    return serviceResult;
   }
 
   @Get("version")
   async getVersion(): Promise<string> {
+    let serviceResult: string;
+
     try {
-      const result = await this.appService.getVersion();
-      return result;
+      serviceResult = await this.appService.getVersion();
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
       const message = getErrorMessage(error);
 
       throw new HttpException(message, httpStatusCode);
     }
+
+    return serviceResult;
   }
 
   @Get("env")
   async getEnv(): Promise<NodeJS.ProcessEnv> {
+    let serviceResult: NodeJS.ProcessEnv;
+
     try {
-      const result = await this.appService.getEnv();
-      return result;
+      serviceResult = await this.appService.getEnv();
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
       const message = getErrorMessage(error);
 
       throw new HttpException(message, httpStatusCode);
     }
+
+    return serviceResult;
   }
 
   @Post("upload")
   @UseInterceptors(FileInterceptor("file"))
   async uploadFile(@UploadedFile() file): Promise<string> {
+    let serviceResult: string;
+
     try {
-      const res = await this.appService.uploadFile(file);
-      return res;
+      serviceResult = await this.appService.uploadFile(file);
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
       const message = getErrorMessage(error);
 
       throw new HttpException(message, httpStatusCode);
     }
+
+    return serviceResult;
   }
 
   @Get("file/base64/:id")
   async getFileByBase64(@Param("id", ParseUUIDPipe) id: string): Promise<any> {
-    try {
-      const serviceResult = await this.appService.download(id);
+    let serviceResult: any;
 
-      return serviceResult;
+    try {
+      serviceResult = await this.appService.download(id);
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
       const message = getErrorMessage(error);
 
       throw new HttpException(message, httpStatusCode);
     }
+
+    return serviceResult;
   }
 
   @Get("info/:id")
   async getFileInfomation(@Param("id", ParseUUIDPipe) id: string): Promise<any> {
-    try {
-      const serviceResult = await this.appService.getFileInfomation(id);
+    let serviceResult: any;
 
-      return serviceResult;
+    try {
+      serviceResult = await this.appService.getFileInfomation(id);
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
       const message = getErrorMessage(error);
 
       throw new HttpException(message, httpStatusCode);
     }
+
+    return serviceResult;
   }
 }

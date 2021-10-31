@@ -18,151 +18,226 @@ export class TodoApiClient {
 
   // 기본 디버깅 Endpoint Group
   async getServiceName() {
+    let serviceResult: any;
+
     try {
       const res = await this.httpService.get("/").toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 
   async getPing() {
+    let serviceResult: any;
+
     try {
       const res = await this.httpService.get("/ping").toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 
   async getVersion() {
+    let serviceResult: any;
+
     try {
       const res = await this.httpService.get("/version").toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 
   async getEnv() {
+    let serviceResult: any;
+
     try {
       const res = await this.httpService.get("/env").toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 
   /// MySQL Replication CRUD Test Endpoint Group
   // example-upper
   async postExampleUpper(body: ExampleUpper[]) {
+    let serviceResult: any;
+
     try {
       const res = await this.httpService.post("/example-upper", body).toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
+
   async getExampleUpper(body: ExampleUpper[]) {
+    let serviceResult: any;
+
     try {
       const res = await this.httpService.get("/example-upper", { data: body }).toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
+
   async putExampleUpper(body: PutExampleUpper) {
+    let serviceResult: any;
+
     try {
       const res = await this.httpService.put("/example-upper", body).toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
+
   async deleteExampleUpper(body: ExampleUpper[]) {
+    let serviceResult: any;
+
     try {
       const res = await this.httpService.delete("/example-upper", { data: body }).toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
+
   // example-lower
   async postExampleLower(body: ExampleLower[]) {
+    let serviceResult: any;
+
     try {
       const res = await this.httpService.post("/example-lower", body).toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
+
   async getExampleLower(body: ExampleLower[]) {
+    let serviceResult: any;
+
     try {
       const res = await this.httpService.get("/example-lower", { data: body }).toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
+
   async putExampleLower(body: PutExampleLower) {
+    let serviceResult: any;
+
     try {
       const res = await this.httpService.put("/example-lower", body).toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
+
   async deleteExampleLower(body: ExampleLower[]) {
+    let serviceResult: any;
+
     try {
       const res = await this.httpService.delete("/example-lower", { data: body }).toPromise();
-      return res.data;
+      serviceResult = res.data;
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 
   // API
   // Color
   async getAllColors(): Promise<AxiosResponse<any>> {
+    let serviceResult: any;
+
     try {
-      return await this.httpService.get("/colors").toPromise();
+      serviceResult = await this.httpService.get("/colors").toPromise();
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 
   // Course
   async createCourse(coursesInput: CourseType): Promise<AxiosResponse<any>> {
+    let serviceResult: any;
+
     try {
-      return await this.httpService.post("/courses", coursesInput).toPromise();
+      serviceResult = await this.httpService.post("/courses", coursesInput).toPromise();
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 
   async getAllCourses(): Promise<AxiosResponse<any>> {
+    let serviceResult: any;
+
     try {
-      return await this.httpService.get("/courses").toPromise();
+      serviceResult = await this.httpService.get("/courses").toPromise();
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 
   async deleteCourse(id: number): Promise<AxiosResponse<any>> {
+    let serviceResult: any;
+
     try {
-      return await this.httpService.delete("/courses/" + id).toPromise();
+      serviceResult = await this.httpService.delete("/courses/" + id).toPromise();
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 
   // WorkTodo
   async createWorkTodo(workTodoInput: WorkTodoType): Promise<AxiosResponse<any>> {
+    let serviceResult: any;
+
     try {
-      return await this.httpService.post("/work-todos", workTodoInput).toPromise();
+      serviceResult = await this.httpService.post("/work-todos", workTodoInput).toPromise();
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 
   async getWorkTodosByConditions(courseId?: number): Promise<AxiosResponse<any>> {
@@ -179,27 +254,39 @@ export class TodoApiClient {
   }
 
   async deleteWorkTodo(id: number): Promise<AxiosResponse<any>> {
+    let serviceResult: any;
+
     try {
-      return await this.httpService.delete("/work-todos/" + id).toPromise();
+      serviceResult = await this.httpService.delete("/work-todos/" + id).toPromise();
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 
   // WorkDone
   async createWorkDone(workDoneInput: WorkDoneType): Promise<AxiosResponse<any>> {
+    let serviceResult: any;
+
     try {
-      return await this.httpService.post("/work-dones", workDoneInput).toPromise();
+      serviceResult = await this.httpService.post("/work-dones", workDoneInput).toPromise();
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 
   async getWorkDone(id: number): Promise<AxiosResponse<any>> {
+    let serviceResult: any;
+
     try {
-      return await this.httpService.get("/work-dones/" + id).toPromise();
+      serviceResult = await this.httpService.get("/work-dones/" + id).toPromise();
     } catch (error) {
       throw error;
     }
+
+    return serviceResult;
   }
 }

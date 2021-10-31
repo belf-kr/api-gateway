@@ -19,139 +19,184 @@ export class TodoService {
   }
 
   async getServiceName() {
+    let apiClientResult: any;
+
     try {
-      const result = await this.todoApiClient.getServiceName();
-      return result;
+      apiClientResult = await this.todoApiClient.getServiceName();
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 
   async getPing() {
+    let apiClientResult: any;
+
     try {
-      const result = await this.todoApiClient.getPing();
-      return result;
+      apiClientResult = await this.todoApiClient.getPing();
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 
   async getVersion() {
+    let apiClientResult: any;
+
     try {
-      const result = await this.todoApiClient.getVersion();
-      return result;
+      apiClientResult = await this.todoApiClient.getVersion();
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 
   async getEnv() {
+    let apiClientResult: any;
+
     try {
-      const result = await this.todoApiClient.getEnv();
-      return result;
+      apiClientResult = await this.todoApiClient.getEnv();
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 
   async getTodayTodos() {
+    let apiClientResult: any;
+
     try {
-      const result = await this.mockApiClient.getTodayTodos();
-      return result;
+      apiClientResult = await this.mockApiClient.getTodayTodos();
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 
   async getGlass() {
+    let apiClientResult: any;
+
     try {
-      const result = await this.mockApiClient.getGlass();
-      return result;
+      apiClientResult = await this.mockApiClient.getGlass();
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 
   async getAllColors() {
+    let apiClientResult: any;
+
     try {
-      const result = await this.todoApiClient.getAllColors();
-      return result;
+      apiClientResult = await this.todoApiClient.getAllColors();
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 
   async createCourse(courseInput: CourseType) {
+    let apiClientResult: any;
+
     try {
-      const result = await this.todoApiClient.createCourse(courseInput);
-      return result;
+      apiClientResult = await this.todoApiClient.createCourse(courseInput);
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 
   async getAllCourses() {
+    let apiClientResult: any;
+
     try {
-      const result = await this.todoApiClient.getAllCourses();
-      return result;
+      apiClientResult = await this.todoApiClient.getAllCourses();
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 
   async deleteCourse(id: number) {
+    let apiClientResult: any;
+
     try {
-      const result = await this.todoApiClient.deleteCourse(id);
-      return result;
+      apiClientResult = await this.todoApiClient.deleteCourse(id);
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 
   // WorkTodo
   async createWorkTodo(workTodoInput: WorkTodoType) {
+    let apiClientResult: any;
+
     try {
-      const result = await this.todoApiClient.createWorkTodo(workTodoInput);
-      return result;
+      apiClientResult = await this.todoApiClient.createWorkTodo(workTodoInput);
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 
   async getWorkTodosByConditions(courseId?: number) {
+    let apiClientResult: any;
+
     try {
-      const result = await this.todoApiClient.getWorkTodosByConditions(courseId);
-      return result;
+      apiClientResult = await this.todoApiClient.getWorkTodosByConditions(courseId);
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 
   async deleteWorkTodo(id: number) {
+    let apiClientResult: any;
+
     try {
-      const result = await this.todoApiClient.deleteWorkTodo(id);
-      return result;
+      apiClientResult = await this.todoApiClient.deleteWorkTodo(id);
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 
   // WorkDone
   async createWorkDone(workDoneInput: WorkDoneType) {
+    let apiClientResult: any;
+
     try {
-      const result = await this.todoApiClient.createWorkDone(workDoneInput);
-      return result;
+      apiClientResult = await this.todoApiClient.createWorkDone(workDoneInput);
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 
   async getWorkDone(id: number) {
+    let apiClientResult: any;
+
     try {
-      const result = await this.todoApiClient.getWorkDone(id);
-      return result;
+      apiClientResult = await this.todoApiClient.getWorkDone(id);
     } catch (error) {
       throw error;
     }
+
+    return apiClientResult;
   }
 }

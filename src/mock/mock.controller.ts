@@ -14,79 +14,97 @@ export class MockController {
 
   @Get()
   async getServiceName(): Promise<string> {
+    let serviceResult: any;
+
     try {
-      const result = await this.appService.getServiceName();
-      return result;
+      serviceResult = await this.appService.getServiceName();
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
       const message = getErrorMessage(error);
 
       throw new HttpException(message, httpStatusCode);
     }
+
+    return serviceResult;
   }
 
   @Get("ping")
   async getPing() {
+    let serviceResult: any;
+
     try {
-      const result = await this.appService.getPing();
-      return result;
+      serviceResult = await this.appService.getPing();
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
       const message = getErrorMessage(error);
 
       throw new HttpException(message, httpStatusCode);
     }
+
+    return serviceResult;
   }
 
   @Get("version")
   async getVersion(): Promise<string> {
+    let serviceResult: any;
+
     try {
-      const result = await this.appService.getVersion();
-      return result;
+      serviceResult = await this.appService.getVersion();
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
       const message = getErrorMessage(error);
 
       throw new HttpException(message, httpStatusCode);
     }
+
+    return serviceResult;
   }
 
   @Get("env")
   async getEnv(): Promise<NodeJS.ProcessEnv> {
+    let serviceResult: any;
+
     try {
-      const result = await this.appService.getEnv();
-      return result;
+      serviceResult = await this.appService.getEnv();
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
       const message = getErrorMessage(error);
 
       throw new HttpException(message, httpStatusCode);
     }
+
+    return serviceResult;
   }
+
   @Get("today-todos")
   async getTodayTodos() {
-    try {
-      const result = await this.appService.getTodayTodos();
+    let serviceResult: any;
 
-      return result;
+    try {
+      serviceResult = await this.appService.getTodayTodos();
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
       const message = getErrorMessage(error);
 
       throw new HttpException(message, httpStatusCode);
     }
+
+    return serviceResult;
   }
+
   @Get("glass")
   async getGlass() {
-    try {
-      const result = await this.appService.getGlass();
+    let serviceResult: any;
 
-      return result;
+    try {
+      serviceResult = await this.appService.getGlass();
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
       const message = getErrorMessage(error);
 
       throw new HttpException(message, httpStatusCode);
     }
+
+    return serviceResult;
   }
 }
