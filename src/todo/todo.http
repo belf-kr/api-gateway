@@ -41,7 +41,16 @@ Content-Type: application/json
 ### course 삭제
 DELETE {{Host}}/{{Router}}/courses/1
 
-### work_todo 추가
+### work_todo 추가(필수)
+POST {{Host}}/{{Router}}/work-todos
+Content-Type: application/json
+
+{
+    "courseId": 1,
+    "title": "나만의 할 일1"
+}
+
+### work_todo 추가(선택)
 POST {{Host}}/{{Router}}/work-todos
 Content-Type: application/json
 
