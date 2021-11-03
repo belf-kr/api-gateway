@@ -188,6 +188,18 @@ export class TodoService {
     return apiClientResult;
   }
 
+  async getWorkDonesByConditions(courseId?: number) {
+    let apiClientResult: any;
+
+    try {
+      apiClientResult = await this.todoApiClient.getWorkDoneByConditions(courseId);
+    } catch (error) {
+      throw error;
+    }
+
+    return apiClientResult;
+  }
+
   async getWorkDone(id: number) {
     let apiClientResult: any;
 
