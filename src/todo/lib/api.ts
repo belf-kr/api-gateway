@@ -168,6 +168,19 @@ export class TodoApiClient {
     return serviceResult;
   }
 
+  async getWorkDoneByConditions(courseId?: number): Promise<AxiosResponse<any>> {
+    let serviceResult: any;
+
+    try {
+      const queryString = courseId ? `?courseId=${courseId}` : "";
+      serviceResult = await this.httpService.get("/work-dones" + queryString).toPromise();
+    } catch (error) {
+      throw error;
+    }
+
+    return serviceResult;
+  }
+
   async getWorkDone(id: number): Promise<AxiosResponse<any>> {
     let serviceResult: any;
 

@@ -81,5 +81,11 @@ Content-Type: application/json
     "content": "json 컨텐츠 1"
 }
 
+### work_done 전체 리스트 가져오기
+GET {{Host}}/{{Router}}/work-dones
+
+### work_done 리스트 가져오기
+GET {{Host}}/{{Router}}/work-dones?courseId=1
+
 ### work_done 디테일
 GET {{Host}}/{{Router}}/work-dones/1
