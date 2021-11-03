@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, HttpException, Param, Post, Query } from "@nestjs/common";
-import * as axios from "axios";
+import { AxiosResponse } from "axios";
 
 import { TodoService } from "./todo.service";
 
@@ -88,7 +88,7 @@ export class TodoController {
     let serviceResult: Array<ColorType>;
 
     try {
-      const result: axios.AxiosResponse<any> = await this.appService.getAllColors();
+      const result: AxiosResponse<any> = await this.appService.getAllColors();
 
       serviceResult = result.data;
     } catch (error) {
@@ -106,7 +106,7 @@ export class TodoController {
     let serviceResult: any;
 
     try {
-      const result: axios.AxiosResponse<any> = await this.appService.createCourse(coursesInput);
+      const result: AxiosResponse<any> = await this.appService.createCourse(coursesInput);
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
@@ -123,7 +123,7 @@ export class TodoController {
     let serviceResult: any;
 
     try {
-      const result: axios.AxiosResponse<any> = await this.appService.getAllCourses();
+      const result: AxiosResponse<any> = await this.appService.getAllCourses();
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
@@ -140,7 +140,7 @@ export class TodoController {
     let serviceResult: any;
 
     try {
-      const result: axios.AxiosResponse<any> = await this.appService.deleteCourse(params.id);
+      const result: AxiosResponse<any> = await this.appService.deleteCourse(params.id);
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
@@ -158,7 +158,7 @@ export class TodoController {
     let serviceResult: any;
 
     try {
-      const result: axios.AxiosResponse<any> = await this.appService.createWorkTodo(workTodoInput);
+      const result: AxiosResponse<any> = await this.appService.createWorkTodo(workTodoInput);
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
@@ -175,7 +175,7 @@ export class TodoController {
     let serviceResult: any;
 
     try {
-      const result: axios.AxiosResponse<any> = await this.appService.getWorkTodosByConditions(courseId);
+      const result: AxiosResponse<any> = await this.appService.getWorkTodosByConditions(courseId);
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
@@ -192,7 +192,7 @@ export class TodoController {
     let serviceResult: any;
 
     try {
-      const result: axios.AxiosResponse<any> = await this.appService.deleteWorkTodo(params.id);
+      const result: AxiosResponse<any> = await this.appService.deleteWorkTodo(params.id);
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
@@ -210,7 +210,24 @@ export class TodoController {
     let serviceResult: any;
 
     try {
-      const result: axios.AxiosResponse<any> = await this.appService.createWorkDone(workDoneInput);
+      const result: AxiosResponse<any> = await this.appService.createWorkDone(workDoneInput);
+      serviceResult = result.data;
+    } catch (error) {
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
+    }
+
+    return serviceResult;
+  }
+
+  @Get("work-dones")
+  async getWorkDonesByConditions(@Query("courseId") courseId?: number) {
+    let serviceResult: any;
+
+    try {
+      const result: AxiosResponse<any> = await this.appService.getWorkDonesByConditions(courseId);
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
@@ -227,7 +244,7 @@ export class TodoController {
     let serviceResult: any;
 
     try {
-      const result: axios.AxiosResponse<any> = await this.appService.getWorkDone(params.id);
+      const result: AxiosResponse<any> = await this.appService.getWorkDone(params.id);
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
