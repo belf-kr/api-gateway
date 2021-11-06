@@ -5,11 +5,12 @@ import { TodoService } from "./todo.service";
 
 import { getErrorHttpStatusCode, getErrorMessage } from "src/common/lib/error";
 
-import { WorkTodoType } from "src/common/type/work-todo.type";
 import { WorkDoneType } from "src/common/type/work-done.type";
 import { ColorType } from "src/common/type/color.type";
 import { CoursePostInterface } from "src/common/type/course-post.interface";
 import { CourseGetInterface } from "src/common/type/course-get.interface";
+import { WorkTodoPostInterface } from "src/common/type/work-todo-post.interface";
+import { WorkTodoGetInterface } from "src/common/type/work-todo-get.interface";
 
 @Controller("todo")
 export class TodoController {
@@ -156,11 +157,11 @@ export class TodoController {
 
   // WorkTodo
   @Post("work-todos")
-  async createWorkTodo(@Body() workTodoInput: WorkTodoType) {
+  async createWorkTodo(@Body() workTodoPostInput: WorkTodoPostInterface) {
     let serviceResult: any;
 
     try {
-      const result: AxiosResponse<any> = await this.appService.createWorkTodo(workTodoInput);
+      const result: AxiosResponse<any> = await this.appService.createWorkTodo(workTodoPostInput);
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
@@ -174,7 +175,7 @@ export class TodoController {
 
   @Get("work-todos")
   async getWorkTodosByConditions(@Query("courseId") courseId?: number) {
-    let serviceResult: any;
+    let serviceResult: WorkTodoGetInterface[];
 
     try {
       const result: AxiosResponse<any> = await this.appService.getWorkTodosByConditions(courseId);
