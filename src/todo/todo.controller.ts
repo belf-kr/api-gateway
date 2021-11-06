@@ -4,10 +4,13 @@ import { AxiosResponse } from "axios";
 import { TodoService } from "./todo.service";
 
 import { getErrorHttpStatusCode, getErrorMessage } from "src/common/lib/error";
-import { CourseType } from "src/common/type/course.type";
-import { WorkTodoType } from "src/common/type/work-todo.type";
+
 import { WorkDoneType } from "src/common/type/work-done.type";
 import { ColorType } from "src/common/type/color.type";
+import { CoursePostInterface } from "src/common/type/course-post.interface";
+import { CourseGetInterface } from "src/common/type/course-get.interface";
+import { WorkTodoPostInterface } from "src/common/type/work-todo-post.interface";
+import { WorkTodoGetInterface } from "src/common/type/work-todo-get.interface";
 
 @Controller("todo")
 export class TodoController {
@@ -102,11 +105,11 @@ export class TodoController {
   }
 
   @Post("courses")
-  async createCourse(@Body() coursesInput: CourseType) {
+  async createCourse(@Body() coursePostInput: CoursePostInterface) {
     let serviceResult: any;
 
     try {
-      const result: AxiosResponse<any> = await this.appService.createCourse(coursesInput);
+      const result: AxiosResponse<any> = await this.appService.createCourse(coursePostInput);
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
@@ -120,7 +123,7 @@ export class TodoController {
 
   @Get("courses")
   async getAllCourses() {
-    let serviceResult: any;
+    let serviceResult: CourseGetInterface[];
 
     try {
       const result: AxiosResponse<any> = await this.appService.getAllCourses();
@@ -136,11 +139,11 @@ export class TodoController {
   }
 
   @Delete("courses/:id")
-  async deleteCourse(@Param() params) {
+  async deleteCourse(@Param("id") id: number) {
     let serviceResult: any;
 
     try {
-      const result: AxiosResponse<any> = await this.appService.deleteCourse(params.id);
+      const result: AxiosResponse<any> = await this.appService.deleteCourse(id);
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
@@ -154,11 +157,11 @@ export class TodoController {
 
   // WorkTodo
   @Post("work-todos")
-  async createWorkTodo(@Body() workTodoInput: WorkTodoType) {
+  async createWorkTodo(@Body() workTodoPostInput: WorkTodoPostInterface) {
     let serviceResult: any;
 
     try {
-      const result: AxiosResponse<any> = await this.appService.createWorkTodo(workTodoInput);
+      const result: AxiosResponse<any> = await this.appService.createWorkTodo(workTodoPostInput);
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
@@ -172,7 +175,7 @@ export class TodoController {
 
   @Get("work-todos")
   async getWorkTodosByConditions(@Query("courseId") courseId?: number) {
-    let serviceResult: any;
+    let serviceResult: WorkTodoGetInterface[];
 
     try {
       const result: AxiosResponse<any> = await this.appService.getWorkTodosByConditions(courseId);
