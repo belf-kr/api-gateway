@@ -22,10 +22,10 @@ spec:
           resources:
             requests:
               cpu: 5m
-              memory: 80Mi
+              memory: 100Mi
             limits:
               cpu: 5m
-              memory: 80Mi
+              memory: 100Mi
           env:
             # 배포 stages
             - name: STAGES
