@@ -25,7 +25,6 @@ import { MockModule } from "./mock/mock.module";
         SERVER_PORT: Joi.number().default(3000),
         SERVER_PORT_TODO: Joi.number().default(3000),
         SERVER_PORT_MOCK: Joi.number().default(3000),
-        SERVER_PORT_OAUTH: Joi.number().default(3000),
         SERVER_PORT_STORAGE: Joi.number().default(3000),
       }),
     }),
