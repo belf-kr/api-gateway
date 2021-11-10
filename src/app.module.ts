@@ -13,8 +13,6 @@ import { TodoModule } from "./todo/todo.module";
 
 import { MockModule } from "./mock/mock.module";
 
-import { MiddlewareModule } from "./middleware/middleware.module";
-
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -33,7 +31,6 @@ import { MiddlewareModule } from "./middleware/middleware.module";
     }),
     TodoModule,
     MockModule,
-    MiddlewareModule,
     StorageModule,
   ],
   controllers: [AppController],
