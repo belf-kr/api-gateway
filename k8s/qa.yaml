@@ -21,11 +21,11 @@ spec:
             - containerPort: 3000
           resources:
             requests:
-              cpu: 100m
-              memory: 50Mi
+              cpu: 5m
+              memory: 80Mi
             limits:
-              cpu: 100m
-              memory: 100Mi
+              cpu: 5m
+              memory: 80Mi
           env:
             # 배포 stages
             - name: STAGES
