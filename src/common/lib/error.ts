@@ -6,17 +6,17 @@ function isAxiosError(error: any): error is AxiosError {
 }
 
 export function getErrorMessage(error: any): string {
-  let result: string;
+  let errorResult: any;
 
   if (isAxiosError(error)) {
     if (error.response.data !== undefined) {
-      result = error.response.data;
+      errorResult = error.response.data;
+    } else {
+      errorResult = error.message;
     }
-    result = error.message;
   }
-  result = error.message;
 
-  return result;
+  return errorResult;
 }
 
 export function getErrorHttpStatusCode(error: any): number {
