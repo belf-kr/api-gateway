@@ -36,6 +36,7 @@ export class OauthMiddleware implements NestMiddleware {
 
   async use(req: Request, res: Response, next: NextFunction) {
     console.log(`OauthMiddleware`);
+
     try {
       const jwtInput = req.headers["authorization"];
 
@@ -47,8 +48,10 @@ export class OauthMiddleware implements NestMiddleware {
         point: "OauthMiddleware",
         message,
       };
+
       throw new HttpException(errorRes, httpStatusCode);
     }
+
     next();
   }
 }
