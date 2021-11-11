@@ -4,6 +4,8 @@ import { TodoApiClient } from "./lib/api";
 
 import { MockApiClient } from "../mock/lib/api";
 
+import { BelfJwtService } from "src/belf-jwt/belf-jwt.service";
+
 import { CourseType } from "src/common/type/course.type";
 import { WorkTodoType } from "src/common/type/work-todo.type";
 import { WorkDoneType } from "src/common/type/work-done.type";
@@ -12,10 +14,12 @@ import { WorkDoneType } from "src/common/type/work-done.type";
 export class TodoService {
   private readonly mockApiClient: MockApiClient;
   private readonly todoApiClient: TodoApiClient;
+  private readonly belfJwtService: BelfJwtService;
 
-  constructor(mockApiClient: MockApiClient, todoApiClient: TodoApiClient) {
+  constructor(mockApiClient: MockApiClient, todoApiClient: TodoApiClient, belfJwtService: BelfJwtService) {
     this.mockApiClient = mockApiClient;
     this.todoApiClient = todoApiClient;
+    this.belfJwtService = belfJwtService;
   }
 
   async getServiceName() {
@@ -102,8 +106,9 @@ export class TodoService {
     return apiClientResult;
   }
 
-  async createCourse(courseInput: CourseType) {
+  async createCourse(courseInput: CourseType, headers: Record<string, string>) {
     let apiClientResult: any;
+    courseInput.creatorId = this.belfJwtService.getUserId(headers["authorization"]);
 
     try {
       apiClientResult = await this.todoApiClient.createCourse(courseInput);

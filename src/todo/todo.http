@@ -22,6 +22,7 @@ GET {{Host}}/{{Router}}/courses
 
 ### course 생성
 POST {{Host}}/{{Router}}/courses
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NfdXVpZCI6IjA5ZjhlOWZkLWY3MGMtNGJiNi1hOGFiLTlhMDUxOGIzMDNmNCIsImF1dGhvcml6ZWQiOnRydWUsImV4cCI6MTYzNjYzMzAwMiwidXNlcl9pZCI6M30.g8_W2fSVdVPTmMunTYe9eKKXqRSRenOVoxCWq5Piaes
 Content-Type: application/json
 
 {
@@ -35,8 +36,7 @@ Content-Type: application/json
         {
             "value": "하하하"
         }
-    ],
-    "creatorId": 1
+    ]
 }
 
 ### course 삭제

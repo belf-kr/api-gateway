@@ -10,6 +10,8 @@ import { MockModule } from "../mock/mock.module";
 
 import { K8sServiceDNS } from "../common/lib/service";
 
+import { BelfJwtModule } from "src/belf-jwt/belf-jwt.module";
+
 @Module({
   imports: [
     HttpModule.registerAsync({
@@ -20,6 +22,7 @@ import { K8sServiceDNS } from "../common/lib/service";
       inject: [ConfigService],
     }),
     MockModule,
+    BelfJwtModule,
   ],
   controllers: [TodoController],
   providers: [TodoService, TodoApiClient],

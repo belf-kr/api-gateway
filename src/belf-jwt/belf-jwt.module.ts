@@ -6,5 +6,6 @@ import { BelfJwtService } from "./belf-jwt.service";
 @Module({
   imports: [JwtModule.register({ secret: "useless-secret" })],
   providers: [BelfJwtService],
+  exports: [BelfJwtService],
 })
 export class BelfJwtModule {}

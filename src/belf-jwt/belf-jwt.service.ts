@@ -5,10 +5,10 @@ import { JwtService } from "@nestjs/jwt";
 export class BelfJwtService {
   constructor(private readonly jwtService: JwtService) {}
 
-  async getUserId(jwtInput: string) {
+  getUserId(jwtInput: string) {
     const decodedJwt = this.jwtService.decode(jwtInput);
-    const userId = decodedJwt["payload"]["user_id"] ?? undefined;
+    const userId = decodedJwt["user_id"] ?? undefined;
 
-    return userId;
+    return parseInt(userId);
   }
 }

@@ -6,10 +6,9 @@ import { getErrorHttpStatusCode, getErrorMessage } from "../common/lib/error";
 
 @Injectable()
 export class OauthMiddleware implements NestMiddleware {
-  constructor(private httpService: HttpService) {}
+  constructor(private readonly httpService: HttpService) {}
 
   async validJWT(jwtInput: string) {
-    let serviceResult: any;
     let requestConfig: AxiosRequestConfig;
 
     if (jwtInput) {
@@ -25,13 +24,10 @@ export class OauthMiddleware implements NestMiddleware {
         throw new HttpException({ data: "검증을 위한 JWT 값이 입력되지 않았습니다.", status: HttpStatus.BAD_REQUEST }, HttpStatus.BAD_REQUEST);
       }
 
-      const res = await this.httpService.get("/api/users/token/valid", requestConfig).toPromise();
-      serviceResult = res.data;
+      await this.httpService.get("/api/users/token/valid", requestConfig).toPromise();
     } catch (error) {
       throw error;
     }
-
-    return serviceResult;
   }
 
   async use(req: Request, res: Response, next: NextFunction) {

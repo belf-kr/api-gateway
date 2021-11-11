@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpException, Param, Post, Query } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Headers, HttpException, Param, Post, Query } from "@nestjs/common";
 import { AxiosResponse } from "axios";
 
 import { TodoService } from "./todo.service";
@@ -105,11 +105,11 @@ export class TodoController {
   }
 
   @Post("courses")
-  async createCourse(@Body() coursePostInput: CoursePostInterface) {
+  async createCourse(@Headers() headers: Record<string, string>, @Body() coursePostInput: CoursePostInterface) {
     let serviceResult: any;
 
     try {
-      const result: AxiosResponse<any> = await this.appService.createCourse(coursePostInput);
+      const result: AxiosResponse<any> = await this.appService.createCourse(coursePostInput, headers);
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);

@@ -1,4 +1,4 @@
-import { HttpModule, Module, NestModule } from "@nestjs/common";
+import { HttpModule, MiddlewareConsumer, Module, NestModule, RequestMethod } from "@nestjs/common";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 
 import { OauthMiddleware } from "./oauth.middleware";
@@ -18,7 +18,7 @@ import { K8sServiceDNS } from "../common/lib/service";
   providers: [OauthMiddleware],
 })
 export class MiddlewareModule implements NestModule {
-  configure() {
-    // consumer.apply(OauthMiddleware).forRoutes({ path: "/*", method: RequestMethod.ALL });
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(OauthMiddleware).forRoutes({ path: "/todo/courses", method: RequestMethod.POST });
   }
 }
