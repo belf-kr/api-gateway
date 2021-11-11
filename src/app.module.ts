@@ -15,6 +15,8 @@ import { MockModule } from "./mock/mock.module";
 
 import { MiddlewareModule } from "./middleware/middleware.module";
 
+import { BelfJwtModule } from "./belf-jwt/belf-jwt.module";
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -35,6 +37,7 @@ import { MiddlewareModule } from "./middleware/middleware.module";
     MockModule,
     MiddlewareModule,
     StorageModule,
+    BelfJwtModule,
   ],
   controllers: [AppController],
   providers: [AppService],
