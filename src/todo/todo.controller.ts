@@ -221,7 +221,6 @@ export class TodoController {
 
       throw new HttpException(message, httpStatusCode);
     }
-
     return serviceResult;
   }
 
