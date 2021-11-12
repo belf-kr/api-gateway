@@ -13,6 +13,10 @@ import { TodoModule } from "./todo/todo.module";
 
 import { MockModule } from "./mock/mock.module";
 
+import { MiddlewareModule } from "./middleware/middleware.module";
+
+import { BelfJwtModule } from "./belf-jwt/belf-jwt.module";
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -25,12 +29,15 @@ import { MockModule } from "./mock/mock.module";
         SERVER_PORT: Joi.number().default(3000),
         SERVER_PORT_TODO: Joi.number().default(3000),
         SERVER_PORT_MOCK: Joi.number().default(3000),
+        SERVER_PORT_OAUTH: Joi.number().default(8080),
         SERVER_PORT_STORAGE: Joi.number().default(3000),
       }),
     }),
     TodoModule,
     MockModule,
+    MiddlewareModule,
     StorageModule,
+    BelfJwtModule,
   ],
   controllers: [AppController],
   providers: [AppService],
