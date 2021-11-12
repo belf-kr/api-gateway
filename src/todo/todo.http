@@ -22,6 +22,7 @@ GET {{Host}}/{{Router}}/courses
 
 ### course 생성
 POST {{Host}}/{{Router}}/courses
+authorization: 
 Content-Type: application/json
 
 {
@@ -80,7 +81,8 @@ Content-Type: application/json
 {
     "workTodoId": 1,
     "title": "한 일의 제목1",
-    "content": "json 컨텐츠 1"
+    "content": "json 컨텐츠 1",
+    "userId": 1
 }
 
 ### work_done 전체 리스트 가져오기
