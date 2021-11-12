@@ -209,11 +209,11 @@ export class TodoController {
 
   // WorkDone
   @Post("work-dones")
-  async createWorkDone(@Body() workDoneInput: WorkDoneType) {
+  async createWorkDone(@Headers() headers: Record<string, string>, @Body() workDoneInput: WorkDoneType) {
     let serviceResult: any;
 
     try {
-      const result: AxiosResponse<any> = await this.appService.createWorkDone(workDoneInput);
+      const result: AxiosResponse<any> = await this.appService.createWorkDone(workDoneInput, headers);
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);

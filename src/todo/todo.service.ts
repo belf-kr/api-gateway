@@ -181,10 +181,11 @@ export class TodoService {
   }
 
   // WorkDone
-  async createWorkDone(workDoneInput: WorkDoneType) {
+  async createWorkDone(workDoneInput: WorkDoneType, headers: Record<string, string>) {
     let apiClientResult: any;
 
     try {
+      workDoneInput.userId = this.belfJwtService.getUserId(headers["authorization"]);
       apiClientResult = await this.todoApiClient.createWorkDone(workDoneInput);
     } catch (error) {
       throw error;
