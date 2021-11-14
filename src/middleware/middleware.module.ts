@@ -19,6 +19,12 @@ import { K8sServiceDNS } from "../common/lib/service";
 })
 export class MiddlewareModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(OauthMiddleware).forRoutes({ path: "/todo/courses", method: RequestMethod.POST }, { path: "/todo/work-dones", method: RequestMethod.POST });
+    consumer
+      .apply(OauthMiddleware)
+      .forRoutes(
+        { path: "/todo/courses", method: RequestMethod.POST },
+        { path: "/todo/work-todos", method: RequestMethod.POST },
+        { path: "/todo/work-dones", method: RequestMethod.POST }
+      );
   }
 }
