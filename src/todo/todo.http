@@ -44,6 +44,7 @@ DELETE {{Host}}/{{Router}}/courses/1
 
 ### work_todo 추가(필수)
 POST {{Host}}/{{Router}}/work-todos
+authorization: 
 Content-Type: application/json
 
 {
@@ -54,6 +55,7 @@ Content-Type: application/json
 
 ### work_todo 추가(선택)
 POST {{Host}}/{{Router}}/work-todos
+authorization: 
 Content-Type: application/json
 
 {
