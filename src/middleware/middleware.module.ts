@@ -22,8 +22,11 @@ export class MiddlewareModule implements NestModule {
     consumer
       .apply(OauthMiddleware)
       .forRoutes(
+        { path: "/todo/courses", method: RequestMethod.GET },
         { path: "/todo/courses", method: RequestMethod.POST },
+        { path: "/todo/work-todos", method: RequestMethod.GET },
         { path: "/todo/work-todos", method: RequestMethod.POST },
+        { path: "/todo/work-dones", method: RequestMethod.GET },
         { path: "/todo/work-dones", method: RequestMethod.POST }
       );
   }

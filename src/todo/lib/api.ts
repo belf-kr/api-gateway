@@ -93,11 +93,13 @@ export class TodoApiClient {
     return serviceResult;
   }
 
-  async getAllCourses(): Promise<AxiosResponse<any>> {
+  async getAllCourses(userId: number): Promise<AxiosResponse<any>> {
     let serviceResult: any;
 
     try {
-      serviceResult = await this.httpService.get("/courses").toPromise();
+      const querystring = userId ? `?userId=${userId}` : "";
+
+      serviceResult = await this.httpService.get("/courses" + querystring).toPromise();
     } catch (error) {
       throw error;
     }
@@ -130,12 +132,14 @@ export class TodoApiClient {
     return serviceResult;
   }
 
-  async getWorkTodosByConditions(courseId?: number): Promise<AxiosResponse<any>> {
+  async getWorkTodosByConditions(userId: number, courseId?: number): Promise<AxiosResponse<any>> {
     let serviceResult: any;
 
     try {
-      const queryString = courseId ? `?courseId=${courseId}` : "";
-      serviceResult = await this.httpService.get("/work-todos" + queryString).toPromise();
+      let querystring = userId ? `?userId=${userId}` : "";
+      querystring = courseId ? querystring + `&courseId=${courseId}` : querystring;
+
+      serviceResult = await this.httpService.get("/work-todos" + querystring).toPromise();
     } catch (error) {
       throw error;
     }
@@ -168,12 +172,14 @@ export class TodoApiClient {
     return serviceResult;
   }
 
-  async getWorkDoneByConditions(courseId?: number): Promise<AxiosResponse<any>> {
+  async getWorkDoneByConditions(userId: number, courseId?: number): Promise<AxiosResponse<any>> {
     let serviceResult: any;
 
     try {
-      const queryString = courseId ? `?courseId=${courseId}` : "";
-      serviceResult = await this.httpService.get("/work-dones" + queryString).toPromise();
+      let querystring = userId ? `?userId=${userId}` : "";
+      querystring = courseId ? querystring + `&courseId=${courseId}` : querystring;
+
+      serviceResult = await this.httpService.get("/work-dones" + querystring).toPromise();
     } catch (error) {
       throw error;
     }

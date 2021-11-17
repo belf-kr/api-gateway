@@ -122,11 +122,12 @@ export class TodoController {
   }
 
   @Get("courses")
-  async getAllCourses() {
+  async getAllCourses(@Headers() headers: Record<string, string>) {
     let serviceResult: CourseGetInterface[];
 
     try {
-      const result: AxiosResponse<any> = await this.appService.getAllCourses();
+      const result: AxiosResponse<any> = await this.appService.getAllCourses(headers);
+
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
@@ -175,11 +176,12 @@ export class TodoController {
   }
 
   @Get("work-todos")
-  async getWorkTodosByConditions(@Query("courseId") courseId?: number) {
+  async getWorkTodosByConditions(@Headers() headers: Record<string, string>, @Query("courseId") courseId?: number) {
     let serviceResult: WorkTodoGetInterface[];
 
     try {
-      const result: AxiosResponse<any> = await this.appService.getWorkTodosByConditions(courseId);
+      const result: AxiosResponse<any> = await this.appService.getWorkTodosByConditions(headers, courseId);
+
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
@@ -226,11 +228,12 @@ export class TodoController {
   }
 
   @Get("work-dones")
-  async getWorkDonesByConditions(@Query("courseId") courseId?: number) {
+  async getWorkDonesByConditions(@Headers() headers: Record<string, string>, @Query("courseId") courseId?: number) {
     let serviceResult: any;
 
     try {
-      const result: AxiosResponse<any> = await this.appService.getWorkDonesByConditions(courseId);
+      const result: AxiosResponse<any> = await this.appService.getWorkDonesByConditions(headers, courseId);
+
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
