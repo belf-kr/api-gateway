@@ -132,11 +132,12 @@ export class TodoService {
     return apiClientResult;
   }
 
-  async deleteCourse(id: number) {
+  async deleteCourse(headers: Record<string, string>, id: number) {
     let apiClientResult: any;
+    const userId = this.belfJwtService.getUserId(headers["authorization"]);
 
     try {
-      apiClientResult = await this.todoApiClient.deleteCourse(id);
+      apiClientResult = await this.todoApiClient.deleteCourse(userId, id);
     } catch (error) {
       throw error;
     }
@@ -171,11 +172,12 @@ export class TodoService {
     return apiClientResult;
   }
 
-  async deleteWorkTodo(id: number) {
+  async deleteWorkTodo(headers: Record<string, string>, id: number) {
     let apiClientResult: any;
+    const userId = this.belfJwtService.getUserId(headers["authorization"]);
 
     try {
-      apiClientResult = await this.todoApiClient.deleteWorkTodo(id);
+      apiClientResult = await this.todoApiClient.deleteWorkTodo(userId, id);
     } catch (error) {
       throw error;
     }
@@ -215,6 +217,19 @@ export class TodoService {
 
     try {
       apiClientResult = await this.todoApiClient.getWorkDone(id);
+    } catch (error) {
+      throw error;
+    }
+
+    return apiClientResult;
+  }
+
+  async deleteWorkDone(headers: Record<string, string>, id: number) {
+    let apiClientResult: any;
+    const userId = this.belfJwtService.getUserId(headers["authorization"]);
+
+    try {
+      apiClientResult = await this.todoApiClient.deleteWorkDone(userId, id);
     } catch (error) {
       throw error;
     }

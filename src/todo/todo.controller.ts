@@ -140,11 +140,11 @@ export class TodoController {
   }
 
   @Delete("courses/:id")
-  async deleteCourse(@Param("id") id: number) {
+  async deleteCourse(@Headers() headers: Record<string, string>, @Param("id") id: number) {
     let serviceResult: any;
 
     try {
-      const result: AxiosResponse<any> = await this.appService.deleteCourse(id);
+      const result: AxiosResponse<any> = await this.appService.deleteCourse(headers, id);
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
@@ -194,11 +194,11 @@ export class TodoController {
   }
 
   @Delete("work-todos/:id")
-  async deleteWorkTodo(@Param() params: any) {
+  async deleteWorkTodo(@Headers() headers: Record<string, string>, @Param("id") id: number) {
     let serviceResult: any;
 
     try {
-      const result: AxiosResponse<any> = await this.appService.deleteWorkTodo(params.id);
+      const result: AxiosResponse<any> = await this.appService.deleteWorkTodo(headers, id);
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
@@ -251,6 +251,23 @@ export class TodoController {
 
     try {
       const result: AxiosResponse<any> = await this.appService.getWorkDone(params.id);
+      serviceResult = result.data;
+    } catch (error) {
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
+    }
+
+    return serviceResult;
+  }
+
+  @Delete("work-dones/:id")
+  async deleteWorkDone(@Headers() headers: Record<string, string>, @Param("id") id: number) {
+    let serviceResult: any;
+
+    try {
+      const result: AxiosResponse<any> = await this.appService.deleteWorkDone(headers, id);
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);

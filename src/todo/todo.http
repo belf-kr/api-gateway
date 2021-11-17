@@ -42,6 +42,7 @@ Content-Type: application/json
 
 ### course 삭제
 DELETE {{Host}}/{{Router}}/courses/1
+authorization: 
 
 ### work_todo 추가(필수)
 POST {{Host}}/{{Router}}/work-todos
@@ -78,6 +79,7 @@ authorization:
 
 ### work_todo 삭제
 DELETE {{Host}}/{{Router}}/work-todos/1
+authorization: 
 
 ### work_done 추가
 POST {{Host}}/{{Router}}/work-dones
@@ -100,3 +102,8 @@ authorization:
 
 ### work_done 디테일
 GET {{Host}}/{{Router}}/work-dones/1
+authorization: 
+
+### work_done 삭제
+DELETE {{Host}}/{{Router}}/work-dones/1
+authorization: 
