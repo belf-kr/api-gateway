@@ -122,11 +122,12 @@ export class TodoController {
   }
 
   @Get("courses")
-  async getAllCourses() {
+  async getAllCourses(@Headers() headers: Record<string, string>) {
     let serviceResult: CourseGetInterface[];
 
     try {
-      const result: AxiosResponse<any> = await this.appService.getAllCourses();
+      const result: AxiosResponse<any> = await this.appService.getAllCourses(headers);
+
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
@@ -139,11 +140,11 @@ export class TodoController {
   }
 
   @Delete("courses/:id")
-  async deleteCourse(@Param("id") id: number) {
+  async deleteCourse(@Headers() headers: Record<string, string>, @Param("id") id: number) {
     let serviceResult: any;
 
     try {
-      const result: AxiosResponse<any> = await this.appService.deleteCourse(id);
+      const result: AxiosResponse<any> = await this.appService.deleteCourse(headers, id);
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
@@ -175,11 +176,12 @@ export class TodoController {
   }
 
   @Get("work-todos")
-  async getWorkTodosByConditions(@Query("courseId") courseId?: number) {
+  async getWorkTodosByConditions(@Headers() headers: Record<string, string>, @Query("courseId") courseId?: number) {
     let serviceResult: WorkTodoGetInterface[];
 
     try {
-      const result: AxiosResponse<any> = await this.appService.getWorkTodosByConditions(courseId);
+      const result: AxiosResponse<any> = await this.appService.getWorkTodosByConditions(headers, courseId);
+
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
@@ -192,11 +194,11 @@ export class TodoController {
   }
 
   @Delete("work-todos/:id")
-  async deleteWorkTodo(@Param() params: any) {
+  async deleteWorkTodo(@Headers() headers: Record<string, string>, @Param("id") id: number) {
     let serviceResult: any;
 
     try {
-      const result: AxiosResponse<any> = await this.appService.deleteWorkTodo(params.id);
+      const result: AxiosResponse<any> = await this.appService.deleteWorkTodo(headers, id);
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
@@ -226,11 +228,12 @@ export class TodoController {
   }
 
   @Get("work-dones")
-  async getWorkDonesByConditions(@Query("courseId") courseId?: number) {
+  async getWorkDonesByConditions(@Headers() headers: Record<string, string>, @Query("courseId") courseId?: number) {
     let serviceResult: any;
 
     try {
-      const result: AxiosResponse<any> = await this.appService.getWorkDonesByConditions(courseId);
+      const result: AxiosResponse<any> = await this.appService.getWorkDonesByConditions(headers, courseId);
+
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
@@ -243,11 +246,28 @@ export class TodoController {
   }
 
   @Get("work-dones/:id")
-  async getWorkDone(@Param() params: any) {
+  async getWorkDone(@Headers() headers: Record<string, string>, @Param("id") id: number) {
     let serviceResult: any;
 
     try {
-      const result: AxiosResponse<any> = await this.appService.getWorkDone(params.id);
+      const result: AxiosResponse<any> = await this.appService.getWorkDone(headers, id);
+      serviceResult = result.data;
+    } catch (error) {
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
+    }
+
+    return serviceResult;
+  }
+
+  @Delete("work-dones/:id")
+  async deleteWorkDone(@Headers() headers: Record<string, string>, @Param("id") id: number) {
+    let serviceResult: any;
+
+    try {
+      const result: AxiosResponse<any> = await this.appService.deleteWorkDone(headers, id);
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
