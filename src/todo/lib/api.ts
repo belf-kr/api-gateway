@@ -189,11 +189,12 @@ export class TodoApiClient {
     return serviceResult;
   }
 
-  async getWorkDone(id: number): Promise<AxiosResponse<any>> {
+  async getWorkDone(userId: number, id: number): Promise<AxiosResponse<any>> {
     let serviceResult: any;
+    const querystring = userId ? `?userId=${userId}` : "";
 
     try {
-      serviceResult = await this.httpService.get("/work-dones/" + id).toPromise();
+      serviceResult = await this.httpService.get("/work-dones/" + id + querystring).toPromise();
     } catch (error) {
       throw error;
     }

@@ -212,11 +212,12 @@ export class TodoService {
     return apiClientResult;
   }
 
-  async getWorkDone(id: number) {
+  async getWorkDone(headers: Record<string, string>, id: number) {
     let apiClientResult: any;
+    const userId = this.belfJwtService.getUserId(headers["authorization"]);
 
     try {
-      apiClientResult = await this.todoApiClient.getWorkDone(id);
+      apiClientResult = await this.todoApiClient.getWorkDone(userId, id);
     } catch (error) {
       throw error;
     }

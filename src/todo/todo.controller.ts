@@ -246,11 +246,11 @@ export class TodoController {
   }
 
   @Get("work-dones/:id")
-  async getWorkDone(@Param() params: any) {
+  async getWorkDone(@Headers() headers: Record<string, string>, @Param("id") id: number) {
     let serviceResult: any;
 
     try {
-      const result: AxiosResponse<any> = await this.appService.getWorkDone(params.id);
+      const result: AxiosResponse<any> = await this.appService.getWorkDone(headers, id);
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
