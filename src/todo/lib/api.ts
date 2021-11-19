@@ -93,13 +93,11 @@ export class TodoApiClient {
     return serviceResult;
   }
 
-  async getAllCourses(userId: number): Promise<AxiosResponse<any>> {
+  async getAllCourses(): Promise<AxiosResponse<any>> {
     let serviceResult: any;
 
     try {
-      const querystring = userId ? `?userId=${userId}` : "";
-
-      serviceResult = await this.httpService.get("/courses" + querystring).toPromise();
+      serviceResult = await this.httpService.get("/courses").toPromise();
     } catch (error) {
       throw error;
     }
@@ -193,12 +191,11 @@ export class TodoApiClient {
     return serviceResult;
   }
 
-  async getWorkDone(userId: number, id: number): Promise<AxiosResponse<any>> {
+  async getWorkDone(id: number): Promise<AxiosResponse<any>> {
     let serviceResult: any;
-    const querystring = userId ? `?userId=${userId}` : "";
 
     try {
-      serviceResult = await this.httpService.get("/work-dones/" + id + querystring).toPromise();
+      serviceResult = await this.httpService.get("/work-dones/" + id).toPromise();
     } catch (error) {
       throw error;
     }
