@@ -22,9 +22,12 @@ export class MiddlewareModule implements NestModule {
     consumer
       .apply(OauthMiddleware)
       .forRoutes(
-        { path: "/todo/courses", method: RequestMethod.ALL },
-        { path: "/todo/work-todos", method: RequestMethod.ALL },
-        { path: "/todo/work-dones", method: RequestMethod.ALL }
+        { path: "/todo/courses", method: RequestMethod.POST },
+        { path: "/todo/courses", method: RequestMethod.DELETE },
+        { path: "/todo/work-todos", method: RequestMethod.POST },
+        { path: "/todo/work-todos", method: RequestMethod.DELETE },
+        { path: "/todo/work-dones", method: RequestMethod.POST },
+        { path: "/todo/work-dones", method: RequestMethod.DELETE }
       );
   }
 }

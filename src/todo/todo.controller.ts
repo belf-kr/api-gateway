@@ -122,11 +122,11 @@ export class TodoController {
   }
 
   @Get("courses")
-  async getAllCourses(@Headers() headers: Record<string, string>) {
+  async getAllCourses() {
     let serviceResult: CourseGetInterface[];
 
     try {
-      const result: AxiosResponse<any> = await this.appService.getAllCourses(headers);
+      const result: AxiosResponse<any> = await this.appService.getAllCourses();
 
       serviceResult = result.data;
     } catch (error) {
@@ -177,7 +177,7 @@ export class TodoController {
 
   @Get("work-todos")
   async getWorkTodosByConditions(
-    @Headers() headers: Record<string, string>,
+    @Query("userId") userId?: number,
     @Query("courseId") courseId?: number,
     @Query("activeDate") activeDate?: Date,
     @Query("maximumActiveDate") maximumActiveDate?: Date
@@ -185,7 +185,7 @@ export class TodoController {
     let serviceResult: WorkTodoGetInterface[];
 
     try {
-      const result: AxiosResponse<any> = await this.appService.getWorkTodosByConditions(headers, courseId, activeDate, maximumActiveDate);
+      const result: AxiosResponse<any> = await this.appService.getWorkTodosByConditions(userId, courseId, activeDate, maximumActiveDate);
 
       serviceResult = result.data;
     } catch (error) {
@@ -233,11 +233,11 @@ export class TodoController {
   }
 
   @Get("work-dones")
-  async getWorkDonesByConditions(@Headers() headers: Record<string, string>, @Query("courseId") courseId?: number) {
+  async getWorkDonesByConditions(@Query("userId") userId?: number, @Query("courseId") courseId?: number) {
     let serviceResult: any;
 
     try {
-      const result: AxiosResponse<any> = await this.appService.getWorkDonesByConditions(headers, courseId);
+      const result: AxiosResponse<any> = await this.appService.getWorkDonesByConditions(userId, courseId);
 
       serviceResult = result.data;
     } catch (error) {
@@ -251,11 +251,11 @@ export class TodoController {
   }
 
   @Get("work-dones/:id")
-  async getWorkDone(@Headers() headers: Record<string, string>, @Param("id") id: number) {
+  async getWorkDone(@Param("id") id: number) {
     let serviceResult: any;
 
     try {
-      const result: AxiosResponse<any> = await this.appService.getWorkDone(headers, id);
+      const result: AxiosResponse<any> = await this.appService.getWorkDone(id);
       serviceResult = result.data;
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
