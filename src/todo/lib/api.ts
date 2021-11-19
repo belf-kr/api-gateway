@@ -133,12 +133,14 @@ export class TodoApiClient {
     return serviceResult;
   }
 
-  async getWorkTodosByConditions(userId: number, courseId?: number): Promise<AxiosResponse<any>> {
+  async getWorkTodosByConditions(userId: number, courseId?: number, activeDate?: Date, maximumActiveDate?: Date): Promise<AxiosResponse<any>> {
     let serviceResult: any;
 
     try {
       let querystring = userId ? `?userId=${userId}` : "";
       querystring = courseId ? querystring + `&courseId=${courseId}` : querystring;
+      querystring = courseId ? querystring + `&activeDate=${activeDate}` : querystring;
+      querystring = courseId ? querystring + `&maximumActiveDate=${maximumActiveDate}` : querystring;
 
       serviceResult = await this.httpService.get("/work-todos" + querystring).toPromise();
     } catch (error) {
@@ -174,12 +176,14 @@ export class TodoApiClient {
     return serviceResult;
   }
 
-  async getWorkDoneByConditions(userId: number, courseId?: number): Promise<AxiosResponse<any>> {
+  async getWorkDoneByConditions(userId: number, courseId?: number, activeDate?: Date, maximumActiveDate?: Date): Promise<AxiosResponse<any>> {
     let serviceResult: any;
 
     try {
       let querystring = userId ? `?userId=${userId}` : "";
       querystring = courseId ? querystring + `&courseId=${courseId}` : querystring;
+      querystring = courseId ? querystring + `&activeDate=${activeDate}` : querystring;
+      querystring = courseId ? querystring + `&maximumActiveDate=${maximumActiveDate}` : querystring;
 
       serviceResult = await this.httpService.get("/work-dones" + querystring).toPromise();
     } catch (error) {

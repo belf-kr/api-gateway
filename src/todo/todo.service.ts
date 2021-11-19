@@ -159,12 +159,12 @@ export class TodoService {
     return apiClientResult;
   }
 
-  async getWorkTodosByConditions(headers: Record<string, string>, courseId?: number) {
+  async getWorkTodosByConditions(headers: Record<string, string>, courseId?: number, activeDate?: Date, maximumActiveDate?: Date) {
     let apiClientResult: any;
     const userId = this.belfJwtService.getUserId(headers["authorization"]);
 
     try {
-      apiClientResult = await this.todoApiClient.getWorkTodosByConditions(userId, courseId);
+      apiClientResult = await this.todoApiClient.getWorkTodosByConditions(userId, courseId, activeDate, maximumActiveDate);
     } catch (error) {
       throw error;
     }
