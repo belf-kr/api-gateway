@@ -228,11 +228,16 @@ export class TodoController {
   }
 
   @Get("work-dones")
-  async getWorkDonesByConditions(@Headers() headers: Record<string, string>, @Query("courseId") courseId?: number) {
+  async getWorkDonesByConditions(
+    @Headers() headers: Record<string, string>,
+    @Query("courseId") courseId?: number,
+    @Query("activeDate") activeDate?: Date,
+    @Query("maximumActiveDate") maximumActiveDate?: Date
+  ) {
     let serviceResult: any;
 
     try {
-      const result: AxiosResponse<any> = await this.appService.getWorkDonesByConditions(headers, courseId);
+      const result: AxiosResponse<any> = await this.appService.getWorkDonesByConditions(headers, courseId, activeDate, maximumActiveDate);
 
       serviceResult = result.data;
     } catch (error) {
