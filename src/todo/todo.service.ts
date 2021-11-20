@@ -131,6 +131,18 @@ export class TodoService {
     return apiClientResult;
   }
 
+  async getCourse(id: number) {
+    let apiClientResult: any;
+
+    try {
+      apiClientResult = await this.todoApiClient.getCourse(id);
+    } catch (error) {
+      throw error;
+    }
+
+    return apiClientResult;
+  }
+
   async deleteCourse(headers: Record<string, string>, id: number) {
     let apiClientResult: any;
     const userId = this.belfJwtService.getUserId(headers["authorization"]);

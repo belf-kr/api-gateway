@@ -139,6 +139,23 @@ export class TodoController {
     return serviceResult;
   }
 
+  @Get("courses/:id")
+  async getCourse(@Param("id") id: number) {
+    let serviceResult: any;
+
+    try {
+      const result: AxiosResponse<any> = await this.appService.getCourse(id);
+      serviceResult = result.data;
+    } catch (error) {
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
+    }
+
+    return serviceResult;
+  }
+
   @Delete("courses/:id")
   async deleteCourse(@Headers() headers: Record<string, string>, @Param("id") id: number) {
     let serviceResult: any;
