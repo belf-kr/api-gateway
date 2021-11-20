@@ -110,7 +110,7 @@ export class TodoApiClient {
     let serviceResult: any;
 
     try {
-      serviceResult = await this.httpService.delete("/courses/" + id).toPromise();
+      serviceResult = await this.httpService.get("/courses/" + id).toPromise();
     } catch (error) {
       throw error;
     }
