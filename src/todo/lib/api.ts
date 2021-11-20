@@ -106,6 +106,18 @@ export class TodoApiClient {
     return serviceResult;
   }
 
+  async getCourse(id: number): Promise<AxiosResponse<any>> {
+    let serviceResult: any;
+
+    try {
+      serviceResult = await this.httpService.delete("/courses/" + id).toPromise();
+    } catch (error) {
+      throw error;
+    }
+
+    return serviceResult;
+  }
+
   async deleteCourse(userId: number, id: number): Promise<AxiosResponse<any>> {
     let serviceResult: any;
     const querystring = userId ? `?userId=${userId}` : "";
