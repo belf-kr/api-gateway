@@ -93,11 +93,12 @@ export class TodoApiClient {
     return serviceResult;
   }
 
-  async getAllCourses(): Promise<AxiosResponse<any>> {
+  async getCoursesByConditions(userId?: number): Promise<AxiosResponse<any>> {
     let serviceResult: any;
+    const querystring = userId ? `?userId=${userId}` : "";
 
     try {
-      serviceResult = await this.httpService.get("/courses").toPromise();
+      serviceResult = await this.httpService.get("/courses" + querystring).toPromise();
     } catch (error) {
       throw error;
     }
