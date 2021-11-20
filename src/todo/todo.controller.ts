@@ -122,11 +122,11 @@ export class TodoController {
   }
 
   @Get("courses")
-  async getAllCourses() {
+  async getCoursesByConditions(@Query("userId") userId?: number) {
     let serviceResult: CourseGetInterface[];
 
     try {
-      const result: AxiosResponse<any> = await this.appService.getAllCourses();
+      const result: AxiosResponse<any> = await this.appService.getCoursesByConditions(userId);
 
       serviceResult = result.data;
     } catch (error) {
