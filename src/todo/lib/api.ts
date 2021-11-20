@@ -1,6 +1,7 @@
 import { HttpService, Injectable } from "@nestjs/common";
 import { AxiosResponse } from "axios";
 
+import { ColorType } from "src/common/type/color.type";
 import { CourseType } from "src/common/type/course.type";
 import { WorkTodoType } from "src/common/type/work-todo.type";
 import { WorkDoneType } from "src/common/type/work-done.type";
@@ -73,6 +74,18 @@ export class TodoApiClient {
 
     try {
       serviceResult = await this.httpService.get("/colors").toPromise();
+    } catch (error) {
+      throw error;
+    }
+
+    return serviceResult;
+  }
+
+  async createColor(colorInput: ColorType) {
+    let serviceResult: any;
+
+    try {
+      serviceResult = await this.httpService.post("/colors", colorInput).toPromise();
     } catch (error) {
       throw error;
     }

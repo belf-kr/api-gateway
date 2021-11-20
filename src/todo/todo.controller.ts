@@ -104,6 +104,23 @@ export class TodoController {
     return serviceResult;
   }
 
+  @Post("colors")
+  async createColor(@Body() colorInput: ColorType) {
+    let serviceResult: any;
+
+    try {
+      const result: AxiosResponse<any> = await this.appService.createColor(colorInput);
+      serviceResult = result.data;
+    } catch (error) {
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
+    }
+
+    return serviceResult;
+  }
+
   @Post("courses")
   async createCourse(@Headers() headers: Record<string, string>, @Body() coursePostInput: CoursePostInterface) {
     let serviceResult: any;
