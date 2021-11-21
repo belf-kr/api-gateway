@@ -6,6 +6,7 @@ import { MockApiClient } from "../mock/lib/api";
 
 import { BelfJwtService } from "src/belf-jwt/belf-jwt.service";
 
+import { ColorType } from "src/common/type/color.type";
 import { CourseType } from "src/common/type/course.type";
 import { WorkTodoType } from "src/common/type/work-todo.type";
 import { WorkDoneType } from "src/common/type/work-done.type";
@@ -99,6 +100,18 @@ export class TodoService {
 
     try {
       apiClientResult = await this.todoApiClient.getAllColors();
+    } catch (error) {
+      throw error;
+    }
+
+    return apiClientResult;
+  }
+
+  async createColor(colorInput: ColorType) {
+    let apiClientResult: any;
+
+    try {
+      apiClientResult = await this.todoApiClient.createColor(colorInput);
     } catch (error) {
       throw error;
     }
