@@ -121,7 +121,7 @@ export class TodoService {
 
   async createCourse(courseInput: CourseType, headers: Record<string, string>) {
     let apiClientResult: any;
-    courseInput.creatorId = this.belfJwtService.getUserId(headers["authorization"]);
+    courseInput.userId = this.belfJwtService.getUserId(headers["authorization"]);
 
     try {
       apiClientResult = await this.todoApiClient.createCourse(courseInput);
