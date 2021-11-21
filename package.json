@@ -1,6 +1,6 @@
 {
   "name": "api-gateway",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "",
   "author": "",
   "private": true,
@@ -54,7 +54,7 @@
     "ts-jest": "^26.5.4",
     "ts-loader": "^8.0.18",
     "ts-node": "^9.1.1",
-    "tsconfig-paths": "^3.9.0",
+    "tsconfig-paths": "^3.12.0",
     "typescript": "^4.4.4"
   },
   "jest": {
