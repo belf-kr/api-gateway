@@ -28,7 +28,8 @@ export class MiddlewareModule implements NestModule {
         { path: "/todo/work-todos", method: RequestMethod.DELETE },
         { path: "/todo/work-dones", method: RequestMethod.POST },
         { path: "/todo/work-dones", method: RequestMethod.DELETE },
-        { path: "/storage/upload", method: RequestMethod.POST }
+        { path: "/storage/upload", method: RequestMethod.POST },
+        { path: "/storage/delete", method: RequestMethod.DELETE }
       );
   }
 }

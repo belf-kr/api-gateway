@@ -76,6 +76,19 @@ export class StorageService {
     return apiClientResult;
   }
 
+  async deleteFile(headers: Record<string, string>, fileId: string): Promise<string> {
+    let apiClientResult: string;
+    const userId = this.belfJwtService.getUserId(headers["authorization"]);
+
+    try {
+      apiClientResult = await this.storageApiClient.deleteFile(userId, fileId);
+    } catch (error) {
+      throw error;
+    }
+
+    return apiClientResult;
+  }
+
   getFileURL(id: string) {
     return this.storageApiClient.getFileURL(id);
   }

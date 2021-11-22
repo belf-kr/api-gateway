@@ -20,6 +20,11 @@ GET {{Host}}/{{Router}}/file/base64/{{FileId}}
 
 ### File upload
 POST {{Host}}/{{Router}}/upload
+authorization: 
+
+### File delete
+DELETE {{Host}}/{{Router}}/delete?fileId={{FileId}}
+authorization: 
 
 ### File 정보 가져오기
 GET {{Host}}/{{Router}}/info/{{FileId}}
