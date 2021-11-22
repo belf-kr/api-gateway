@@ -21,6 +21,14 @@ GET {{Host}}/{{Router}}/file/base64/{{FileId}}
 ### File upload
 POST {{Host}}/{{Router}}/upload
 authorization: 
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="1.png"
+Content-Type: image/png
+
+< /Users/kyungeun/Downloads/123.jpeg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
 
 ### File delete
 DELETE {{Host}}/{{Router}}/delete?fileId={{FileId}}
