@@ -54,4 +54,4 @@ client, service 간의 HTTP 요청 및 응답을 중계합니다.
 | SERVER_PORT_OAUTH   | ✅  |   ✅    |     8080      | 8080, 3001              | JWT 인증을 위한 OAuth 서비스와 연동을 위한 `HTTP Listen port` 값입니다.            |
 | SERVER_PORT_MOCK    | ✅  |   ✅    |     3000      | 3000, 3002              | API 서비스의 구동을 위한 Mock 서비스의 `HTTP Listen port` 값입니다.                |
 | SERVER_PORT_TODO    | ✅  |   ✅    |    3000‍️     | 3000, 3003              | API 서비스 구동을 위한 Todo 서비스의 `HTTP Listen port` 값입니다.                  |
-| SERVER_PORT_STORAGE | ✅  |   ✅    |    3000‍️     | 3000, 3004              | API 서비스 구동을 위한 File 서비스의 `HTTP Listen port` 값입니다.                  |
+| SERVER_PORT_STORAGE | ✅  |   ✅    |     8000      | 8000, 3004              | API 서비스 구동을 위한 File 서비스의 `HTTP Listen port` 값입니다.                  |

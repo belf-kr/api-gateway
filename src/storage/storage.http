@@ -27,7 +27,7 @@ Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0g
 Content-Disposition: form-data; name="file"; filename="1.png"
 Content-Type: image/png
 
-< /Users/kyungeun/Downloads/123.jpeg
+< ~/Desktop/storage.png
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 
 ### File delete
