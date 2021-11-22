@@ -63,12 +63,13 @@ export class StorageApiClient {
     return serviceResult;
   }
 
-  async uploadFile(file: any): Promise<any> {
+  async uploadFile(file: any, userId: number): Promise<any> {
     let serviceResult: any;
 
     try {
       const form = new FormData();
       form.append("file", file.buffer, { filename: file.originalname });
+      form.append("userId", userId);
       const res = await this.httpService
         .post("/api/v1/upload/", form, {
           headers: {
