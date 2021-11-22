@@ -86,6 +86,22 @@ export class StorageApiClient {
     return serviceResult;
   }
 
+  async deleteFile(userId: number, fileId: string): Promise<any> {
+    let serviceResult: any;
+
+    let querystring = userId ? `?userId=${userId}` : "";
+    querystring = fileId ? querystring + `&fileId=${fileId}` : querystring;
+
+    try {
+      const res = await this.httpService.delete("/api/v1/delete" + querystring).toPromise();
+      serviceResult = res.data;
+    } catch (error) {
+      throw error;
+    }
+
+    return serviceResult;
+  }
+
   getFileURL(id: string): string {
     const baseURL = this.httpService.axiosRef.defaults.baseURL;
     return baseURL + "/api/v1/download/" + id;

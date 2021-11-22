@@ -1,4 +1,4 @@
-import { Controller, Get, Post, UploadedFile, UseInterceptors, Param, HttpException, Headers } from "@nestjs/common";
+import { Controller, Get, Post, UploadedFile, UseInterceptors, Param, HttpException, Headers, Delete, Query } from "@nestjs/common";
 import { FileInterceptor } from "@nestjs/platform-express";
 
 import { StorageService } from "./storage.service";
@@ -84,6 +84,22 @@ export class StorageController {
 
     try {
       serviceResult = await this.appService.uploadFile(headers, file);
+    } catch (error) {
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
+    }
+
+    return serviceResult;
+  }
+
+  @Delete("delete")
+  async deleteFile(@Headers() headers: Record<string, string>, @Query("fileId") fileId: string): Promise<string> {
+    let serviceResult: string;
+
+    try {
+      serviceResult = await this.appService.deleteFile(headers, fileId);
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
       const message = getErrorMessage(error);
