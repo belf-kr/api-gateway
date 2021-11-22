@@ -1,4 +1,4 @@
-import { Controller, Get, Post, UploadedFile, UseInterceptors, Param, HttpException } from "@nestjs/common";
+import { Controller, Get, Post, UploadedFile, UseInterceptors, Param, HttpException, Headers } from "@nestjs/common";
 import { FileInterceptor } from "@nestjs/platform-express";
 
 import { StorageService } from "./storage.service";
@@ -79,11 +79,11 @@ export class StorageController {
 
   @Post("upload")
   @UseInterceptors(FileInterceptor("file"))
-  async uploadFile(@UploadedFile() file): Promise<string> {
+  async uploadFile(@Headers() headers: Record<string, string>, @UploadedFile() file: any): Promise<string> {
     let serviceResult: string;
 
     try {
-      serviceResult = await this.appService.uploadFile(file);
+      serviceResult = await this.appService.uploadFile(headers, file);
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
       const message = getErrorMessage(error);

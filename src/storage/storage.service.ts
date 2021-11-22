@@ -3,12 +3,16 @@ import { AxiosResponse } from "axios";
 
 import { StorageApiClient } from "./lib/api";
 
+import { BelfJwtService } from "src/belf-jwt/belf-jwt.service";
+
 @Injectable()
 export class StorageService {
   private readonly storageApiClient: StorageApiClient;
+  private readonly belfJwtService: BelfJwtService;
 
-  constructor(storageApiClient: StorageApiClient) {
+  constructor(storageApiClient: StorageApiClient, belfJwtService: BelfJwtService) {
     this.storageApiClient = storageApiClient;
+    this.belfJwtService = belfJwtService;
   }
 
   async getServiceName() {
@@ -59,11 +63,12 @@ export class StorageService {
     return apiClientResult;
   }
 
-  async uploadFile(file: any): Promise<string> {
+  async uploadFile(headers: Record<string, string>, file: any): Promise<string> {
     let apiClientResult: string;
+    const userId = this.belfJwtService.getUserId(headers["authorization"]);
 
     try {
-      apiClientResult = await this.storageApiClient.uploadFile(file);
+      apiClientResult = await this.storageApiClient.uploadFile(file, userId);
     } catch (error) {
       throw error;
     }
