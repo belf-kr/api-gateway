@@ -24,7 +24,7 @@ client, service 간의 HTTP 요청 및 응답을 중계합니다.
 1. .env.dev 파일에 특이사항이 있는 경우 수정합니다.
 1. API와 연결할 service를 개발 환경에서 .env.dev 파일 내 포트 번호와 맞추어 실행합니다.
 1. 각 service에 HTTP 요청을 보내서 service가 실행 되고 있음을 확인합니다.
-1. `npm i && npm run start:dev` 명령을 이용해 API service를 시작합니다.
+1. VSCode 디버그 창 내부에 있는 NestJS start 버튼을 눌러 시작합니다.
 
 ### QA/production 환경
 
@@ -54,4 +54,4 @@ client, service 간의 HTTP 요청 및 응답을 중계합니다.
 | SERVER_PORT_OAUTH   | ✅  |   ✅    |     8080      | 8080, 3001              | JWT 인증을 위한 OAuth 서비스와 연동을 위한 `HTTP Listen port` 값입니다.            |
 | SERVER_PORT_MOCK    | ✅  |   ✅    |     3000      | 3000, 3002              | API 서비스의 구동을 위한 Mock 서비스의 `HTTP Listen port` 값입니다.                |
 | SERVER_PORT_TODO    | ✅  |   ✅    |    3000‍️     | 3000, 3003              | API 서비스 구동을 위한 Todo 서비스의 `HTTP Listen port` 값입니다.                  |
-| SERVER_PORT_STORAGE | ✅  |   ✅    |    3000‍️     | 3000, 3004              | API 서비스 구동을 위한 File 서비스의 `HTTP Listen port` 값입니다.                  |
+| SERVER_PORT_STORAGE | ✅  |   ✅    |     8000      | 8000, 3004              | API 서비스 구동을 위한 File 서비스의 `HTTP Listen port` 값입니다.                  |
