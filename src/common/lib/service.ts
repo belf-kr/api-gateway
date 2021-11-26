@@ -19,6 +19,9 @@ export function K8sServiceDNS(svc: string, port: number): string {
       // TODO: 해당 주소가 사용되고 있는 주소인지 확인하는 방어코드 필요
       url = `http://localhost:${port}`;
       break;
+    case "docker":
+      url = `http://host.docker.internal:${port}`;
+      break;
     default:
       if (!ns) {
         throw new Error(`STAGES 환경 변수 값이 지정되지 않았습니다.`);
