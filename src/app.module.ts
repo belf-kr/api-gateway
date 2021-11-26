@@ -1,5 +1,6 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
+import { APP_INTERCEPTOR } from "@nestjs/core";
 import Joi = require("joi");
 
 import { AppController } from "./app.controller";
@@ -16,6 +17,8 @@ import { MockModule } from "./mock/mock.module";
 import { MiddlewareModule } from "./middleware/middleware.module";
 
 import { BelfJwtModule } from "./belf-jwt/belf-jwt.module";
+
+import { LoggingInterceptor } from "./interceptor/logging.interceptor";
 
 @Module({
   imports: [
@@ -40,6 +43,12 @@ import { BelfJwtModule } from "./belf-jwt/belf-jwt.module";
     BelfJwtModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: LoggingInterceptor,
+    },
+  ],
 })
 export class AppModule {}
