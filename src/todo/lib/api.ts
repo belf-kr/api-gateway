@@ -29,18 +29,18 @@ export class TodoApiClient {
   }
 
   async getPing() {
-    console.log(`API begin: ${new Date().toUTCString()}`);
+    console.log(`API begin: ${new Date().toUTCString()}, and ${new Date().getUTCMilliseconds()}ms`);
     let serviceResult: any;
 
     try {
-      console.log(`Before call HTTP request at Todo service: ${new Date().toUTCString()}`);
+      console.log(`Before call HTTP request at Todo service: and ${new Date().toUTCString()}, ${new Date().getUTCMilliseconds()}ms`);
       const res = await this.httpService.get("/ping").toPromise();
       serviceResult = res.data;
     } catch (error) {
       throw error;
     }
 
-    console.log(`API end: ${new Date().toUTCString()}`);
+    console.log(`API end: ${new Date().toUTCString()}, and ${new Date().getUTCMilliseconds()}ms`);
     return serviceResult;
   }
 
