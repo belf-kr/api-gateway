@@ -36,17 +36,14 @@ export class TodoService {
   }
 
   async getPing() {
-    console.log(`Service begin: ${new Date().toUTCString()}, and ${new Date().getUTCMilliseconds()}ms`);
     let apiClientResult: any;
 
     try {
-      console.log(`Before call API HTTP Call: ${new Date().toUTCString()}, and ${new Date().getUTCMilliseconds()}ms`);
       apiClientResult = await this.todoApiClient.getPing();
     } catch (error) {
       throw error;
     }
 
-    console.log(`Service end: ${new Date().toUTCString()}, and ${new Date().getUTCMilliseconds()}ms`);
     return apiClientResult;
   }
 

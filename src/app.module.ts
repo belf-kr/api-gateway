@@ -18,7 +18,7 @@ import { MiddlewareModule } from "./middleware/middleware.module";
 
 import { BelfJwtModule } from "./belf-jwt/belf-jwt.module";
 
-import { LoggingInterceptor } from "./interceptor/loggin.interceptor";
+import { LoggingInterceptor } from "./interceptor/logging.interceptor";
 
 @Module({
   imports: [
