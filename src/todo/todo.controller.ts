@@ -232,6 +232,23 @@ export class TodoController {
     return serviceResult;
   }
 
+  @Get("work-todos/:id")
+  async getWorkTodo(@Param("id") id: number) {
+    let serviceResult: any;
+
+    try {
+      const result: AxiosResponse<any> = await this.appService.getWorkTodo(id);
+      serviceResult = result.data;
+    } catch (error) {
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
+    }
+
+    return serviceResult;
+  }
+
   @Delete("work-todos/:id")
   async deleteWorkTodo(@Headers() headers: Record<string, string>, @Param("id") id: number) {
     let serviceResult: any;

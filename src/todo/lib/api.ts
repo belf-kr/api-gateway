@@ -174,6 +174,18 @@ export class TodoApiClient {
     return serviceResult;
   }
 
+  async getWorkTodo(id: number): Promise<AxiosResponse<any>> {
+    let serviceResult: any;
+
+    try {
+      serviceResult = await this.httpService.get("/work-todos/" + id).toPromise();
+    } catch (error) {
+      throw error;
+    }
+
+    return serviceResult;
+  }
+
   async deleteWorkTodo(userId: number, id: number): Promise<AxiosResponse<any>> {
     let serviceResult: any;
     const querystring = userId ? `?userId=${userId}` : "";
