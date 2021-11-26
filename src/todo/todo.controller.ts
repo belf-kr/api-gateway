@@ -38,9 +38,11 @@ export class TodoController {
 
   @Get("ping")
   async getPing() {
+    console.log(`Controller begin: ${new Date().toUTCString()}`);
     let serviceResult: any;
 
     try {
+      console.log(`Before call service method: ${new Date().toUTCString()}`);
       serviceResult = await this.appService.getPing();
     } catch (error) {
       const httpStatusCode = getErrorHttpStatusCode(error);
@@ -49,6 +51,7 @@ export class TodoController {
       throw new HttpException(message, httpStatusCode);
     }
 
+    console.log(`Controller end: ${new Date().toUTCString()}`);
     return serviceResult;
   }
 
