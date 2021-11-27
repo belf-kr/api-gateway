@@ -195,6 +195,18 @@ export class TodoService {
     return apiClientResult;
   }
 
+  async getWorkTodo(id: number) {
+    let apiClientResult: any;
+
+    try {
+      apiClientResult = await this.todoApiClient.getWorkTodo(id);
+    } catch (error) {
+      throw error;
+    }
+
+    return apiClientResult;
+  }
+
   async deleteWorkTodo(headers: Record<string, string>, id: number) {
     let apiClientResult: any;
     const userId = this.belfJwtService.getUserId(headers["authorization"]);

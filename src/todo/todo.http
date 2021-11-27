@@ -88,6 +88,9 @@ GET {{Host}}/{{Router}}/work-todos
 ### work_todo 조건에 알맞은 리스트 가져오기
 GET {{Host}}/{{Router}}/work-todos?userId=&courseId=&activeDate=&maximumActiveDate=
 
+### work_todo 개 조회
+GET {{Host}}/{{Router}}/work-todos/1
+
 ### work_todo 삭제
 DELETE {{Host}}/{{Router}}/work-todos/1
 authorization: 
