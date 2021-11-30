@@ -1,8 +1,8 @@
 # api-gateway
 
-### Docker
+## 빠른 시작
 
-#### 컨테이너 생성
+### 컨테이너 생성
 
 ```
 docker-compose up -d
