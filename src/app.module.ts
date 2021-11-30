@@ -8,8 +8,6 @@ import { AppService } from "./app.service";
 
 import AppConfig from "./config/app.config";
 
-import { StorageModule } from "./storage/storage.module";
-
 import { TodoModule } from "./todo/todo.module";
 
 import { MockModule } from "./mock/mock.module";
@@ -39,7 +37,6 @@ import { LoggingInterceptor } from "./interceptor/logging.interceptor";
     TodoModule,
     MockModule,
     MiddlewareModule,
-    StorageModule,
     BelfJwtModule,
   ],
   controllers: [AppController],
