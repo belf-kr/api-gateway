@@ -36,7 +36,7 @@ GET {{Host}}/{{Router}}/courses?userId=
 
 ### course 생성
 POST {{Host}}/{{Router}}/courses
-authorization: 
+authorization: Bearer 
 Content-Type: application/json
 
 {
@@ -55,11 +55,11 @@ Content-Type: application/json
 
 ### course 삭제
 DELETE {{Host}}/{{Router}}/courses/1
-authorization: 
+authorization: Bearer 
 
 ### work_todo 추가(필수)
 POST {{Host}}/{{Router}}/work-todos
-authorization: 
+authorization: Bearer 
 Content-Type: application/json
 
 {
@@ -70,7 +70,7 @@ Content-Type: application/json
 
 ### work_todo 추가(선택)
 POST {{Host}}/{{Router}}/work-todos
-authorization: 
+authorization: Bearer 
 Content-Type: application/json
 
 {
@@ -93,11 +93,11 @@ GET {{Host}}/{{Router}}/work-todos/1
 
 ### work_todo 삭제
 DELETE {{Host}}/{{Router}}/work-todos/1
-authorization: 
+authorization: Bearer 
 
 ### work_done 추가
 POST {{Host}}/{{Router}}/work-dones
-authorization: 
+authorization: Bearer 
 Content-Type: application/json
 
 {
@@ -117,4 +117,4 @@ GET {{Host}}/{{Router}}/work-dones
 
 ### work_done 삭제
 DELETE {{Host}}/{{Router}}/work-dones/1
-authorization: 
+authorization: Bearer 
