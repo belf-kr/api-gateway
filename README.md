@@ -1,5 +1,29 @@
 # api-gateway
 
+## 빠른 시작
+
+### 컨테이너 생성
+
+```
+docker-compose up -d
+```
+
+위의 명령어를 입력해 docker image 생성 후 컨테이너를 생성합니다.
+
+### 컨테이너 삭제
+
+```
+docker-compose down
+```
+
+위의 명령어를 입력해 컨테이너를 삭제합니다.
+
+### API 요청
+
+#### ping
+
+http://localhost:3000/ping
+
 ## 개요
 
 client, service 간의 HTTP 요청 및 응답을 중계합니다.
@@ -14,14 +38,11 @@ client, service 간의 HTTP 요청 및 응답을 중계합니다.
 1. node:v14.16.1
 1. npm
 1. nest.js
-1. docker
 1. vscode
 
-## 빠른 시작
+## 시작하기
 
-Docker를 사용해 빠른 시작을 원하는 경우, `docker-compose up -d` 명령을 사용해 API Gateway 서비스를 실행합니다.
-
-## 개발 환경
+### 개발 환경
 
 1. .env.dev 파일 내부를 열어 각 서비스들의 HTTP listen port 환경을 설정합니다.
    1. API gateway service의 HTTP listen port
@@ -32,7 +53,7 @@ Docker를 사용해 빠른 시작을 원하는 경우, `docker-compose up -d` �
 1. 각 service에 HTTP 요청을 보내서 service가 실행 되고 있음을 확인합니다.
 1. VSCode 디버그 창 내부에 있는 NestJS start 버튼을 눌러 시작합니다.
 
-## QA/production 환경
+### QA/production 환경
 
 1. README.md 파일 내 환경 변수 표를 참고해 API gateway service가 구동될 서버의 환경변수를 설정합니다.
 1. `npm i && npm run start:prod` 명령을 이용해서 API service를 시작합니다.
