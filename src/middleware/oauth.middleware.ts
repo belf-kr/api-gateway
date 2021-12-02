@@ -14,14 +14,14 @@ export class OauthMiddleware implements NestMiddleware {
     if (jwtInput) {
       requestConfig = {
         headers: {
-          Authorization: `Bearer ${jwtInput}`,
+          Authorization: `${jwtInput}`,
         },
       };
     }
 
     try {
       if (!requestConfig) {
-        throw new HttpException({ data: "검증을 위한 JWT 값이 입력되지 않았습니다.", status: HttpStatus.BAD_REQUEST }, HttpStatus.BAD_REQUEST);
+        throw new HttpException({ data: "검증을 위한 JWT 값이 입력되지 않았습니다.", status: HttpStatus.UNAUTHORIZED }, HttpStatus.UNAUTHORIZED);
       }
 
       await this.httpService.get("/api/users/token/valid", requestConfig).toPromise();
