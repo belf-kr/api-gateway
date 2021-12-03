@@ -212,21 +212,20 @@ export class TodoApiClient {
     return serviceResult;
   }
 
-  async getWorkDoneByConditions(userId: number, courseId?: number, activeDate?: Date, maximumActiveDate?: Date): Promise<AxiosResponse<any>> {
-    let serviceResult: any;
-
+  async getWorkDoneByConditions(userId?: number, courseId?: number): Promise<AxiosResponse<any>> {
     try {
-      let querystring = userId ? `?userId=${userId}` : "";
-      querystring = courseId ? querystring + `&courseId=${courseId}` : querystring;
-      querystring = courseId ? querystring + `&activeDate=${activeDate}` : querystring;
-      querystring = courseId ? querystring + `&maximumActiveDate=${maximumActiveDate}` : querystring;
-
-      serviceResult = await this.httpService.get("/work-dones" + querystring).toPromise();
+      const res = await this.httpService
+        .get("/work-dones", {
+          params: {
+            userId: userId?.toString(),
+            courseId: courseId?.toString(),
+          },
+        })
+        .toPromise();
+      return res;
     } catch (error) {
       throw error;
     }
-
-    return serviceResult;
   }
 
   async getWorkDone(id: number): Promise<AxiosResponse<any>> {
