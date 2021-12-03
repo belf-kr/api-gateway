@@ -217,8 +217,8 @@ export class TodoApiClient {
       const res = await this.httpService
         .get("/work-dones", {
           params: {
-            userId: userId.toString(),
-            courseId: courseId.toString(),
+            userId: userId?.toString(),
+            courseId: courseId?.toString(),
           },
         })
         .toPromise();
