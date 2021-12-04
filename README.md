@@ -51,6 +51,7 @@ client, service 간의 HTTP 요청 및 응답을 중계합니다.
    1. Todo service의 HTTP listen port
    1. Storage service의 HTTP listen port
 1. 각 service에 HTTP 요청을 보내서 service가 실행 되고 있음을 확인합니다.
+1. `nodeenv --node=14.16.1 env-14.16.1` 명령을 실행해서 프로젝트 디렉토리 내부에 `node`, `npm` 실행 환경을 생성합니다.
 1. VSCode 디버그 창 내부에 있는 NestJS start 버튼을 눌러 시작합니다.
 
 ### QA/production 환경
