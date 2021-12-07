@@ -53,6 +53,17 @@ Content-Type: application/json
     ]
 }
 
+### course import
+POST {{Host}}/{{Router}}/courses
+authorization: Bearer 
+Content-Type: application/json
+
+{
+    "originalCourseId": 1,
+    "startDate": "2021-12-07",
+    "endDate": "2021-12-10"
+}
+
 ### course 삭제
 DELETE {{Host}}/{{Router}}/courses/1
 authorization: Bearer 
