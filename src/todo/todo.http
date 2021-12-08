@@ -53,6 +53,17 @@ Content-Type: application/json
     ]
 }
 
+### course import
+POST {{Host}}/{{Router}}/courses
+authorization: Bearer 
+Content-Type: application/json
+
+{
+    "originalCourseId": 1,
+    "startDate": "2021-12-07",
+    "endDate": "2021-12-10"
+}
+
 ### course 삭제
 DELETE {{Host}}/{{Router}}/courses/1
 authorization: Bearer 
@@ -103,7 +114,8 @@ Content-Type: application/json
 {
     "workTodoId": 1,
     "title": "한 일의 제목1",
-    "content": "json 컨텐츠 1"
+    "content": "json 컨텐츠 1",
+    "actionDate": "2021-11-06T08:50:00.12"
 }
 
 ### work_done 전체 리스트 가져오기
