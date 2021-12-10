@@ -108,10 +108,15 @@ export class TodoApiClient {
 
   async getCoursesByConditions(userId?: number): Promise<AxiosResponse<any>> {
     let serviceResult: any;
-    const querystring = userId ? `?userId=${userId}` : "";
 
     try {
-      serviceResult = await this.httpService.get("/courses" + querystring).toPromise();
+      serviceResult = await this.httpService
+        .get("/courses", {
+          params: {
+            userId: userId?.toString(),
+          },
+        })
+        .toPromise();
     } catch (error) {
       throw error;
     }
@@ -133,10 +138,15 @@ export class TodoApiClient {
 
   async deleteCourse(userId: number, id: number): Promise<AxiosResponse<any>> {
     let serviceResult: any;
-    const querystring = userId ? `?userId=${userId}` : "";
 
     try {
-      serviceResult = await this.httpService.delete("/courses/" + id + querystring).toPromise();
+      serviceResult = await this.httpService
+        .delete("/courses/" + id, {
+          params: {
+            userId: userId?.toString(),
+          },
+        })
+        .toPromise();
     } catch (error) {
       throw error;
     }
@@ -161,12 +171,16 @@ export class TodoApiClient {
     let serviceResult: any;
 
     try {
-      let querystring = userId ? `?userId=${userId}` : "";
-      querystring = courseId ? querystring + `&courseId=${courseId}` : querystring;
-      querystring = courseId ? querystring + `&activeDate=${activeDate}` : querystring;
-      querystring = courseId ? querystring + `&maximumActiveDate=${maximumActiveDate}` : querystring;
-
-      serviceResult = await this.httpService.get("/work-todos" + querystring).toPromise();
+      serviceResult = await this.httpService
+        .get("/work-todos", {
+          params: {
+            userId: userId?.toString(),
+            courseId: courseId?.toString(),
+            activeDate: activeDate?.toString(),
+            maximumActiveDate: maximumActiveDate?.toString(),
+          },
+        })
+        .toPromise();
     } catch (error) {
       throw error;
     }
@@ -188,10 +202,15 @@ export class TodoApiClient {
 
   async deleteWorkTodo(userId: number, id: number): Promise<AxiosResponse<any>> {
     let serviceResult: any;
-    const querystring = userId ? `?userId=${userId}` : "";
 
     try {
-      serviceResult = await this.httpService.delete("/work-todos/" + id + querystring).toPromise();
+      serviceResult = await this.httpService
+        .delete("/work-todos/" + id, {
+          params: {
+            userId: userId?.toString(),
+          },
+        })
+        .toPromise();
     } catch (error) {
       throw error;
     }
@@ -242,10 +261,15 @@ export class TodoApiClient {
 
   async deleteWorkDone(userId: number, id: number): Promise<AxiosResponse<any>> {
     let serviceResult: any;
-    const querystring = userId ? `?userId=${userId}` : "";
 
     try {
-      serviceResult = await this.httpService.delete("/work-dones/" + id + querystring).toPromise();
+      serviceResult = await this.httpService
+        .delete("/work-dones/" + id, {
+          params: {
+            userId: userId?.toString(),
+          },
+        })
+        .toPromise();
     } catch (error) {
       throw error;
     }

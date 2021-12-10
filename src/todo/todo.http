@@ -1,5 +1,6 @@
 @Host = http://localhost:3000
 # @Host = https://api-gateway.qa.belf.xyz
+@JWT = Bearer 
 @Router = todo
 
 ### Get service name
@@ -36,7 +37,7 @@ GET {{Host}}/{{Router}}/courses?userId=
 
 ### course 생성
 POST {{Host}}/{{Router}}/courses
-authorization: Bearer 
+authorization: {{JWT}}
 Content-Type: application/json
 
 {
@@ -50,12 +51,14 @@ Content-Type: application/json
         {
             "value": "하하하"
         }
-    ]
+    ],
+    "startDate": "2021-11-05",
+    "endDate": "2021-11-05"
 }
 
 ### course import
 POST {{Host}}/{{Router}}/courses
-authorization: Bearer 
+authorization: {{JWT}}
 Content-Type: application/json
 
 {
@@ -66,11 +69,11 @@ Content-Type: application/json
 
 ### course 삭제
 DELETE {{Host}}/{{Router}}/courses/1
-authorization: Bearer 
+authorization: {{JWT}}
 
 ### work_todo 추가(필수)
 POST {{Host}}/{{Router}}/work-todos
-authorization: Bearer 
+authorization: {{JWT}} 
 Content-Type: application/json
 
 {
@@ -81,7 +84,7 @@ Content-Type: application/json
 
 ### work_todo 추가(선택)
 POST {{Host}}/{{Router}}/work-todos
-authorization: Bearer 
+authorization: {{JWT}}
 Content-Type: application/json
 
 {
@@ -93,9 +96,6 @@ Content-Type: application/json
     "explanation": "나만의 할 일 설명1"
 }
 
-### work_todo 전체 리스트 가져오기
-GET {{Host}}/{{Router}}/work-todos
-
 ### work_todo 조건에 알맞은 리스트 가져오기
 GET {{Host}}/{{Router}}/work-todos?userId=&courseId=&activeDate=&maximumActiveDate=
 
@@ -104,11 +104,11 @@ GET {{Host}}/{{Router}}/work-todos/1
 
 ### work_todo 삭제
 DELETE {{Host}}/{{Router}}/work-todos/1
-authorization: Bearer 
+authorization: {{JWT}} 
 
 ### work_done 추가
 POST {{Host}}/{{Router}}/work-dones
-authorization: Bearer 
+authorization: {{JWT}} 
 Content-Type: application/json
 
 {
@@ -129,4 +129,4 @@ GET {{Host}}/{{Router}}/work-dones
 
 ### work_done 삭제
 DELETE {{Host}}/{{Router}}/work-dones/1
-authorization: Bearer 
+authorization: {{JWT}} 
