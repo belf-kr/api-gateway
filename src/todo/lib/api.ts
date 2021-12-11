@@ -16,7 +16,15 @@ export class TodoApiClient {
 
   async searchCourse(search: string, take: number, skip: number) {
     try {
-      const res = await this.httpService.get(`/search?search=${search}&take=${take}&skip=${skip}`).toPromise();
+      const res = await this.httpService
+        .get("/search", {
+          params: {
+            search: search?.toString(),
+            take: take?.toString(),
+            skip: skip.toString(),
+          },
+        })
+        .toPromise();
       return res.data;
     } catch (error) {
       throw error;
