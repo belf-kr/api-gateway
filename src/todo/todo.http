@@ -30,7 +30,7 @@ Content-Type: application/json
 GET {{Host}}/{{Router}}/courses/1
 
 ### course 조건으로 조회
-GET {{Host}}/{{Router}}/courses?userId=&belfOnly=
+GET {{Host}}/{{Router}}/courses?userId=&belfOnly=&courseId=
 
 ### course 생성
 POST {{Host}}/{{Router}}/courses
