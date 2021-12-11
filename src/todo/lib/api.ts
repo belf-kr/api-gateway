@@ -124,7 +124,7 @@ export class TodoApiClient {
     return serviceResult;
   }
 
-  async getCoursesByConditions(userId?: number): Promise<AxiosResponse<any>> {
+  async getCoursesByConditions(userId?: number, courseId?: number, belfOnly?: boolean): Promise<AxiosResponse<any>> {
     let serviceResult: any;
 
     try {
@@ -132,6 +132,8 @@ export class TodoApiClient {
         .get("/courses", {
           params: {
             userId: userId?.toString(),
+            courseId: courseId?.toString(),
+            belfOnly: belfOnly?.toString(),
           },
         })
         .toPromise();

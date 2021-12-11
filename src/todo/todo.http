@@ -36,7 +36,7 @@ GET {{Host}}/{{Router}}/courses
 GET {{Host}}/{{Router}}/courses/1
 
 ### course 조건으로 조회
-GET {{Host}}/{{Router}}/courses?userId=
+GET {{Host}}/{{Router}}/courses?userId=&belfOnly=
 
 ### course 생성
 POST {{Host}}/{{Router}}/courses
