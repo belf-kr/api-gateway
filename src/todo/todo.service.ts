@@ -23,6 +23,14 @@ export class TodoService {
     this.belfJwtService = belfJwtService;
   }
 
+  async searchCourse(search: string, take: number, skip: number) {
+    try {
+      return await this.todoApiClient.searchCourse(search, take, skip);
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async getServiceName() {
     let apiClientResult: any;
 

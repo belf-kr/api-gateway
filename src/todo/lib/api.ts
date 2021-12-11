@@ -14,6 +14,15 @@ export class TodoApiClient {
     this.httpService = httpService;
   }
 
+  async searchCourse(search: string, take: number, skip: number) {
+    try {
+      const res = await this.httpService.get(`/search?search=${search}&take=${take}&skip=${skip}`).toPromise();
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   // 기본 디버깅 Endpoint Group
   async getServiceName() {
     let serviceResult: any;

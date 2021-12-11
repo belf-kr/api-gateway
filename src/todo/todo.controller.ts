@@ -11,6 +11,7 @@ import { CoursePostInterface } from "src/common/type/course-post.interface";
 import { CourseGetInterface } from "src/common/type/course-get.interface";
 import { WorkTodoPostInterface } from "src/common/type/work-todo-post.interface";
 import { WorkTodoGetInterface } from "src/common/type/work-todo-get.interface";
+import { skip } from "rxjs/operators";
 
 @Controller("todo")
 export class TodoController {
@@ -154,6 +155,18 @@ export class TodoController {
     }
 
     return serviceResult;
+  }
+
+  @Get("courses/search")
+  async searchCourses(@Param("search") search: string, @Param("take") take?: number, @Param("skip") skip?: number) {
+    try {
+      return await this.appService.searchCourse(search, take | 10, skip | 0);
+    } catch (error) {
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
+    }
   }
 
   @Get("courses/:id")
