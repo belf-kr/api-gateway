@@ -94,6 +94,24 @@ export class TodoApiClient {
   }
 
   // Course
+  async searchCourse(keyword: string): Promise<AxiosResponse<any>> {
+    let serviceResult: any;
+
+    try {
+      serviceResult = await this.httpService
+        .get("/courses/search", {
+          params: {
+            keyword: keyword.toString(),
+          },
+        })
+        .toPromise();
+    } catch (error) {
+      throw error;
+    }
+
+    return serviceResult;
+  }
+
   async createCourse(coursesInput: CourseType): Promise<AxiosResponse<any>> {
     let serviceResult: any;
 
