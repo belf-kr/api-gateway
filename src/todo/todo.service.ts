@@ -132,11 +132,11 @@ export class TodoService {
     return apiClientResult;
   }
 
-  async getCoursesByConditions(userId?: number) {
+  async getCoursesByConditions(userId?: number, courseId?: number, belfOnly?: boolean) {
     let apiClientResult: any;
 
     try {
-      apiClientResult = await this.todoApiClient.getCoursesByConditions(userId);
+      apiClientResult = await this.todoApiClient.getCoursesByConditions(userId, courseId, belfOnly);
     } catch (error) {
       throw error;
     }
