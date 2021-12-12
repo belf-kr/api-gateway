@@ -121,6 +121,23 @@ export class TodoController {
     return serviceResult;
   }
 
+  @Get("courses/search")
+  async searchCourse(@Query("keyword") keyword: string) {
+    let serviceResult: any;
+
+    try {
+      const result: AxiosResponse<any> = await this.appService.searchCourse(keyword);
+      serviceResult = result.data;
+    } catch (error) {
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
+    }
+
+    return serviceResult;
+  }
+
   @Post("courses")
   async createCourse(@Headers() headers: Record<string, string>, @Body() coursePostInput: CoursePostInterface) {
     let serviceResult: any;
