@@ -135,4 +135,5 @@ DELETE {{Host}}/{{Router}}/work-dones/1
 authorization: {{JWT}} 
 
 ### 회원 탈퇴
-DELETE {{Host}}/{{Router}}/users/1
+DELETE {{Host}}/{{Router}}/users
+authorization: {{JWT}} 

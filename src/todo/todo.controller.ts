@@ -352,7 +352,7 @@ export class TodoController {
     return serviceResult;
   }
 
-  @Delete("users/:userId")
+  @Delete("users")
   async withdrawarUser(@Headers() headers: Record<string, string>) {
     let serviceResult: any;
 
