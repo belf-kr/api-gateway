@@ -296,4 +296,16 @@ export class TodoApiClient {
 
     return serviceResult;
   }
+
+  async withdrawarUser(userId: number): Promise<AxiosResponse<any>> {
+    let serviceResult: any;
+
+    try {
+      serviceResult = await this.httpService.delete("/users/" + userId).toPromise();
+    } catch (error) {
+      throw error;
+    }
+
+    return serviceResult;
+  }
 }
