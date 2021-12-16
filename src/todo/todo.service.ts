@@ -282,4 +282,17 @@ export class TodoService {
 
     return apiClientResult;
   }
+
+  async withdrawarUser(headers: Record<string, string>) {
+    let apiClientResult: any;
+    const userId = this.belfJwtService.getUserId(headers["authorization"]);
+
+    try {
+      apiClientResult = await this.todoApiClient.withdrawarUser(userId);
+    } catch (error) {
+      throw error;
+    }
+
+    return apiClientResult;
+  }
 }

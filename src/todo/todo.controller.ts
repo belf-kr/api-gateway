@@ -351,4 +351,21 @@ export class TodoController {
 
     return serviceResult;
   }
+
+  @Delete("users/:userId")
+  async withdrawarUser(@Headers() headers: Record<string, string>) {
+    let serviceResult: any;
+
+    try {
+      const result: AxiosResponse<any> = await this.appService.withdrawarUser(headers);
+      serviceResult = result.data;
+    } catch (error) {
+      const httpStatusCode = getErrorHttpStatusCode(error);
+      const message = getErrorMessage(error);
+
+      throw new HttpException(message, httpStatusCode);
+    }
+
+    return serviceResult;
+  }
 }
