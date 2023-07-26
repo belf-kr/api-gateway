@@ -1,6 +1,6 @@
 # api-gateway
 
-[한국어(KR)](./README.md) | [`English`](./README.en-US.md)
+[`한국어(KR)`](./README.md) | [English](./README.en-US.md)
 
 ## 빠른 시작
 
